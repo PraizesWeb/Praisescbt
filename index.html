@@ -3207,15 +3207,17 @@
         const timerEl = document.getElementById('timer');
         const reviewContainerEl = document.getElementById('review-container'); 
 
-        function startTimer() {
+
+                function startTimer() {
             timerInterval = setInterval(() => {
                 if (timeRemaining <= 0) {
                     clearInterval(timerInterval);
                     submitExam();
                 } else {
                     timeRemaining--;
-                    let hours = Math.floor(timeRemaining / 2400);
-                    let minutes = Math.floor((timeRemaining % 2400) / 60);
+                    // Always divide by 3600 to find hours, regardless of how much time is remaining
+                    let hours = Math.floor(timeRemaining / 3600);
+                    let minutes = Math.floor((timeRemaining % 3600) / 60);
                     let seconds = timeRemaining % 60;
                     
                     hours = hours < 10 ? "0" + hours : hours;
@@ -3303,7 +3305,7 @@
                         </div>
                     `;
                 }
-        }
+            }
 
             if (missedCount === 0) {
                 reviewHTML += `<p style="color: #28a745; font-weight: bold;">Perfect score! You didn't miss any questions.</p>`;
@@ -3326,21 +3328,10 @@
             reviewContainerEl.innerHTML = reviewHTML;
         }
 
-
-            if (missedCount === 0) {
-                reviewHTML += `<p style="color: #28a745; font-weight: bold;">Perfect score! You didn't miss any questions.</p>`;
-            }
-            
-            document.getElementById('quiz-container').style.display = 'none';
-            document.getElementById('result-container').style.display = 'block';
-            document.getElementById('score-display').innerText = `Your Score: ${score} / ${questions.length}`;
-            reviewContainerEl.innerHTML = reviewHTML;
-        }
-
         // Initialize CBT
         loadQuestion(currentQuestionIndex);
         startTimer();
 
-    </script>
+    </script>      
 </body>
 </html>
