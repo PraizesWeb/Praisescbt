@@ -1,0 +1,3324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEE 311 CBT Examination</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .cbt-container {
+            background: #fff;
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: 85vh; 
+            overflow-y: auto; 
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #d9534f;
+        }
+        .question-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-label {
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .option-label:hover {
+            background: #e9ecef;
+        }
+        .option-label input {
+            margin-right: 10px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .btn-prev { background-color: #6c757d; }
+        .btn-next { background-color: #007bff; }
+        .btn-submit { background-color: #28a745; display: none; }
+        
+        #result-container {
+            text-align: center;
+            display: none;
+        }
+        .score-display {
+            font-size: 2em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        #review-container {
+            text-align: left;
+            margin-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            padding-top: 20px;
+        }
+        .review-item {
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .review-question {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .correct-ans {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .wrong-ans {
+            color: #d9534f;
+            font-weight: bold;
+            text-decoration: line-through;
+        }
+        .unanswered {
+            color: #f0ad4e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cbt-container" id="quiz-container">
+        <div class="header">
+            <div class="question-number" id="question-number">Question 1 of 35</div>
+            <div class="timer" id="timer">Time Left: 01:00:00</div>
+        </div>
+
+        <div class="question-text" id="question-text">Loading question...</div>
+
+        <div class="options-container" id="options-container">
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="btn-prev" id="btn-prev" onclick="prevQuestion()">Previous</button>
+            <button class="btn-next" id="btn-next" onclick="nextQuestion()">Next</button>
+            <button class="btn-submit" id="btn-submit" onclick="submitExam()">Submit Exam</button>
+        </div>
+    </div>
+
+    <div class="cbt-container" id="result-container">
+        <h2>Examination Completed</h2>
+        <div class="score-display" id="score-display">Your Score: 0 / 35</div>
+        <p>Thank you for taking the test. Review your performance below:</p>
+        
+        <div id="review-container"></div>
+        
+        <br>
+        <button class="btn-next" onclick="location.reload()">Take Another Random Test</button>
+    </div>
+
+    <script>
+        // ---------------------------------------------------------
+        // PASTE ALL YOUR BATCHES HERE
+        // Replace the sample question below with all 300 questions.
+        // Make sure there is a comma between every question!
+        // ---------------------------------------------------------
+        let fullQuestionBank = [
+            
+            {
+                question: "What is the primary function of an active transducer?",
+                options: [
+                    "It requires an external power source to operate",
+                    "It derives power from a secondary transducer",
+                    "It develops its own voltage or current from the physical phenomenon being measured",
+                    "It only measures digital signals"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which of the following is an example of an active transducer?",
+                options: [
+                    "Strain gauge",
+                    "Thermocouple",
+                    "Potentiometer",
+                    "RTD"
+                ],
+                answer: 1
+            },
+            {
+                question: "When an input signal is first sensed by a detector and its output is fed to another instrument to convert it into electrical energy, the second instrument is called a:",
+                options: [
+                    "Primary transducer",
+                    "Secondary transducer",
+                    "Passive transducer",
+                    "Inverse transducer"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which characteristic refers to the degree of reproducibility of a measurement?",
+                options: [
+                    "Accuracy",
+                    "Resolution",
+                    "Precision",
+                    "Linearity"
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the 'Resolution' of a transducer?",
+                options: [
+                    "The maximum and minimum values it can measure",
+                    "The smallest difference between measured values that can be discriminated",
+                    "The maximum difference between actual and indicated values",
+                    "The ratio of incremental output to incremental input"
+                ],
+                answer: 1
+            },
+            {
+                question: "The resistance of a conductor is inversely proportional to its:",
+                options: [
+                    "Length",
+                    "Resistivity",
+                    "Cross-sectional area",
+                    "Temperature"
+                ],
+                answer: 2
+            },
+            {
+                question: "A thermistor typically has a:",
+                options: [
+                    "Positive temperature coefficient",
+                    "Negative temperature coefficient",
+                    "Zero temperature coefficient",
+                    "Linear temperature coefficient"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which material is mostly used in the construction of a Resistance Temperature Detector (RTD)?",
+                options: [
+                    "Tungsten",
+                    "Gold",
+                    "Silver",
+                    "Platinum"
+                ],
+                answer: 3
+            },
+            {
+                question: "Why are gold and silver NOT used for making RTDs?",
+                options: [
+                    "They are extremely brittle",
+                    "They have very high resistivity",
+                    "They have low resistivity",
+                    "They are too expensive"
+                ],
+                answer: 2
+            },
+            {
+                question: "When comparing a Thermistor to an RTD, which of the following is true?",
+                options: [
+                    "RTDs have a faster response time than Thermistors",
+                    "Thermistors are highly non-linear while RTDs are mostly linear",
+                    "RTDs are more sensitive to small temperature changes than Thermistors",
+                    "Thermistors are used for very high industrial temperatures up to 660°C"
+                ],
+                answer: 1
+            },
+            {
+                question: "The property of a metal conductor changing its resistivity when strained is called the:",
+                options: [
+                    "Piezo-electric effect",
+                    "Hall effect",
+                    "Piezo-resistive effect",
+                    "Seebeck effect"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which of the following describes the gauge factor of a strain gauge?",
+                options: [
+                    "Ratio of per unit change in length to per unit change in resistance",
+                    "Ratio of per unit change in resistance to per unit change in length",
+                    "Ratio of lateral strain to longitudinal strain",
+                    "Ratio of resistivity to cross-sectional area"
+                ],
+                answer: 1
+            },
+            {
+                question: "An LVDT (Linear Variable Differential Transformer) consists of:",
+                options: [
+                    "Two primary windings and one secondary winding",
+                    "One primary winding and two secondary windings",
+                    "One primary winding and one secondary winding",
+                    "Two primary windings and two secondary windings"
+                ],
+                answer: 1
+            },
+            {
+                question: "What is the output voltage of an LVDT when the soft-iron core is at its normal (NULL) position?",
+                options: [
+                    "Maximum positive voltage",
+                    "Maximum negative voltage",
+                    "Zero",
+                    "Equal to the primary supply voltage"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which of the following is NOT an advantage of an LVDT?",
+                options: [
+                    "High sensitivity",
+                    "Good resolution because output is stepless",
+                    "It is immune to stray electromagnetic fields",
+                    "It consumes low power"
+                ],
+                answer: 2
+            },
+            {
+                question: "A capacitive transducer works on the principle of variable capacitance. Which of the following does NOT cause a change in its capacitance?",
+                options: [
+                    "Change in distance between the plates",
+                    "Change in the overlapping area of the plates",
+                    "Change in the dielectric constant",
+                    "Change in the resistivity of the plates"
+                ],
+                answer: 3
+            },
+            {
+                question: "Errors that are largely due to human mistakes, such as misreading instruments or erroneous calculations, are called:",
+                options: [
+                    "Systematic errors",
+                    "Random errors",
+                    "Gross errors",
+                    "Environmental errors"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which type of error is caused by shortcomings of the instruments, such as defective parts or calibration bias?",
+                options: [
+                    "Random errors",
+                    "Indeterminate errors",
+                    "Systematic errors",
+                    "Gross errors"
+                ],
+                answer: 2
+            },
+            {
+                question: "How can the effects of random (indeterminate) errors be minimized?",
+                options: [
+                    "By taking multiple readings and applying statistical analysis",
+                    "By careful calibration of instruments",
+                    "By maintaining constant temperature and humidity",
+                    "By paying closer attention to prevent human mistakes"
+                ],
+                answer: 0
+            },
+            {
+                question: "In statistics, the arithmetic mean is considered the:",
+                options: [
+                    "Highest value in a dataset",
+                    "Most probable value of a measured variable",
+                    "Departure of a reading from the central value",
+                    "Square root of the variance"
+                ],
+                answer: 1
+            },
+            {
+                question: "The algebraic sum of all deviations from the mean in a set of readings must always be:",
+                options: [
+                    "Positive",
+                    "Negative",
+                    "Zero",
+                    "Equal to the mean"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which statistical term is defined as the square of the standard deviation?",
+                options: [
+                    "Average deviation",
+                    "Arithmetic mean",
+                    "Probable error",
+                    "Variance"
+                ],
+                answer: 3
+            },
+            {
+                question: "In a Normal (Gaussian) distribution curve, what percentage of observations are expected to fall within plus or minus one standard deviation (± 1 SD)?",
+                options: [
+                    "50.00%",
+                    "68.28%",
+                    "95.46%",
+                    "99.72%"
+                ],
+                answer: 1
+            },
+            {
+                question: "What percentage of observations are expected to fall within plus or minus two standard deviations (± 2 SD)?",
+                options: [
+                    "68.28%",
+                    "50.00%",
+                    "95.46%",
+                    "99.72%"
+                ],
+                answer: 2
+            },
+            {
+                question: "The formula for Probable Error (r) is:",
+                options: [
+                    "r = ± 0.6745σ",
+                    "r = ± 1.0σ",
+                    "r = ± 0.5000σ",
+                    "r = ± 0.9546σ"
+                ],
+                answer: 0
+            },
+            {
+                question: "When adding measurements with different degrees of precision (e.g., 18.7 Ω and 3.624 Ω), the final result should be rounded to:",
+                options: [
+                    "The highest number of significant figures (e.g., 22.324)",
+                    "The least accurate measurement's decimal place (e.g., 22.3)",
+                    "Two decimal places always",
+                    "Whole numbers (e.g., 22)"
+                ],
+                answer: 1
+            },
+            {
+                question: "In Microsoft Excel, which function is used to find the sample standard deviation (unbiased) of a range of numbers?",
+                options: [
+                    "=AVERAGE()",
+                    "=AVEDEV()",
+                    "=STDEV()",
+                    "=STDEVP()"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which of the following best describes the core material used in an LVDT?",
+                options: [
+                    "A solid permanent magnet",
+                    "A high permeability, slotted nickel-iron soft core",
+                    "A piece of pure platinum",
+                    "A dielectric ceramic material"
+                ],
+                answer: 1
+            },
+            {
+                question: "For a linear potentiometer, an easy method to determine the resistance change besides a Wheatstone bridge is to:",
+                options: [
+                    "Measure its capacitance directly",
+                    "Connect a constant current source in series and measure the developed voltage",
+                    "Apply an AC source and measure the phase shift",
+                    "Measure the temperature of the slider"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which type of transducer does not load the measurand mechanically and has an output voltage that is stepless?",
+                options: [
+                    "Potentiometer",
+                    "LVDT",
+                    "Strain Gauge",
+                    "RTD"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of the following best describes a passive transducer?",
+                options: [
+                    "It generates its own voltage directly from environmental stimulation",
+                    "It requires additional electrical energy from an external power source for excitation",
+                    "It is immune to changes in temperature and humidity",
+                    "It only converts rotary displacement into linear displacement"
+                ],
+                answer: 1
+            },
+            {
+                question: "Hysteresis in an instrument or transducer is best described as:",
+                options: [
+                    "The maximum difference between the actual value and indicated value",
+                    "The degree of reproducibility of a measurement",
+                    "The measure of a property's capability to follow input changes regardless of which direction the change is made",
+                    "The smallest detectable incremental change of the input parameter"
+                ],
+                answer: 2
+            },
+            {
+                question: "How is the percentage of non-linearity calculated?",
+                options: [
+                    "(Maximum full scale input / Maximum input deviation) * 100",
+                    "(Maximum input deviation / Maximum full scale input) * 100",
+                    "(Minimum input deviation / Maximum full scale input) * 100",
+                    "(Maximum full scale input / Minimum input deviation) * 100"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of the following metals is NOT typically used in creating the sintered mixture for a thermistor?",
+                options: [
+                    "Manganese",
+                    "Uranium",
+                    "Platinum",
+                    "Cobalt"
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the primary physical characteristic of the 'bead' form of a thermistor?",
+                options: [
+                    "It is pressed under high pressure into a disc",
+                    "It is the smallest in shape and enclosed inside a solid glass rod to form probes",
+                    "It is designed specifically as a long cylindrical rod",
+                    "It consists of multiple parallel plates"
+                ],
+                answer: 1
+            },
+            {
+                question: "Why is copper sometimes used for making RTD elements despite its low linearity?",
+                options: [
+                    "It has high resistivity and is extremely stable",
+                    "It can withstand temperatures above 1000°C",
+                    "It has low resistivity and is less expensive",
+                    "It operates well without an external power source"
+                ],
+                answer: 2
+            },
+            {
+                question: "According to the comparison between RTDs and Thermistors, what is the temperature range of an RTD?",
+                options: [
+                    "-60°C to 15°C",
+                    "-100°C to 400°C",
+                    "-230°C to 660°C",
+                    "0°C to 1000°C"
+                ],
+                answer: 2
+            },
+            {
+                question: "An LVDT's primary winding is typically excited by a sinusoidal voltage with an amplitude of:",
+                options: [
+                    "1 to 5 Volts",
+                    "3 to 15 Volts",
+                    "50 to 200 Volts",
+                    "100 to 240 Volts"
+                ],
+                answer: 1
+            },
+            {
+                question: "The core inside an LVDT is slotted longitudinally in order to:",
+                options: [
+                    "Increase the magnetic flux",
+                    "Decrease the weight of the core",
+                    "Reduce eddy current losses",
+                    "Allow cooling air to pass through"
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the output impedance formula for a capacitive transducer?",
+                options: [
+                    "Xc = 2πfc",
+                    "Xc = 1 / (2πfc)",
+                    "Xc = c / (2πf)",
+                    "Xc = f / (2πc)"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which formula accurately represents the capacitance between the plates of a capacitor?",
+                options: [
+                    "C = d / εA",
+                    "C = εA / d",
+                    "C = εd / A",
+                    "C = A / εd"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which type of error is generally originated from a known cause, such as a mis-calibrated device?",
+                options: [
+                    "Gross errors",
+                    "Random errors",
+                    "Systematic (determinate) errors",
+                    "Indeterminate errors"
+                ],
+                answer: 2
+            },
+            {
+                question: "If a digital multimeter reads a resistance as 117.1 V, what does this indicate about the true voltage?",
+                options: [
+                    "It is exactly 117.100 V",
+                    "It is closer to 117.1 V than to 117.0 V or 117.2 V",
+                    "It has a gross error",
+                    "It was measured with a purely random error"
+                ],
+                answer: 1
+            },
+            {
+                question: "Variance is a convenient statistical quantity to use in many computations because:",
+                options: [
+                    "It has the same units as the variable",
+                    "It eliminates all systematic errors",
+                    "Variances are additive",
+                    "It is unaffected by gross errors"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which Microsoft Excel function is used to find the average deviation of numbers in a range of cells?",
+                options: [
+                    "=STDEV()",
+                    "=AVERAGE()",
+                    "=AVEDEV()",
+                    "=MEANDEV()"
+                ],
+                answer: 2
+            },
+            {
+                question: "In the context of standard deviation and error distribution, what does 'confidence interval' refer to?",
+                options: [
+                    "The time taken to conduct an experiment",
+                    "The acceptable range of possible values",
+                    "The distance between two capacitor plates",
+                    "The voltage required to excite a transducer"
+                ],
+                answer: 1
+            },
+            {
+                question: "Thermistor resistance changes from 10^5 to 10^-2 Ohms typically between which temperatures?",
+                options: [
+                    "0°C to 100°C",
+                    "-60°C to 15°C",
+                    "-100°C to 400°C",
+                    "-230°C to 660°C"
+                ],
+                answer: 2
+            },
+            {
+                question: "To convert pressure into displacement before using an LVDT to convert it to output voltage, which device is commonly used?",
+                options: [
+                    "Bourdon tube",
+                    "Thermocouple",
+                    "Strain gauge",
+                    "Potentiometer"
+                ],
+                answer: 0
+            },
+            {
+                question: "The LVDT directly converts linear displacement into:",
+                options: [
+                    "Capacitance",
+                    "An electrical signal",
+                    "Thermal energy",
+                    "Mechanical surface tension"
+                ],
+                answer: 1
+            },
+            {
+                question: "A capacitive transducer uses which three effects for measurement?",
+                options: [
+                    "Overlapping area, distance between plates, and dielectric constant",
+                    "Temperature, length, and cross-sectional area",
+                    "Permeability, magnetic flux, and number of turns",
+                    "Bearing friction, calibration, and transmission loss"
+                ],
+                answer: 0
+            },
+                // ... paste these right after Question 50 in your array ...
+    {
+        question: "In a Wheatstone bridge, what is the condition for a perfectly balanced bridge?",
+        options: [
+            "The ratio of arms in one branch equals the sum of the other",
+            "The ratio of resistances in opposite arms are equal",
+            "The product of opposite arm resistances are equal",
+            "The sum of opposite arm resistances are equal"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which bridge is most commonly used for measuring very low resistances?",
+        options: [
+            "Wheatstone bridge",
+            "Kelvin double bridge",
+            "Maxwell bridge",
+            "Schering bridge"
+        ],
+        answer: 1
+    },
+    {
+        question: "Maxwell's inductance-capacitance bridge is best suited for measuring an unknown inductance with a:",
+        options: [
+            "Very high Q factor",
+            "Medium Q factor",
+            "Very low Q factor",
+            "Variable Q factor"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which AC bridge is highly preferred for measuring the inductance of high Q coils?",
+        options: [
+            "Hay's bridge",
+            "Maxwell's bridge",
+            "Anderson's bridge",
+            "Wien bridge"
+        ],
+        answer: 0
+    },
+    {
+        question: "The Schering bridge is extensively used in electrical engineering to measure:",
+        options: [
+            "Frequency",
+            "Unknown Inductance",
+            "Capacitance and dielectric loss",
+            "Resistance"
+        ],
+        answer: 2
+    },
+    {
+        question: "The Wien bridge is primarily used for the measurement of:",
+        options: [
+            "Frequency",
+            "High voltages",
+            "Inductance",
+            "Low resistance"
+        ],
+        answer: 0
+    },
+    {
+        question: "Permanent Magnet Moving Coil (PMMC) instruments are used for the measurement of:",
+        options: [
+            "AC quantities only",
+            "DC quantities only",
+            "Both AC and DC quantities",
+            "Pulsating DC only"
+        ],
+        answer: 1
+    },
+    {
+        question: "Moving iron instruments can be effectively used for measuring:",
+        options: [
+            "DC only",
+            "AC only",
+            "Both AC and DC",
+            "High frequency radio waves"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a PMMC instrument, the controlling torque is typically provided by:",
+        options: [
+            "Gravity control",
+            "Spring control",
+            "Eddy currents",
+            "Air friction"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which type of damping is generally employed in a PMMC instrument?",
+        options: [
+            "Air friction damping",
+            "Fluid friction damping",
+            "Eddy current damping",
+            "Electromagnetic damping"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following measuring instruments consumes the least amount of power?",
+        options: [
+            "Moving iron instrument",
+            "Electrodynamometer",
+            "Hot wire instrument",
+            "PMMC instrument"
+        ],
+        answer: 3
+    },
+    {
+        question: "An electrodynamometer type instrument is highly versatile because it can measure:",
+        options: [
+            "Only peak AC values",
+            "Both AC and DC (True RMS)",
+            "Only DC values",
+            "Only frequency"
+        ],
+        answer: 1
+    },
+    {
+        question: "A Megger is an instrument specifically designed to measure:",
+        options: [
+            "Very low resistance",
+            "High insulation resistance",
+            "Inductance",
+            "Capacitance"
+        ],
+        answer: 1
+    },
+    {
+        question: "The deflection angle of a moving iron instrument is directly proportional to the:",
+        options: [
+            "Current passing through it",
+            "Square root of the current",
+            "Square of the current",
+            "Inverse of the current"
+        ],
+        answer: 2
+    },
+    {
+        question: "To extend the measurement range of a DC ammeter, we connect a:",
+        options: [
+            "High resistance in series",
+            "Low resistance in series",
+            "High resistance in parallel",
+            "Low resistance in parallel (Shunt)"
+        ],
+        answer: 3
+    },
+    {
+        question: "To extend the range of a DC voltmeter, we must use a:",
+        options: [
+            "Multiplier (high resistance in series)",
+            "Shunt (low resistance in parallel)",
+            "Capacitor in series",
+            "Inductor in parallel"
+        ],
+        answer: 0
+    },
+    {
+        question: "The preferred material used for making ammeter shunts is usually:",
+        options: [
+            "Copper",
+            "Aluminum",
+            "Manganin",
+            "Tungsten"
+        ],
+        answer: 2
+    },
+    {
+        question: "How can a basic galvanometer be converted into a voltmeter?",
+        options: [
+            "By connecting a low resistance in parallel",
+            "By connecting a high resistance in series",
+            "By connecting a low resistance in series",
+            "By connecting a capacitor in parallel"
+        ],
+        answer: 1
+    },
+    {
+        question: "The systematic errors in a measurement system generally include:",
+        options: [
+            "Gross errors and random errors",
+            "Instrumental, environmental, and observational errors",
+            "Only environmental errors",
+            "Unpredictable statistical fluctuations"
+        ],
+        answer: 1
+    },
+    {
+        question: "Parallax error, caused by reading a scale from an angle, is classified as a type of:",
+        options: [
+            "Environmental error",
+            "Instrumental error",
+            "Observational error",
+            "Random error"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Cathode Ray Oscilloscopes (CRO), the time base generator is responsible for producing a:",
+        options: [
+            "Sine wave",
+            "Square wave",
+            "Sawtooth wave",
+            "Triangular wave"
+        ],
+        answer: 2
+    },
+    {
+        question: "The deflection sensitivity of a Cathode Ray Tube (CRT) is inversely proportional to:",
+        options: [
+            "The distance between deflection plates",
+            "The length of the deflection plates",
+            "The accelerating voltage",
+            "The signal frequency"
+        ],
+        answer: 2
+    },
+    {
+        question: "Lissajous figures displayed on a CRO are primarily used to measure:",
+        options: [
+            "Voltage and current",
+            "Phase difference and frequency",
+            "Resistance and capacitance",
+            "Harmonic distortion"
+        ],
+        answer: 1
+    },
+    {
+        question: "If a Lissajous figure appears as a perfect circle on a CRO, the phase difference between the two applied signals is:",
+        options: [
+            "0 degrees",
+            "45 degrees",
+            "90 degrees",
+            "180 degrees"
+        ],
+        answer: 2
+    },
+    {
+        question: "If a Lissajous figure is a straight diagonal line at a 45-degree angle, the phase difference is:",
+        options: [
+            "0 degrees or 360 degrees",
+            "90 degrees",
+            "180 degrees",
+            "270 degrees"
+        ],
+        answer: 0
+    },
+    {
+        question: "The bandwidth of a CRO is largely determined by the characteristics of its:",
+        options: [
+            "Horizontal amplifier",
+            "Vertical amplifier",
+            "Electron gun",
+            "Phosphor screen"
+        ],
+        answer: 1
+    },
+    {
+        question: "An LVDT (Linear Variable Differential Transformer) operates on the principle of:",
+        options: [
+            "Self inductance",
+            "Mutual inductance",
+            "Capacitance variation",
+            "Piezo-electric effect"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which type of transducer converts mechanical stress or force into an electrical charge?",
+        options: [
+            "Photoelectric transducer",
+            "Piezoelectric transducer",
+            "Capacitive transducer",
+            "Thermoelectric transducer"
+        ],
+        answer: 1
+    },
+    {
+        question: "A strain gauge relies on which underlying principle to function?",
+        options: [
+            "Piezo-resistive effect",
+            "Seebeck effect",
+            "Peltier effect",
+            "Hall effect"
+        ],
+        answer: 0
+    },
+    {
+        question: "The gauge factor of a strain gauge is mathematically defined as:",
+        options: [
+            "(ΔL / L) / (ΔR / R)",
+            "(ΔR / R) / (ΔL / L)",
+            "(ΔA / A) / (ΔR / R)",
+            "ΔR * ΔL"
+        ],
+        answer: 1
+    },
+    {
+        question: "Thermocouples generate a voltage in response to a temperature difference across two dissimilar metals. This is known as the:",
+        options: [
+            "Peltier effect",
+            "Thomson effect",
+            "Seebeck effect",
+            "Joule effect"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following materials is universally preferred for manufacturing standard RTDs due to its high stability?",
+        options: [
+            "Copper",
+            "Nickel",
+            "Tungsten",
+            "Platinum"
+        ],
+        answer: 3
+    },
+    {
+        question: "A thermistor typically exhibits which kind of temperature coefficient?",
+        options: [
+            "Positive Temperature Coefficient (PTC)",
+            "Negative Temperature Coefficient (NTC)",
+            "Zero Temperature Coefficient (ZTC)",
+            "Exponential Temperature Coefficient (ETC)"
+        ],
+        answer: 1
+    },
+    {
+        question: "Hall effect transducers are commonly utilized to measure:",
+        options: [
+            "Temperature",
+            "Magnetic field strength",
+            "Light intensity",
+            "Fluid flow"
+        ],
+        answer: 1
+    },
+    {
+        question: "A Bourdon tube is a mechanical device primarily used for measuring:",
+        options: [
+            "Temperature",
+            "Displacement",
+            "Pressure",
+            "Velocity"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an AC bridge circuit operating at mains frequency (50Hz), the most appropriate null detector to use is a:",
+        options: [
+            "Cathode ray oscilloscope",
+            "Vibration galvanometer",
+            "D'Arsonval galvanometer",
+            "Headphone"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which type of detector is best suited for AC bridges operating at audio frequencies (1 kHz to 10 kHz)?",
+        options: [
+            "Vibration galvanometer",
+            "Headphones",
+            "Moving coil galvanometer",
+            "Electrometer"
+        ],
+        answer: 1
+    },
+    {
+        question: "The sensitivity of a Wheatstone bridge is maximum when:",
+        options: [
+            "All four arms have equal resistance",
+            "The battery has maximum voltage",
+            "The galvanometer has zero resistance",
+            "The opposite arms are equal"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which bridge is considered the AC counterpart of the Wheatstone bridge for measuring unknown impedances?",
+        options: [
+            "Kelvin bridge",
+            "General AC impedance bridge",
+            "Carey Foster bridge",
+            "Megger"
+        ],
+        answer: 1
+    },
+    {
+        question: "A true RMS voltmeter uses which type of mechanism to accurately measure complex waveforms?",
+        options: [
+            "Rectifier element",
+            "Thermocouple or heating element",
+            "Digital sampling only",
+            "Moving iron core"
+        ],
+        answer: 1
+    },
+        // ... paste these right after Question 90 in your array ...
+    {
+        question: "Measuring instruments that determine the magnitude of a quantity directly in terms of the instrument's own physical parameters, such as a Tangent Galvanometer, are called:",
+        options: [
+            "Secondary instruments",
+            "Recording instruments",
+            "Absolute instruments",
+            "Integrating instruments"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which type of secondary instrument gives the total amount of the quantity to be measured over a specified period of time (e.g., an energy meter)?",
+        options: [
+            "Indicating instrument",
+            "Recording instrument",
+            "Integrating instrument",
+            "Electromechanical instrument"
+        ],
+        answer: 2
+    },
+    {
+        question: "For the satisfactory operation of an electromechanical indicating instrument, which three forces are necessary?",
+        options: [
+            "Deflecting, Controlling, and Damping forces",
+            "Gravitational, Magnetic, and Electrostatic forces",
+            "Frictional, Centrifugal, and Centripetal forces",
+            "Attractive, Repulsive, and Restoring forces"
+        ],
+        answer: 0
+    },
+    {
+        question: "In an indicating instrument, the force required to bring the pointer back to its zero position when the input signal is removed is called the:",
+        options: [
+            "Deflecting force",
+            "Damping force",
+            "Controlling force",
+            "Inertial force"
+        ],
+        answer: 2
+    },
+    {
+        question: "What material is commonly used to make the control springs in measuring instruments?",
+        options: [
+            "Pure copper",
+            "Tungsten",
+            "Phosphor bronze",
+            "Aluminum"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the primary purpose of the damping force in a measuring instrument?",
+        options: [
+            "To increase the deflection angle of the pointer",
+            "To quickly bring the oscillating pointer to rest at its steady position",
+            "To reduce the power consumption of the instrument",
+            "To overcome the stray magnetic fields"
+        ],
+        answer: 1
+    },
+    {
+        question: "Permanent Magnet Moving Coil (PMMC) instruments use which type of damping?",
+        options: [
+            "Air friction damping",
+            "Fluid friction damping",
+            "Eddy current damping",
+            "Electromagnetic damping"
+        ],
+        answer: 2
+    },
+    {
+        question: "Moving Iron (MI) instruments typically use which type of damping?",
+        options: [
+            "Eddy current damping",
+            "Air friction damping",
+            "Fluid friction damping",
+            "Spring damping"
+        ],
+        answer: 1
+    },
+    {
+        question: "The deflecting torque (Td) produced in a PMMC instrument is given by the formula:",
+        options: [
+            "Td = (1/2) * I^2 * (dL/dθ)",
+            "Td = B * A * N * I",
+            "Td = V * I * cos(θ)",
+            "Td = B * L * v"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why does a PMMC instrument have a perfectly uniform scale?",
+        options: [
+            "Because it uses air friction damping",
+            "Because the deflecting torque is proportional to the square of the current",
+            "Because both the deflecting torque and the controlling torque are directly proportional to the angle of deflection",
+            "Because it operates on AC supply only"
+        ],
+        answer: 2
+    },
+    {
+        question: "If an AC supply is given to a PMMC instrument, what will happen?",
+        options: [
+            "It will measure the true RMS value of the AC",
+            "It will burn out immediately",
+            "A reversing torque is produced, and the pointer will not give a continuous deflection",
+            "It will measure the peak value of the AC"
+        ],
+        answer: 2
+    },
+    {
+        question: "The deflecting torque in a Moving Iron (MI) instrument is proportional to:",
+        options: [
+            "The voltage across the coil",
+            "The square of the current flowing through it",
+            "The rate of change of flux",
+            "The frequency of the AC supply"
+        ],
+        answer: 1
+    },
+    {
+        question: "To extend the range of a DC ammeter to measure larger currents, what must be connected?",
+        options: [
+            "A high resistance in series (Multiplier)",
+            "A low resistance in series",
+            "A high resistance in parallel",
+            "A low resistance in parallel (Shunt)"
+        ],
+        answer: 3
+    },
+    {
+        question: "What material is predominantly used for making ammeter shunt resistances because of its negligible temperature coefficient and low thermoelectric emf?",
+        options: [
+            "Copper",
+            "Manganin",
+            "Silver",
+            "Platinum"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Electrodynamometer (EMMC) used as a Wattmeter, the fixed coil is connected in series with the load and is known as the:",
+        options: [
+            "Pressure coil",
+            "Voltage coil",
+            "Current coil",
+            "Multiplier coil"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a dynamometer-type wattmeter, the moving coil is connected in parallel with the load and is known as the:",
+        options: [
+            "Current coil",
+            "Deflecting coil",
+            "Damping coil",
+            "Pressure (or Voltage) coil"
+        ],
+        answer: 3
+    },
+    {
+        question: "The Kelvin Double Bridge is specifically designed to measure:",
+        options: [
+            "Very high insulation resistance",
+            "Capacitance and dielectric loss",
+            "Very low resistances (typically less than 0.1 ohm)",
+            "Audio frequencies"
+        ],
+        answer: 2
+    },
+    {
+        question: "What specific problem of the Wheatstone bridge does the Kelvin Double Bridge overcome?",
+        options: [
+            "It eliminates errors caused by the resistance of connecting wires and contacts",
+            "It eliminates errors caused by stray electromagnetic fields",
+            "It increases the frequency range of the bridge",
+            "It allows for the measurement of AC power"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to statistical measurement theory, what is 'Bias'?",
+        options: [
+            "The departure of a given reading from the arithmetic mean",
+            "The difference between the Conventional True Value (CTV) and the average value",
+            "The maximum deviation from the mean",
+            "The sum of all random errors"
+        ],
+        answer: 1
+    },
+    {
+        question: "Precision is composed of two main characteristics:",
+        options: [
+            "Accuracy and Linearity",
+            "Conformity and the number of significant figures",
+            "Resolution and Threshold",
+            "Sensitivity and Hysteresis"
+        ],
+        answer: 1
+    },
+    {
+        question: "If an ohmmeter repeatedly indicates exactly 2.5 MΩ for a true value of 2,475,653 Ω, this indicates:",
+        options: [
+            "High accuracy but poor precision",
+            "High precision (conformity) but poor accuracy",
+            "Zero bias",
+            "A gross error"
+        ],
+        answer: 1
+    },
+    {
+        question: "A consistent bias in a set of measurements is usually an indication of the presence of:",
+        options: [
+            "Random errors",
+            "Gross errors",
+            "A systematic error or instrument loading",
+            "Environmental fluctuations"
+        ],
+        answer: 2
+    },
+    {
+        question: "When two resistors R1 = 18.7 Ω and R2 = 3.624 Ω are added together, the final result should be recorded as:",
+        options: [
+            "22.324 Ω",
+            "22.32 Ω",
+            "22.3 Ω",
+            "22 Ω"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which type of error is described as unexplainable variations that undergo a Gaussian (Normal) law of distribution?",
+        options: [
+            "Gross errors",
+            "Systematic errors",
+            "Random (indeterminate) errors",
+            "Instrumental bias"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Gaussian error distribution curve, what percentage of observations fall within plus or minus three standard deviations (± 3 SD)?",
+        options: [
+            "50.00%",
+            "68.28%",
+            "95.46%",
+            "99.72%"
+        ],
+        answer: 3
+    },
+    {
+        question: "The 'Probable Error' (r) in a statistical data set is defined mathematically as:",
+        options: [
+            "r = ± 1.0 σ",
+            "r = ± 0.6745 σ",
+            "r = ± 0.9546 σ",
+            "r = ± 3.0 σ"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Microsoft Excel, which function is used to calculate the unbiased sample standard deviation?",
+        options: [
+            "=AVEDEV()",
+            "=STDEV()",
+            "=STDEVP()",
+            "=AVERAGE()"
+        ],
+        answer: 1
+    },
+    {
+        question: "Maxwell's inductance-capacitance bridge is limited to measuring chokes with a Q-factor in the range of:",
+        options: [
+            "Less than 1",
+            "1 to 10",
+            "10 to 100",
+            "Greater than 100"
+        ],
+        answer: 1
+    },
+    {
+        question: "To measure the inductance of coils with a very high Q-factor (greater than 10), which AC bridge is used?",
+        options: [
+            "Maxwell's bridge",
+            "Schering bridge",
+            "Wien's bridge",
+            "Hay's bridge"
+        ],
+        answer: 3
+    },
+    {
+        question: "Wien's bridge is primarily utilized to measure which electrical quantity?",
+        options: [
+            "Inductance",
+            "Dielectric dissipation",
+            "Audio Frequencies (20 Hz to 20 kHz)",
+            "High Voltages"
+        ],
+        answer: 2
+    },
+    {
+        question: "The Schering bridge is extensively used in the electrical industry to measure:",
+        options: [
+            "High frequency radio waves",
+            "Capacitance and its dissipation factor (dielectric loss)",
+            "Unknown low resistances",
+            "Mutual inductance"
+        ],
+        answer: 1
+    },
+    {
+        question: "For an AC bridge operating at mains frequency (50 Hz), the best null detector to use is a:",
+        options: [
+            "Headphone",
+            "Tuned amplifier",
+            "Vibration galvanometer",
+            "D'Arsonval galvanometer"
+        ],
+        answer: 2
+    },
+    {
+        question: "When measuring audio frequencies (1 kHz to 10 kHz) in an AC bridge, the most suitable null detector is:",
+        options: [
+            "A vibration galvanometer",
+            "Headphones (Speaker)",
+            "A PMMC instrument",
+            "A standard voltmeter"
+        ],
+        answer: 1
+    },
+    {
+        question: "The construction of a thermistor primarily utilizes:",
+        options: [
+            "Pure platinum wire",
+            "Sintered mixtures of metallic oxides (manganese, cobalt, nickel, etc.)",
+            "A hollow soft-iron tube",
+            "A bimetallic junction"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why is copper rarely used for Resistance Temperature Detectors (RTDs) despite its low cost?",
+        options: [
+            "It has a very high resistivity",
+            "It has low linearity and a low maximum temperature limit (~120°C)",
+            "It is extremely brittle",
+            "It has a negative temperature coefficient"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of strain gauges, the 'Piezo-resistive effect' refers to:",
+        options: [
+            "The generation of a voltage across a junction of dissimilar metals",
+            "The change in the resistivity of a conductor when it is mechanically strained",
+            "The change in capacitance due to plate separation",
+            "The emission of electrons when exposed to light"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Repulsion type Moving Iron instrument, the deflecting torque is produced because:",
+        options: [
+            "The coil cuts the magnetic flux of a permanent magnet",
+            "Both the fixed iron and moving iron are magnetized with the same polarity and repel each other",
+            "An eddy current interacts with an aluminum disc",
+            "The moving coil is attracted to the fixed coil"
+        ],
+        answer: 1
+    },
+    {
+        question: "A capacitive transducer uses the variation of distance between plates. Which formula dictates this behavior?",
+        options: [
+            "C = εA / d",
+            "C = d / εA",
+            "C = A / εd",
+            "C = εd / A"
+        ],
+        answer: 0
+    },
+    {
+        question: "When a measurement method requires reading a scale from an angle, what type of specific observational error is introduced?",
+        options: [
+            "Hysteresis error",
+            "Parallax error",
+            "Loading error",
+            "Resolution error"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following describes the 'Linear approximation' of an RTD's resistance?",
+        options: [
+            "Rθ = Rθ₀ [1 + α1Δθ + α2(Δθ)²]",
+            "Rθ = Rθ₀ (1 + αΔθ)",
+            "R = ρL / A",
+            "R_T1 = R_T2 exp[β(1/T1 - 1/T2)]"
+        ],
+        answer: 1
+    },
+        // ... paste these right after Question 130 in your array ...
+    {
+        question: "In the general form of an AC bridge, what is the mathematical condition for the bridge to be balanced?",
+        options: [
+            "Z1/Z4 = Z2/Z3",
+            "Z1 + Z4 = Z2 + Z3",
+            "Z1 * Z4 = Z2 * Z3",
+            "Z1 * Z2 = Z3 * Z4"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following is commonly used as a null detector in AC bridges?",
+        options: [
+            "Vibration galvanometer",
+            "Headphones",
+            "Tuned amplifier",
+            "All of the above"
+        ],
+        answer: 3
+    },
+    {
+        question: "In Maxwell's Inductance Bridge, the unknown inductance L1 is calculated using which formula?",
+        options: [
+            "L1 = (L2 * R3) / R4",
+            "L1 = (L2 * R4) / R3",
+            "L1 = (R2 * R3) / L2",
+            "L1 = L2 / (R3 * R4)"
+        ],
+        answer: 0
+    },
+    {
+        question: "Maxwell's inductance-capacitance bridge is NOT suitable for measuring chokes with a Q-factor higher than:",
+        options: [
+            "1",
+            "10",
+            "50",
+            "100"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which AC bridge is best suited for measuring unknown inductance with a high Q-factor (greater than 10)?",
+        options: [
+            "Maxwell's bridge",
+            "Schering bridge",
+            "Hay's bridge",
+            "Wien's bridge"
+        ],
+        answer: 2
+    },
+    {
+        question: "Wien's bridge is popularly used for the measurement of:",
+        options: [
+            "High voltages",
+            "Inductance",
+            "Audio frequencies (20 Hz to 20 kHz)",
+            "Capacitance"
+        ],
+        answer: 2
+    },
+    {
+        question: "An instrument that determines the magnitude of a measured quantity strictly in terms of its own physical parameters (e.g., Tangent Galvanometer) is called an:",
+        options: [
+            "Integrating instrument",
+            "Absolute instrument",
+            "Recording instrument",
+            "Indicating instrument"
+        ],
+        answer: 1
+    },
+    {
+        question: "Voltmeters, ammeters, and wattmeters are practical examples of:",
+        options: [
+            "Secondary instruments",
+            "Absolute instruments",
+            "Primary sensors",
+            "Recording instruments"
+        ],
+        answer: 0
+    },
+    {
+        question: "In an electromechanical indicating instrument, the force that brings the pointer back to zero when the signal is removed is the:",
+        options: [
+            "Deflecting force",
+            "Damping force",
+            "Controlling force",
+            "Frictional force"
+        ],
+        answer: 2
+    },
+    {
+        question: "What material is typically used to make the controlling springs in a PMMC instrument?",
+        options: [
+            "Copper",
+            "Aluminum",
+            "Phosphor bronze",
+            "Tungsten"
+        ],
+        answer: 2
+    },
+    {
+        question: "Why are two springs provided in opposite directions on the spindle of a PMMC instrument?",
+        options: [
+            "To double the controlling torque",
+            "To compensate for temperature error",
+            "To increase the damping force",
+            "To allow the instrument to measure AC"
+        ],
+        answer: 1
+    },
+    {
+        question: "The Permanent Magnet Moving Coil (PMMC) instrument utilizes which type of damping?",
+        options: [
+            "Air friction damping",
+            "Fluid friction damping",
+            "Eddy current damping",
+            "Spring damping"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the formula for the deflecting torque (Td) produced in a PMMC instrument?",
+        options: [
+            "Td = (1/2) * I^2 * (dL/dθ)",
+            "Td = B * A * N * I",
+            "Td = I1 * I2 * (dM/dθ)",
+            "Td = V * I / R"
+        ],
+        answer: 1
+    },
+    {
+        question: "The scale of a PMMC instrument is perfectly uniform because:",
+        options: [
+            "The deflecting torque is proportional to the square of the current",
+            "The controlling torque and deflecting torque are both directly proportional to the deflection angle",
+            "It uses air friction damping",
+            "It operates on AC only"
+        ],
+        answer: 1
+    },
+    {
+        question: "To extend the range of a DC voltmeter, you must connect a:",
+        options: [
+            "Multiplier (large resistance in series)",
+            "Shunt (low resistance in parallel)",
+            "Capacitor in series",
+            "Inductor in parallel"
+        ],
+        answer: 0
+    },
+    {
+        question: "The multiplication factor (m) for an ammeter shunt is given by the formula:",
+        options: [
+            "m = 1 + (Rsh / Rm)",
+            "m = 1 + (Rm / Rsh)",
+            "m = Rm / Rsh",
+            "m = 1 - (Rm / Rsh)"
+        ],
+        answer: 1
+    },
+    {
+        question: "The multiplication factor (m) for a voltmeter multiplier is given by the formula:",
+        options: [
+            "m = 1 + (Rse / Rm)",
+            "m = 1 + (Rm / Rse)",
+            "m = Rse * Rm",
+            "m = 1 - (Rse / Rm)"
+        ],
+        answer: 0
+    },
+    {
+        question: "Manganin is the preferred material for making ammeter shunts because:",
+        options: [
+            "It is highly magnetic",
+            "It has the highest electrical conductivity",
+            "It has the least thermoelectric emf and negligible resistance change due to temperature",
+            "It is the cheapest metal available"
+        ],
+        answer: 2
+    },
+    {
+        question: "Unlike PMMC instruments, Moving Iron (MI) instruments can be used to measure:",
+        options: [
+            "DC only",
+            "AC only",
+            "Both AC and DC",
+            "Radio frequencies only"
+        ],
+        answer: 2
+    },
+    {
+        question: "What type of damping is standard in Moving Iron (MI) instruments?",
+        options: [
+            "Eddy current damping",
+            "Air friction damping",
+            "Fluid friction damping",
+            "Electromagnetic damping"
+        ],
+        answer: 1
+    },
+    {
+        question: "The deflecting torque (Td) for a Moving Iron (MI) instrument is given by:",
+        options: [
+            "Td = B * A * N * I",
+            "Td = (1/2) * I^2 * (dL/dθ)",
+            "Td = I1 * I2 * (dM/dθ)",
+            "Td = V^2 / R"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why is the scale of a Moving Iron (MI) instrument non-uniform?",
+        options: [
+            "Because torque is directly proportional to current",
+            "Because torque is proportional to the square of the current",
+            "Because eddy currents distort the readings",
+            "Because it lacks a controlling spring"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Electrodynamometer (EMMC), both the fixed and moving coils are air-cored primarily to:",
+        options: [
+            "Reduce the weight of the instrument",
+            "Ensure the hysteresis effect is zero",
+            "Increase the magnetic flux density",
+            "Allow air friction damping to work better"
+        ],
+        answer: 1
+    },
+    {
+        question: "When a Dynamometer (EMMC) is used as a Wattmeter, how are the coils connected?",
+        options: [
+            "Fixed coil in parallel with load, moving coil in series",
+            "Both coils in series with the load",
+            "Fixed coil in series with load (Current Coil), moving coil in parallel (Voltage/Pressure Coil)",
+            "Both coils in parallel with the load"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is Poisson's ratio (v) in the context of a strain gauge?",
+        options: [
+            "- (Lateral strain / Longitudinal strain)",
+            "- (Longitudinal strain / Lateral strain)",
+            "Change in resistance / Change in length",
+            "Resistivity / Cross-sectional area"
+        ],
+        answer: 0
+    },
+    {
+        question: "The formula for the Gauge Factor (Gf) of a strain gauge is:",
+        options: [
+            "Gf = 1 - 2v + (Δρ/ρ)",
+            "Gf = 1 + 2v + (Δρ/ρ)",
+            "Gf = (ΔL/L) * (ΔR/R)",
+            "Gf = 1 + v"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Linear Variable Differential Transformer (LVDT), how are the two secondary windings connected to convert their outputs into a single voltage signal?",
+        options: [
+            "In parallel",
+            "In series addition",
+            "In series opposition",
+            "Through a Wheatstone bridge"
+        ],
+        answer: 2
+    },
+    {
+        question: "The core of an LVDT is longitudinally slotted to:",
+        options: [
+            "Make it lighter",
+            "Increase magnetic permeability",
+            "Reduce eddy current losses",
+            "Allow it to move faster"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following is true when comparing an RTD to a Thermistor?",
+        options: [
+            "An RTD has a fast response time; a thermistor is slow",
+            "An RTD has a non-linear graph; a thermistor is linear",
+            "An RTD has low hysteresis effect; a thermistor has high hysteresis effect",
+            "An RTD is very cheap; a thermistor is expensive"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which metal is NOT typically used to make an RTD element because of its extremely low resistivity?",
+        options: [
+            "Platinum",
+            "Copper",
+            "Nickel",
+            "Gold"
+        ],
+        answer: 3
+    },
+    {
+        question: "Static calibration for a multi-input instrument is carried out by:",
+        options: [
+            "Varying all inputs simultaneously",
+            "Keeping all inputs constant except one, which is varied over a range",
+            "Removing all inputs and adjusting the zero-point",
+            "Applying maximum voltage to all inputs at once"
+        ],
+        answer: 1
+    },
+    {
+        question: "The linear approximation equation for the resistance of an RTD at a given temperature is:",
+        options: [
+            "Rθ = Rθ₀ [1 + α1Δθ + α2(Δθ)²]",
+            "Rθ = Rθ₀ (1 + αΔθ)",
+            "R = ρL / A",
+            "R = V / I"
+        ],
+        answer: 1
+    },
+    {
+        question: "Eddy current damping works on the principle of:",
+        options: [
+            "Newton's laws of motion",
+            "Ohm's Law",
+            "Faraday's Law and Lenz's Law",
+            "Kirchhoff's Voltage Law"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which term describes the maximum deviation allowed from the conventional true value due to the impossibility of building a perfect system?",
+        options: [
+            "Resolution",
+            "Tolerance",
+            "Precision",
+            "Sensitivity"
+        ],
+        answer: 1
+    },
+    {
+        question: "A consistent bias in measurement data can often be removed by:",
+        options: [
+            "Taking more readings and averaging them",
+            "Using statistical analysis",
+            "Re-calibrating the instrument",
+            "Ignoring the outermost data points"
+        ],
+        answer: 2
+    },
+    {
+        question: "In statistical analysis, standard deviation is heavily preferred over variance because:",
+        options: [
+            "It is completely immune to gross errors",
+            "It has the same units as the measured variable, making magnitude comparisons easy",
+            "It is additive",
+            "It always equals zero in a Gaussian distribution"
+        ],
+        answer: 1
+    },
+    {
+        question: "According to the normal distribution of errors, what fraction of the total area (probability) is covered by ± 1.0 standard deviation?",
+        options: [
+            "0.5000",
+            "0.6828",
+            "0.9546",
+            "0.9972"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following describes a Gross Error?",
+        options: [
+            "Shortcomings of the instruments, like worn parts",
+            "Unpredictable statistical fluctuations",
+            "Environmental effects like temperature changes",
+            "Human mistakes, such as misreading instruments or erroneous calculations"
+        ],
+        answer: 3
+    },
+    {
+        question: "In a Variable Area Capacitive Transducer, the capacitance is:",
+        options: [
+            "Inversely proportional to the area of the plates",
+            "Directly proportional to the area of the plates",
+            "Directly proportional to the distance between the plates",
+            "Independent of the dielectric constant"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which transducer operates on the principle that its resistance changes when it is stretched or compressed (piezo-resistive effect)?",
+        options: [
+            "Thermocouple",
+            "LVDT",
+            "Strain Gauge",
+            "Piezoelectric crystal"
+        ],
+        answer: 2
+    },
+        // ... paste these right after Question 170 in your array ...
+    {
+        question: "According to the PDF, 'Resolution' of a sensor is best defined as:",
+        options: [
+            "The maximum and minimum values it can measure",
+            "The smallest difference between measured values that can be discriminated, e.g., the last stable figure on a digital display",
+            "The degree of reproducibility of a measurement",
+            "The maximum difference that will exist between the actual value and indicated value"
+        ],
+        answer: 1
+    },
+    {
+        question: "'Linearity' in a transducer is often specified in terms of percentage of non-linearity, which is defined as:",
+        options: [
+            "(Minimum input deviation / Maximum full scale input) * 100",
+            "(Maximum full scale input / Maximum input deviation) * 100",
+            "(Maximum input deviation / Maximum full scale input) * 100",
+            "(Maximum output deviation / Minimum input deviation) * 100"
+        ],
+        answer: 2
+    },
+    {
+        question: "'Hysteresis' in an instrument or transducer means:",
+        options: [
+            "It gives a perfectly linear response under all conditions",
+            "The deflection may be different for the same input depending on whether the input is increasing or decreasing",
+            "It consumes very little power from the circuit",
+            "The output signal to noise ratio is extremely high"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a rotary potentiometer, the output voltage is typically taken between:",
+        options: [
+            "The two fixed end terminals",
+            "A resistance end contact and the sliding contact",
+            "The sliding contact and the ground",
+            "Two sliding contacts"
+        ],
+        answer: 1
+    },
+    {
+        question: "The mathematical expression relating the absolute temperature and resistance of a thermistor involves a constant β. The equation is:",
+        options: [
+            "R_T1 = R_T2 * exp[β(1/T1 - 1/T2)]",
+            "R_T1 = R_T2 * [1 + β(T1 - T2)]",
+            "R_T1 = R_T2 * ln[β(T1 / T2)]",
+            "R_T1 = R_T2 + β(T1 - T2)^2"
+        ],
+        answer: 0
+    },
+    {
+        question: "Why is Tungsten rarely used in Resistance Temperature Detectors (RTDs) despite its high resistivity?",
+        options: [
+            "It melts at low temperatures",
+            "It is too expensive",
+            "It is extremely brittle",
+            "It has a negative temperature coefficient"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the maximum operating temperature limit for using Copper in an RTD?",
+        options: [
+            "0°C",
+            "120°C",
+            "400°C",
+            "1000°C"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the quadratic approximation for RTD resistance Rθ = Rθ₀[1 + α1Δθ + α2(Δθ)²], what does α1 represent?",
+        options: [
+            "The absolute resistance at 0°C",
+            "The quadratic function change in resistance",
+            "The change in temperature in °C",
+            "The linear fractional change in resistance"
+        ],
+        answer: 3
+    },
+    {
+        question: "According to the comparison table in the text, the response time of a Thermistor compared to an RTD is:",
+        options: [
+            "Fast",
+            "Slow",
+            "Exactly the same",
+            "Unpredictable"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the comparison table, the hysteresis effect in a Thermistor compared to an RTD is:",
+        options: [
+            "Low",
+            "High",
+            "Zero",
+            "Negligible"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the theory of strain gauges, Poisson's ratio (v) is mathematically defined as:",
+        options: [
+            "Longitudinal strain / Lateral strain",
+            "Change in resistance / Change in length",
+            "- (Lateral strain / Longitudinal strain)",
+            "- (Longitudinal strain / Lateral strain)"
+        ],
+        answer: 2
+    },
+    {
+        question: "The primary winding of an LVDT requires an AC excitation voltage with an amplitude typically between:",
+        options: [
+            "0.1 to 1 Volts",
+            "1 to 2 Volts",
+            "3 to 15 Volts",
+            "50 to 200 Volts"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an LVDT, the two secondary windings (S1 and S2) are connected in:",
+        options: [
+            "Series addition",
+            "Parallel",
+            "Series opposition",
+            "A bridge configuration"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is mentioned as a notable disadvantage of an LVDT regarding its dynamic response?",
+        options: [
+            "It responds too quickly, causing noise",
+            "Being a first-order instrument, its dynamic response is not instantaneous",
+            "It only works for static measurements",
+            "It creates a massive delay of several minutes"
+        ],
+        answer: 1
+    },
+    {
+        question: "The output impedance (Xc) of a capacitive transducer is given by the formula:",
+        options: [
+            "Xc = 2πfC",
+            "Xc = C / 2πf",
+            "Xc = 1 / (2πfC)",
+            "Xc = 2πf / C"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a variable area capacitive transducer, if x is the overlapping length and w is the width, the sensitivity S = ∂C / ∂x is given by:",
+        options: [
+            "ε * d / w",
+            "ε * w / d",
+            "d / (ε * w)",
+            "w / (ε * d)"
+        ],
+        answer: 1
+    },
+    {
+        question: "For an AC bridge to be balanced, the magnitude condition is Z1 * Z4 = Z2 * Z3. What is the required phase angle condition?",
+        options: [
+            "∠θ1 * ∠θ4 = ∠θ2 * ∠θ3",
+            "∠θ1 - ∠θ4 = ∠θ2 - ∠θ3",
+            "∠θ1 / ∠θ4 = ∠θ2 / ∠θ3",
+            "∠θ1 + ∠θ4 = ∠θ2 + ∠θ3"
+        ],
+        answer: 3
+    },
+    {
+        question: "When an AC bridge using a vibration galvanometer as a detector is UNBALANCED, what does the galvanometer display?",
+        options: [
+            "A perfect circle",
+            "A straight line",
+            "A dot",
+            "A sine wave"
+        ],
+        answer: 2
+    },
+    {
+        question: "Why is Maxwell's Inductance Capacitance bridge incapable of measuring chokes with a Q-factor higher than 10?",
+        options: [
+            "The frequency becomes too unstable",
+            "It would require higher values of standard resistance, which are very expensive",
+            "The standard capacitor would overheat",
+            "The null point becomes invisible"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Hay's bridge, what is the expression for the unknown resistance R1?",
+        options: [
+            "R1 = R2 * R3 / R4",
+            "R1 = (ω^2 * C4^2 * R2 * R3 * R4) / (1 + ω^2 * C4^2 * R4^2)",
+            "R1 = (1 + ω^2 * C4^2 * R4^2) / (ω^2 * C4^2 * R2 * R3 * R4)",
+            "R1 = ω * C4 * R4"
+        ],
+        answer: 1
+    },
+    {
+        question: "Owen's bridge is advantageous for measuring inductance because:",
+        options: [
+            "It doesn't require an AC source",
+            "It only uses resistors",
+            "A fixed capacitor is used, which is cheaper than a variable capacitor",
+            "It is immune to temperature changes"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Schering bridge, the unknown capacitance C1 is calculated using the formula:",
+        options: [
+            "C1 = C2 * (R4 / R3)",
+            "C1 = C2 * (R3 / R4)",
+            "C1 = (R3 * R4) / C2",
+            "C1 = 1 / (ω * C2 * R4)"
+        ],
+        answer: 0
+    },
+    {
+        question: "Wien's bridge is primarily used for measurements at what frequency range?",
+        options: [
+            "Radio Frequency (RF > 20 kHz)",
+            "Audio Frequency (AF 20 Hz to 20 kHz)",
+            "Microwave Frequency (> 1 GHz)",
+            "Sub-sonic Frequency (< 1 Hz)"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why are Absolute instruments (like a Tangent galvanometer) rarely used in everyday practical measurements?",
+        options: [
+            "They are too heavy to carry",
+            "They require a DC battery to operate",
+            "Each time the value varies, the magnitude must be calculated analytically, which is time consuming",
+            "They only measure voltage"
+        ],
+        answer: 2
+    },
+    {
+        question: "Integrating instruments are a type of secondary instrument. What do they measure?",
+        options: [
+            "The instantaneous value of a quantity at a specific moment",
+            "A continuous record of variations over time",
+            "The total amount of the quantity measured over a specified period of time",
+            "Only the peak amplitude of a signal"
+        ],
+        answer: 2
+    },
+    {
+        question: "In electromechanical indicating instruments, why is a controlling force absolutely necessary?",
+        options: [
+            "To make the measurement indicated by the pointer definite and return it to zero when the signal is removed",
+            "To increase the oscillation of the pointer",
+            "To convert AC to DC",
+            "To generate the magnetic field"
+        ],
+        answer: 0
+    },
+    {
+        question: "In Air Friction damping, when the pointer oscillates in the clockwise direction, what happens inside the cylinder?",
+        options: [
+            "A vacuum is created that pulls the piston",
+            "The piston goes inside, compressing the air, which pushes the piston upwards",
+            "The cylinder expands to release air",
+            "Magnetic repulsion pushes the piston down"
+        ],
+        answer: 1
+    },
+    {
+        question: "Eddy current damping works on the principle of Faraday's and Lenz's laws. What happens in the circular disc?",
+        options: [
+            "It generates high voltage to power the instrument",
+            "Eddy currents are established which produce a force opposing the oscillating motion",
+            "It creates a uniform magnetic field that attracts the pointer",
+            "It cools down the internal coils"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a PMMC instrument, what specific component produces the eddy current damping?",
+        options: [
+            "The control springs",
+            "The jeweled bearings",
+            "The aluminum former",
+            "The soft iron core"
+        ],
+        answer: 2
+    },
+    {
+        question: "For a PMMC instrument, the deflecting torque is Td = BANI. What does 'b' (which is part of Area 'A = b * l') represent?",
+        options: [
+            "Magnetic flux density",
+            "Length of the coil",
+            "Width of the coil",
+            "Number of turns"
+        ],
+        answer: 2
+    },
+    {
+        question: "To calculate the required shunt resistance (Rsh) to extend an ammeter's range, which formula is used, where m = I / Im?",
+        options: [
+            "Rsh = Rm * (m - 1)",
+            "Rsh = Rm / (m - 1)",
+            "Rsh = Rm / m",
+            "Rsh = Rm + (m - 1)"
+        ],
+        answer: 1
+    },
+    {
+        question: "To calculate the required multiplier resistance (Rse) to extend a voltmeter's range, which formula is used, where m = V / Vm?",
+        options: [
+            "Rse = Rm / (m - 1)",
+            "Rse = Rm * (m - 1)",
+            "Rse = Rm * m",
+            "Rse = Rm - (m - 1)"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Attraction type Moving Iron (MI) instrument, what is the moving iron attracted to?",
+        options: [
+            "A permanent magnet",
+            "The aluminum former",
+            "The hollow fixed coil",
+            "The eddy current disc"
+        ],
+        answer: 2
+    },
+    {
+        question: "By the law of conservation of energy in a Moving Iron (MI) instrument, the electrical energy supplied equals:",
+        options: [
+            "Heat dissipated + Light energy",
+            "Increase in stored magnetic energy + Mechanical work done",
+            "Kinetic energy + Potential energy",
+            "Output voltage + Output current"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Moving Iron (MI) instrument, what is the mathematical expression for the mechanical work done to move the pointer by an angle dθ?",
+        options: [
+            "Td * dθ",
+            "0.5 * I^2 * dL",
+            "V * I * dt",
+            "B * A * N * I"
+        ],
+        answer: 0
+    },
+    {
+        question: "The deflecting torque of an Electrodynamometer (EMMC) is Td = I1 * I2 * (dM/dθ). If the coils are connected in series, the torque formula simplifies to:",
+        options: [
+            "Td = I * (dM/dθ)",
+            "Td = 0.5 * I^2 * (dL/dθ)",
+            "Td = I^2 * (dM/dθ)",
+            "Td = B * A * N * I^2"
+        ],
+        answer: 2
+    },
+    {
+        question: "When an Electrodynamometer is used as an Ammeter to measure large currents, how are the fixed and moving coils usually connected?",
+        options: [
+            "In series",
+            "In parallel",
+            "Through a mutual inductor",
+            "Through a capacitor"
+        ],
+        answer: 1
+    },
+    {
+        question: "When an Electrodynamometer is used as a Voltmeter, how are the fixed and moving coils typically connected?",
+        options: [
+            "In parallel",
+            "In series",
+            "One to AC, one to DC",
+            "Via a transformer"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Dynamometer Wattmeter, the moving coil is called the voltage or pressure coil. What is the fixed coil called?",
+        options: [
+            "The current coil",
+            "The damping coil",
+            "The static coil",
+            "The multiplier coil"
+        ],
+        answer: 0
+    },
+    {
+        question: "For a Dynamometer Wattmeter operating on AC, the average deflecting torque is directly proportional to:",
+        options: [
+            "Apparent power (VI)",
+            "True AC power (VI cos θ)",
+            "Reactive power (VI sin θ)",
+            "The square of the voltage (V^2)"
+        ],
+        answer: 1
+    },
+        // ... paste these right after Question 210 in your array ...
+    {
+        question: "Which type of instrument uses a dial and pointer to determine the value of the measuring quantity?",
+        options: [
+            "Recording instrument",
+            "Indicating instrument",
+            "Integrating instrument",
+            "Absolute instrument"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which secondary instrument records the magnitude of a quantity continuously over a specified period of time?",
+        options: [
+            "Indicating instrument",
+            "Integrating instrument",
+            "Recording instrument",
+            "Absolute instrument"
+        ],
+        answer: 2
+    },
+    {
+        question: "A deflecting system in an electromechanical indicating instrument generally converts:",
+        options: [
+            "A mechanical force into an electrical signal",
+            "An electrical signal into a mechanical force",
+            "Heat into mechanical movement",
+            "Alternating current into direct current"
+        ],
+        answer: 1
+    },
+    {
+        question: "The magnitude effect utilized in a Moving Iron Repulsion instrument relies on:",
+        options: [
+            "One soft iron piece and a permanent magnet",
+            "Two soft iron pieces placed inside a current-carrying coil repelling each other",
+            "Two current-carrying coils interacting",
+            "Eddy currents in an aluminum disc"
+        ],
+        answer: 1
+    },
+    {
+        question: "The springs used for providing the controlling torque in an indicating instrument are typically made of:",
+        options: [
+            "Pure Copper",
+            "Stainless Steel",
+            "Phosphorous bronze",
+            "Manganin"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an instrument with spring control, when the pointer comes to its final steady position on the scale, the relationship between deflecting torque (Td) and controlling torque (Tc) is:",
+        options: [
+            "Td > Tc",
+            "Td < Tc",
+            "Td = Tc",
+            "Td = 0"
+        ],
+        answer: 2
+    },
+    {
+        question: "In fluid friction damping, what is primarily used to provide the opposing damping force?",
+        options: [
+            "Air compressed inside a cylinder",
+            "A strong magnetic field",
+            "Fluid viscosity",
+            "A tightly coiled spring"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an Eddy Current damping system, according to Lenz's law, the current-carrying disc produces a force that:",
+        options: [
+            "Accelerates the pointer forward",
+            "Acts in the same direction as the oscillation",
+            "Acts in a direction opposite to the oscillating force",
+            "Generates a magnetic field to increase total deflection"
+        ],
+        answer: 2
+    },
+    {
+        question: "The damping force in an Eddy Current damper can be mechanically varied by:",
+        options: [
+            "Changing the size of the pointer",
+            "Varying the projection of the magnet over the circular disc",
+            "Changing the spring constant",
+            "Heating the aluminum disc"
+        ],
+        answer: 1
+    },
+    {
+        question: "For a Permanent Magnet Moving Coil (PMMC) instrument, the moving coil is wound on:",
+        options: [
+            "A soft-iron former",
+            "An aluminum former",
+            "A wooden former",
+            "A solid steel block"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following is a known disadvantage of a PMMC instrument?",
+        options: [
+            "It has a non-uniform scale",
+            "It consumes a massive amount of power",
+            "It can only be used for measuring DC",
+            "It has a very low torque to weight ratio"
+        ],
+        answer: 2
+    },
+    {
+        question: "The accuracy of a PMMC instrument can degrade over a long period of use primarily due to:",
+        options: [
+            "Hysteresis errors",
+            "The ageing effect of the permanent magnet and springs",
+            "Extreme fluctuations in input frequency",
+            "Phase angle variations"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Ammeter, the shunt resistance is connected in parallel. According to Kirchhoff's Current Law at the junction, the total current (I) equals:",
+        options: [
+            "Ish - Im",
+            "Im - Ish",
+            "Ish + Im",
+            "Ish * Im"
+        ],
+        answer: 2
+    },
+    {
+        question: "To extend the range of a voltmeter, a multiplier is used. According to Kirchhoff's Voltage Law, the total voltage to be measured (V) is the sum of:",
+        options: [
+            "Vm and Vsh",
+            "Vm and Vse",
+            "Vse and Ish",
+            "Vm and Im"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Attraction type Moving Iron (MI) instrument, the pointer moves because:",
+        options: [
+            "The aluminum former repels the magnetic field",
+            "A single soft iron piece is magnetized by induction and attracted by the pole of the fixed coil",
+            "The moving coil is attracted to a permanent magnet",
+            "The controlling spring suddenly uncoils"
+        ],
+        answer: 1
+    },
+    {
+        question: "When an alternating current (AC) is passed through a Moving Iron (MI) instrument, what happens?",
+        options: [
+            "The instrument reads zero",
+            "A reversing torque is produced continuously, causing violent vibrations",
+            "The instrument gives a continuous deflection because the torque depends on the square of the current",
+            "The fixed coil burns out"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following is a major advantage of the Moving Iron (MI) instrument?",
+        options: [
+            "It has a perfectly uniform scale",
+            "It consumes zero electrical power",
+            "It is relatively cheap and can be used for both AC and DC",
+            "It is completely free from eddy current errors"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an Electrodynamometer (EMMC) instrument, why are both the fixed and moving coils air-cored?",
+        options: [
+            "To increase the overall weight of the instrument",
+            "To increase the magnetic flux density",
+            "So that the hysteresis effect will be zero",
+            "To allow for air friction damping to work better"
+        ],
+        answer: 2
+    },
+    {
+        question: "The deflecting torque (Td) of an EMMC instrument is given by Td = I1 * I2 * (dM/dθ). If the same current 'I' flows through both coils (series connection), the torque is proportional to:",
+        options: [
+            "I",
+            "I^2",
+            "1 / I",
+            "√I"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Dynamometer Wattmeter, assuming the supply voltage is sinusoidal, the instantaneous current through the pressure coil is represented mathematically as:",
+        options: [
+            "Vm * sin(wt) / R",
+            "I * sin(wt - θ)",
+            "Vm * cos(wt)",
+            "Im * sin(wt)"
+        ],
+        answer: 0
+    },
+    {
+        question: "For AC bridge balancing, if the detector is a set of headphones, a perfectly balanced bridge is indicated when:",
+        options: [
+            "The speaker produces a loud continuous beep",
+            "The speaker produces maximum sound energy",
+            "The speaker does not produce any sound energy",
+            "The sound frequency doubles"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an AC bridge, if a tuned amplifier is used as a detector, what is its output when the bridge is perfectly balanced?",
+        options: [
+            "Maximum",
+            "Infinite",
+            "Zero",
+            "Equal to the supply voltage"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the Maxwell Inductance Bridge, balancing the imaginary parts yields which formula for the unknown inductance L1?",
+        options: [
+            "L1 = L2 / R4",
+            "L1 = (L2 * R3) / R4",
+            "L1 = C4 * R4",
+            "L1 = L2 * R2"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Maxwell Inductance-Capacitance bridge, the unknown inductance L1 is measured by comparing it against a standard:",
+        options: [
+            "Inductance",
+            "Capacitance",
+            "Resistance",
+            "Frequency"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Hay's Bridge, the standard variable capacitor C4 is physically connected in:",
+        options: [
+            "Parallel with R4",
+            "Series with R4",
+            "Parallel with R3",
+            "Series with R2"
+        ],
+        answer: 1
+    },
+    {
+        question: "The Q-factor of a coil measured by Hay's bridge is given as Q = 1 / (ω * C4 * R4). This bridge is therefore most accurate for measuring coils with:",
+        options: [
+            "Low Q-factor",
+            "Medium Q-factor",
+            "High Q-factor (greater than 10)",
+            "Zero Q-factor"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Owen's Bridge, the balance equations demonstrate that the unknown inductance L1 and resistance R1 are:",
+        options: [
+            "Dependent on the frequency of the source",
+            "Independent of frequency",
+            "Only calculable if the source is DC",
+            "Always mathematically equal to each other"
+        ],
+        answer: 1
+    },
+    {
+        question: "A stated manufacturing advantage of Owen's bridge regarding its capacitors is:",
+        options: [
+            "It requires no capacitors at all",
+            "It requires an expensive variable standard capacitor",
+            "A fixed capacitor is used, which is cheaper than a variable capacitor",
+            "It can use damaged capacitors without losing accuracy"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the High Voltage Schering Bridge, the standard capacitor C2 is assumed to have an internal resistance of:",
+        options: [
+            "Infinity",
+            "Zero",
+            "100 Ohms",
+            "Equal to R4"
+        ],
+        answer: 1
+    },
+    {
+        question: "The dissipation factor (D) measured by a Schering bridge is mathematically equivalent to:",
+        options: [
+            "ω * C1 * r1",
+            "ω * C4 * R4",
+            "Both A and B",
+            "1 / (ω * C4 * R4)"
+        ],
+        answer: 2
+    },
+    {
+        question: "Wien's bridge can be used for the measurement of frequency. If the components are selected such that R1 = R2 = R and C1 = C2 = C, the balance frequency (f) is:",
+        options: [
+            "1 / (2πRC)",
+            "2πRC",
+            "R / (2πC)",
+            "C / (2πR)"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a Kelvin Double Bridge, why is it called a 'double' bridge?",
+        options: [
+            "It uses two DC power sources",
+            "It has a second set of ratio arms (p and q) to eliminate the effect of connecting lead resistance",
+            "It measures two unknown resistors simultaneously",
+            "It requires two separate null detectors"
+        ],
+        answer: 1
+    },
+    {
+        question: "The Kelvin Double Bridge is specifically designed for measuring very low resistances, typically in the range of:",
+        options: [
+            "Greater than 1000 Ohms",
+            "Between 1 and 100 Ohms",
+            "Less than 0.1 Ohms (1/10 of an ohm)",
+            "Exactly 1 Megaohm"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following is considered an 'Environmental error' in instrumentation?",
+        options: [
+            "Erroneous manual calculations",
+            "Defective instrument bearings",
+            "Changes in ambient temperature, humidity, or stray magnetic fields",
+            "Reading a scale from the wrong physical angle"
+        ],
+        answer: 2
+    },
+    {
+        question: "To minimize the effects of environmental errors, one highly recommended method is to:",
+        options: [
+            "Hermetically seal the equipment and maintain constant temperature/humidity",
+            "Read the instrument from multiple angles to average out the error",
+            "Use a low-resistance voltmeter",
+            "Increase the input voltage to overpower the environment"
+        ],
+        answer: 0
+    },
+    {
+        question: "In an AC bridge, if the output voltage is phase-shifted, the balance condition requires that the impedance angles on either side must be:",
+        options: [
+            "Complementary",
+            "Equal (∠θ1 + ∠θ4 = ∠θ2 + ∠θ3)",
+            "Zero",
+            "Exactly 90 degrees apart"
+        ],
+        answer: 1
+    },
+    {
+        question: "What statistical term is mathematically expressed as the square root of the sum of all individual deviations squared, divided by the number of readings minus one?",
+        options: [
+            "Average deviation",
+            "Arithmetic mean",
+            "Standard deviation",
+            "Bias"
+        ],
+        answer: 2
+    },
+    {
+        question: "In experimental stress analysis, a Strain Gauge is primarily used to detect and convert force or small mechanical displacement into:",
+        options: [
+            "Thermal energy",
+            "Electrical signals",
+            "Magnetic flux",
+            "Sound waves"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of the probability of errors in measurements, what does the Gaussian curve indicate about extremely large errors?",
+        options: [
+            "They are more probable than small errors",
+            "They are very improbable",
+            "They occur with the exact same frequency as small errors",
+            "They only occur when measuring voltage"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Microsoft Excel data analysis, what is the core difference between the functions =STDEV() and =STDEVP()?",
+        options: [
+            "STDEV is for variance, STDEVP is for standard deviation",
+            "STDEV finds the unbiased sample standard deviation, while STDEVP finds the biased sample standard deviation",
+            "STDEV is for addition, STDEVP is for multiplication",
+            "There is no mathematical difference"
+        ],
+        answer: 1
+    },
+        // ... paste these right after Question 250 in your array ...
+    {
+        question: "In measurement terminology, 'True Value' is defined as:",
+        options: [
+            "The exact value displayed by a digital meter",
+            "A standard, reference of known value, or a theoretical value",
+            "The average of all readings taken",
+            "The maximum scale deflection of an instrument"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which term describes the closeness with which an instrument reading approaches the accepted value of the variable being measured?",
+        options: [
+            "Precision",
+            "Resolution",
+            "Accuracy",
+            "Sensitivity"
+        ],
+        answer: 2
+    },
+    {
+        question: "Precision is fundamentally a measure of the:",
+        options: [
+            "Total error in a system",
+            "Reproducibility of the measurements given a fixed value of a quantity",
+            "Smallest measurable input change",
+            "Distance between the pointer and the scale"
+        ],
+        answer: 1
+    },
+    {
+        question: "The two main characteristics that define 'Precision' are:",
+        options: [
+            "Accuracy and Resolution",
+            "Conformity and Number of significant figures",
+            "Threshold and Hysteresis",
+            "Range and Span"
+        ],
+        answer: 1
+    },
+    {
+        question: "If an ohmmeter consistently reads 2.5 MΩ when the true resistance is exactly 2,475,653 Ω, the instrument exhibits:",
+        options: [
+            "High accuracy",
+            "Zero bias",
+            "High precision (conformity) but poor accuracy",
+            "A gross error"
+        ],
+        answer: 2
+    },
+    {
+        question: "In statistical error analysis, what does the term 'Bias' refer to?",
+        options: [
+            "A random error caused by temperature",
+            "A consistent inaccuracy indicating a systematic error",
+            "The human error of misreading a scale",
+            "The standard deviation of a dataset"
+        ],
+        answer: 1
+    },
+    {
+        question: "The 'Sensitivity' of a measuring instrument is mathematically defined as:",
+        options: [
+            "Input divided by Output",
+            "Change in Output signal divided by the Change in Input signal",
+            "Maximum scale value minus Minimum scale value",
+            "Output squared divided by Input"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following describes the 'Threshold' of an instrument?",
+        options: [
+            "The maximum value it can safely measure",
+            "The minimum input signal required to cause a detectable change in the output",
+            "The maximum operating temperature",
+            "The physical size of the sensor"
+        ],
+        answer: 1
+    },
+    {
+        question: "When recording measurement data, standard engineering practice states that you should record:",
+        options: [
+            "Only the digits you are absolutely certain of",
+            "All certain digits plus one estimated digit",
+            "As many decimal places as your calculator shows",
+            "Only whole numbers"
+        ],
+        answer: 1
+    },
+    {
+        question: "If you add three measurements: 12.1 cm, 10.15 cm, and 1.032 cm, standard rules for significant figures dictate the result should be recorded as:",
+        options: [
+            "23.282 cm",
+            "23.28 cm",
+            "23.3 cm",
+            "23 cm"
+        ],
+        answer: 2
+    },
+    {
+        question: "Systematic errors are generally categorized into three types:",
+        options: [
+            "Gross, Random, and Indeterminate",
+            "Instrumental, Environmental, and Observational",
+            "Static, Dynamic, and Transient",
+            "Electrical, Mechanical, and Thermal"
+        ],
+        answer: 1
+    },
+    {
+        question: "Friction in instrument bearings, irregular spring tension, and zero errors are examples of:",
+        options: [
+            "Gross errors",
+            "Environmental errors",
+            "Instrumental errors",
+            "Random errors"
+        ],
+        answer: 2
+    },
+    {
+        question: "Connecting a low-impedance voltmeter across a high-resistance circuit alters the circuit's original behavior. This is a classic example of:",
+        options: [
+            "Parallax error",
+            "Random error",
+            "A loading effect (Instrumental error)",
+            "Hysteresis error"
+        ],
+        answer: 2
+    },
+    {
+        question: "Random errors in measurement follow which type of statistical distribution?",
+        options: [
+            "Binomial distribution",
+            "Poisson distribution",
+            "Normal (Gaussian) distribution",
+            "Exponential distribution"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Gaussian distribution curve, the highest probability (the peak of the curve) corresponds to:",
+        options: [
+            "The maximum error",
+            "The arithmetic mean (zero deviation)",
+            "The standard deviation",
+            "The variance"
+        ],
+        answer: 1
+    },
+    {
+        question: "What percentage of random errors are expected to fall within ± 2 standard deviations in a normal distribution?",
+        options: [
+            "50.00%",
+            "68.28%",
+            "95.46%",
+            "99.72%"
+        ],
+        answer: 2
+    },
+    {
+        question: "The formula for the 'Probable Error' (r) is derived from the standard deviation (σ) as:",
+        options: [
+            "r = ± 0.6745 * σ",
+            "r = ± 1.0 * σ",
+            "r = ± 2.0 * σ",
+            "r = ± 3.0 * σ"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which excel function would you use to find the average of a dataset in cells A2 to A5?",
+        options: [
+            "=MEAN(A2:A5)",
+            "=AVERAGE(A2:A5)",
+            "=SUM(A2:A5)/2",
+            "=MEDIAN(A2:A5)"
+        ],
+        answer: 1
+    },
+    {
+        question: "For a Wheatstone bridge to be used for precise measurements, the resistances in its arms should typically range between:",
+        options: [
+            "1 Ω to a few Megohms",
+            "Micro-ohms to Milli-ohms",
+            "Giga-ohms and above",
+            "Capacitive reactances only"
+        ],
+        answer: 0
+    },
+    {
+        question: "The sensitivity of a Wheatstone bridge depends on:",
+        options: [
+            "Only the galvanometer's internal resistance",
+            "The bridge supply voltage, the resistance of all arms, and the galvanometer's characteristics",
+            "Only the input voltage",
+            "The frequency of the DC supply"
+        ],
+        answer: 1
+    },
+    {
+        question: "The Kelvin Double Bridge incorporates a second set of ratio arms (p and q). The bridge is balanced and lead resistance is perfectly eliminated when:",
+        options: [
+            "P/Q = p/q",
+            "P*Q = p*q",
+            "P+Q = p+q",
+            "P/q = Q/p"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which bridge is the most basic AC counterpart of the DC Wheatstone bridge, used for measuring unknown impedances?",
+        options: [
+            "General AC Impedance Bridge",
+            "Kelvin Double Bridge",
+            "Carey Foster Bridge",
+            "Megger"
+        ],
+        answer: 0
+    },
+    {
+        question: "In AC bridges, achieving a null balance requires satisfying two conditions simultaneously. What are they?",
+        options: [
+            "Magnitude condition and Phase angle condition",
+            "Voltage condition and Current condition",
+            "Real power and Reactive power conditions",
+            "Frequency condition and Temperature condition"
+        ],
+        answer: 0
+    },
+    {
+        question: "Why is an isolation transformer often used between the audio frequency oscillator and the AC bridge circuit?",
+        options: [
+            "To step up the voltage to dangerous levels",
+            "To completely isolate the bridge from the power line ground to prevent stray ground loop errors",
+            "To convert AC to DC",
+            "To provide a visual display of the waveform"
+        ],
+        answer: 1
+    },
+    {
+        question: "If an AC bridge uses a tuned amplifier detector, it is highly sensitive to:",
+        options: [
+            "All frequencies equally",
+            "A narrow bandwidth around its center tuned frequency, rejecting harmonics",
+            "Only DC signals",
+            "Only signals above 1 MHz"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the balance equations for Maxwell's Inductance Bridge, what happens if the source frequency (ω) changes?",
+        options: [
+            "The bridge becomes permanently unbalanced",
+            "The calculated unknown inductance L1 changes proportionally",
+            "Nothing; the balance equations for L1 and R1 are completely independent of frequency (ω)",
+            "The standard capacitor must be replaced"
+        ],
+        answer: 2
+    },
+    {
+        question: "While Maxwell's Inductance-Capacitance bridge is useful, what is one of its primary disadvantages?",
+        options: [
+            "It requires a variable standard capacitor, which is highly expensive and less accurate than variable resistors",
+            "It cannot measure resistance at all",
+            "It only works with a DC battery",
+            "It uses a permanent magnet"
+        ],
+        answer: 0
+    },
+    {
+        question: "Hay's bridge is a modification of Maxwell's bridge. What is the physical difference in its circuit layout?",
+        options: [
+            "It removes the standard capacitor entirely",
+            "The standard capacitor C4 is placed in series with resistor R4, instead of in parallel",
+            "It adds an inductor to the fourth arm",
+            "It uses two galvanometers"
+        ],
+        answer: 1
+    },
+    {
+        question: "Unlike Maxwell's bridge, the balance equations for Hay's bridge reveal that the unknown values (L1 and R1):",
+        options: [
+            "Are independent of frequency",
+            "Contain the angular frequency term (ω), meaning the source frequency must be known exactly",
+            "Only depend on the supply voltage amplitude",
+            "Cannot be calculated mathematically"
+        ],
+        answer: 1
+    },
+    {
+        question: "Owen's bridge uses which specific components in its standard reference arm?",
+        options: [
+            "A variable inductor",
+            "A fixed standard capacitor and variable resistors",
+            "A piezoelectric crystal",
+            "A high-power thermistor"
+        ],
+        answer: 1
+    },
+    {
+        question: "A primary industrial application of the Schering bridge is testing:",
+        options: [
+            "The structural integrity of steel bridges",
+            "The insulation properties of cables and the dielectric loss of high-voltage capacitors",
+            "The mutual inductance of transformers",
+            "The RPM of DC motors"
+        ],
+        answer: 1
+    },
+    {
+        question: "Wien's bridge is unique among the standard AC bridges because its primary modern application is:",
+        options: [
+            "Measuring extreme high voltages",
+            "Acting as a frequency-determining network in audio-frequency oscillators",
+            "Measuring strain in concrete",
+            "Calibrating DC ammeters"
+        ],
+        answer: 1
+    },
+    {
+        question: "If a Permanent Magnet Moving Coil (PMMC) instrument is un-damped, what happens to the pointer when a steady current is applied?",
+        options: [
+            "It snaps instantly to the exact reading and locks in place",
+            "It oscillates continuously around the final steady position for a long time before stopping",
+            "It remains at zero",
+            "It moves backwards off the scale"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of instruments, 'Static Friction' error is minimized by:",
+        options: [
+            "Removing the bearings completely",
+            "Using high-quality jeweled bearings and a high torque-to-weight ratio",
+            "Coating the pointer in oil",
+            "Using a heavier pointer"
+        ],
+        answer: 1
+    },
+    {
+        question: "The 'Swamping Resistance' connected in series with the moving coil of a PMMC instrument is made of Manganin. Why?",
+        options: [
+            "To increase the magnetic field",
+            "To decrease the total resistance of the meter",
+            "To compensate for the temperature error caused by the copper coil's resistance changes",
+            "To act as a fuse"
+        ],
+        answer: 2
+    },
+    {
+        question: "Moving Iron (MI) instruments can measure True RMS values of AC waveforms because their deflecting torque is proportional to:",
+        options: [
+            "The instantaneous voltage",
+            "The square of the instantaneous current (I^2)",
+            "The frequency of the AC signal",
+            "The phase angle"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Electrodynamometer (EMMC) Wattmeter, the 'Current Coil' is usually wound with:",
+        options: [
+            "Many turns of thin wire",
+            "A few turns of thick wire to carry the full load current",
+            "A single loop of silver",
+            "Aluminum foil"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an Electrodynamometer (EMMC) Wattmeter, the 'Pressure (Voltage) Coil' is usually wound with:",
+        options: [
+            "A few turns of thick wire",
+            "Many turns of fine wire and connected in series with a high non-inductive resistance",
+            "Superconducting wire",
+            "No wire, it is a solid plate"
+        ],
+        answer: 1
+    },
+    {
+        question: "A Thermocouple is considered an 'Active Transducer' because:",
+        options: [
+            "It requires a 12V DC power supply",
+            "It generates its own thermoelectric EMF (voltage) from a temperature difference without external excitation",
+            "It actively moves to track temperature",
+            "It requires an AC bridge to function"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following describes the 'Piezoelectric Effect' used in transducers?",
+        options: [
+            "Generating an electrical charge when mechanical pressure or stress is applied to certain crystals",
+            "Changing resistance when exposed to light",
+            "Changing capacitance when heated",
+            "Generating a magnetic field when spun"
+        ],
+        answer: 0
+    },
+    {
+        question: "A Linear Variable Differential Transformer (LVDT) contains one primary coil and:",
+        options: [
+            "One secondary coil",
+            "Two identical secondary coils placed symmetrically on either side of the primary",
+            "Three secondary coils for 3-phase output",
+            "No secondary coils"
+        ],
+        answer: 1
+    },
+    {
+        question: "When the soft-iron core of an LVDT is exactly in the center (Null position), the net output voltage is:",
+        options: [
+            "Maximum",
+            "Ideally Zero, because the equal voltages induced in the two series-opposing secondaries cancel out",
+            "Equal to the primary supply voltage",
+            "Unpredictable"
+        ],
+        answer: 1
+    },
+    {
+        question: "If the core of an LVDT moves to the left of the null position, the output voltage:",
+        options: [
+            "Remains zero",
+            "Increases, and is in-phase with the primary voltage",
+            "Increases, but is 180 degrees out-of-phase with the primary voltage",
+            "Decreases exponentially"
+        ],
+        answer: 1
+    },
+    {
+        question: "A strain gauge is typically mounted onto a test specimen using:",
+        options: [
+            "Nails",
+            "A strong, specialized adhesive cement that transfers the strain perfectly",
+            "Magnets",
+            "Welding"
+        ],
+        answer: 1
+    },
+    {
+        question: "The term 'Gauge Factor' of a strain gauge is a measure of its:",
+        options: [
+            "Physical size",
+            "Sensitivity to strain (Ratio of fractional change in resistance to fractional change in length)",
+            "Maximum voltage rating",
+            "Temperature limit"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following is an example of an 'Inverse Transducer'?",
+        options: [
+            "A microphone (sound to electricity)",
+            "A thermocouple (heat to electricity)",
+            "A piezoelectric crystal used as an ultrasonic transmitter (electricity to mechanical vibration)",
+            "A solar cell (light to electricity)"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a capacitive transducer, what is the 'Dielectric Constant' (ε)?",
+        options: [
+            "The physical distance between the plates",
+            "The area of the plates",
+            "A property of the insulating material between the plates that affects how much charge it can store",
+            "The frequency of the AC supply"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which type of transducer is most suitable for measuring the thickness of a moving paper web in a paper mill without touching it?",
+        options: [
+            "A mechanical strain gauge",
+            "A contact potentiometer",
+            "A non-contact capacitive transducer utilizing dielectric variation",
+            "A Bourdon tube"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the function of a 'Bourdon Tube'?",
+        options: [
+            "To measure electrical current",
+            "To act as a primary transducer converting fluid pressure into mechanical displacement",
+            "To cool down heated sensors",
+            "To measure light intensity"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of the entire EEE 311 course, the overarching goal of measurement systems is to:",
+        options: [
+            "Ensure the result is exactly the true value, without any uncertainty",
+            "Provide accurate, precise, and reliable data about a physical quantity while minimizing and quantifying inevitable errors",
+            "Only measure electrical properties",
+            "Replace all digital instruments with analog ones"
+        ],
+        answer: 1
+    }
+
+        ];
+        // ---------------------------------------------------------
+
+
+        // SHUFFLE ALGORITHM: Scrambles the master array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // SELECT 35 QUESTIONS: Shuffles the full bank and extracts exactly 35
+        // If your bank has less than 35 currently, it will just use what is available.
+        let questions = shuffleArray(fullQuestionBank).slice(0, 35);
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let timeRemaining = 3600; // 1 Hour in seconds (Adjust if needed)
+        let timerInterval;
+
+        const questionNumberEl = document.getElementById('question-number');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmit = document.getElementById('btn-submit');
+        const timerEl = document.getElementById('timer');
+        const reviewContainerEl = document.getElementById('review-container'); 
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                } else {
+                    timeRemaining--;
+                    let hours = Math.floor(timeRemaining / 3600);
+                    let minutes = Math.floor((timeRemaining % 3600) / 60);
+                    let seconds = timeRemaining % 60;
+                    
+                    hours = hours < 10 ? "0" + hours : hours;
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                    
+                    timerEl.innerText = `Time Left: ${hours}:${minutes}:${seconds}`;
+                }
+            }, 1000);
+        }
+
+        function loadQuestion(index) {
+            const q = questions[index];
+            questionNumberEl.innerText = `Question ${index + 1} of ${questions.length}`;
+            questionTextEl.innerText = q.question;
+            
+            optionsContainerEl.innerHTML = '';
+            
+            q.options.forEach((option, i) => {
+                const label = document.createElement('label');
+                label.className = 'option-label';
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'option';
+                radio.value = i;
+                
+                if (userAnswers[index] === i) {
+                    radio.checked = true;
+                }
+                
+                radio.addEventListener('change', (e) => {
+                    userAnswers[currentQuestionIndex] = parseInt(e.target.value);
+                });
+
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(option));
+                optionsContainerEl.appendChild(label);
+            });
+
+            btnPrev.style.visibility = index === 0 ? 'hidden' : 'visible';
+            
+            if (index === questions.length - 1) {
+                btnNext.style.display = 'none';
+                btnSubmit.style.display = 'inline-block';
+            } else {
+                btnNext.style.display = 'inline-block';
+                btnSubmit.style.display = 'none';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            let score = 0;
+            let reviewHTML = '<h3>Review of Missed Questions:</h3>';
+            let missedCount = 0;
+            
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] === questions[i].answer) {
+                    score++;
+                } else {
+                    missedCount++;
+                    let userAnswerText = userAnswers[i] !== null ? questions[i].options[userAnswers[i]] : '<span class="unanswered">Not Answered</span>';
+                    let correctAnswerText = questions[i].options[questions[i].answer];
+
+                    reviewHTML += `
+                        <div class="review-item">
+                            <div class="review-question">Q${i + 1}. ${questions[i].question}</div>
+                            <div>Your Answer: <span class="wrong-ans">${userAnswerText}</span></div>
+                            <div>Correct Answer: <span class="correct-ans">${correctAnswerText}</span></div>
+                        </div>
+                    `;
+                }
+            }
+
+            if (missedCount === 0) {
+                reviewHTML += `<p style="color: #28a745; font-weight: bold;">Perfect score! You didn't miss any questions.</p>`;
+            }
+            
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            document.getElementById('score-display').innerText = `Your Score: ${score} / ${questions.length}`;
+            reviewContainerEl.innerHTML = reviewHTML;
+        }
+
+        // Initialize CBT
+        loadQuestion(currentQuestionIndex);
+        startTimer();
+
+    </script>
+</body>
+</html>
