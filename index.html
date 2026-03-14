@@ -3195,7 +3195,7 @@
 
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
-        let timeRemaining = 3600; // 1 Hour in seconds (Adjust if needed)
+        let timeRemaining = 2400; // 1 Hour in seconds (Adjust if needed)
         let timerInterval;
 
         const questionNumberEl = document.getElementById('question-number');
@@ -3214,8 +3214,8 @@
                     submitExam();
                 } else {
                     timeRemaining--;
-                    let hours = Math.floor(timeRemaining / 3600);
-                    let minutes = Math.floor((timeRemaining % 3600) / 60);
+                    let hours = Math.floor(timeRemaining / 2400);
+                    let minutes = Math.floor((timeRemaining % 2400) / 60);
                     let seconds = timeRemaining % 60;
                     
                     hours = hours < 10 ? "0" + hours : hours;
