@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EEE 313 CBT Examination</title>
+    <title>EEE 312 CBT Examination</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -162,2015 +162,2708 @@
     </div>
 
     <script>
-        // ---------------------------------------------------------
-        // PASTE ALL YOUR BATCHES HERE
-        // Replace the sample question below with all 300 questions.
-        // Make sure there is a comma between every question!
-        // ---------------------------------------------------------
         let fullQuestionBank = [
             {
-        question: "Which of the following is NOT a principal D.C. network theorem mentioned in the text?",
+        question: "What is the primary cause of diffusion current in a PN-junction diode?",
         options: [
-            "Superposition theorem",
-            "Thevenin's theorem",
-            "Maximum power transfer theorem",
-            "Faraday's theorem"
+            "The application of an external reverse bias voltage",
+            "The movement of minority charge carriers across the junction",
+            "The movement of majority charge carriers from an area of higher concentration to lower concentration",
+            "The thermal generation of electron-hole pairs in the depletion region"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following elements is used as a trivalent impurity to create a P-type semiconductor?",
+        options: [
+            "Antimony (Sb)",
+            "Arsenic (As)",
+            "Gallium (Ga)",
+            "Phosphorus (P)"
+        ],
+        answer: 2
+    },
+    {
+        question: "In an N-type semiconductor, which of the following represents the minority charge carriers?",
+        options: [
+            "Electrons",
+            "Holes",
+            "Donor ions",
+            "Acceptor ions"
+        ],
+        answer: 1
+    },
+    {
+        question: "According to the provided notes, what is the built-in barrier potential (Vb) of a Silicon PN-junction at room temperature?",
+        options: [
+            "0.3 V",
+            "0.7 V",
+            "1.1 V",
+            "0.026 V"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the calculated value of the Thermal Voltage (VT) at standard room temperature (27°C)?",
+        options: [
+            "0.026 V",
+            "0.7 V",
+            "1.38 x 10^-23 V",
+            "1.6 x 10^-19 V"
+        ],
+        answer: 0
+    },
+    {
+        question: "Under steady-state conditions in an open-circuited PN junction, what is the relationship between diffusion current and drift current?",
+        options: [
+            "Diffusion current is much greater than drift current",
+            "Drift current is much greater than diffusion current",
+            "Diffusion current equals drift current",
+            "Both currents are completely eliminated"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a PN junction, what physically prevents more mobile charge carriers from continuously crossing the junction after the initial recombination?",
+        options: [
+            "The depletion of all intrinsic carriers in the material",
+            "The electric field created by the uncovered immobile ions",
+            "A drop in the physical temperature of the junction",
+            "The external reverse bias voltage"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which mathematical equation correctly defines the built-in barrier potential (Vb) of a PN junction?",
+        options: [
+            "Vb = VT ln(NA ND / ni^2)",
+            "Vb = (kT/e) exp(NA / ND)",
+            "Wd = sqrt( (2ε/q) * (1/NA + 1/ND) * Vb )",
+            "Vb = NA ND / VT"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which trio of scientists is credited with inventing the Bipolar Junction Transistor (BJT) at Bell Laboratories in 1946?",
+        options: [
+            "Thomas Edison, Nikola Tesla, and George Westinghouse",
+            "John Bardeen, Walter Brattain, and William Shockley",
+            "Alexander Graham Bell, Thomas Watson, and Heinrich Hertz",
+            "James Clerk Maxwell, Michael Faraday, and Georg Ohm"
+        ],
+        answer: 1
+    },
+    {
+        question: "Comparing the physical width of the three regions in a BJT, which order from largest to smallest is correct?",
+        options: [
+            "Emitter > Collector > Base",
+            "Base > Emitter > Collector",
+            "Collector > Emitter > Base",
+            "Collector > Base > Emitter"
+        ],
+        answer: 2
+    },
+    {
+        question: "Comparing the doping concentrations of the three regions in a BJT, which order from highest to lowest is correct?",
+        options: [
+            "Collector > Emitter > Base",
+            "Emitter > Collector > Base",
+            "Base > Collector > Emitter",
+            "Emitter > Base > Collector"
+        ],
+        answer: 1
+    },
+    {
+        question: "To use a BJT as an amplifier, in which specific region must the transistor be biased?",
+        options: [
+            "Saturation Region",
+            "Cut-off Region",
+            "Active Region",
+            "Inverted Region"
+        ],
+        answer: 2
+    },
+    {
+        question: "When a BJT operates in the Saturation region, what are the biasing states of its two junctions?",
+        options: [
+            "Emitter-Base is Reverse Biased, Collector-Base is Forward Biased",
+            "Both Emitter-Base and Collector-Base are Reverse Biased",
+            "Emitter-Base is Forward Biased, Collector-Base is Reverse Biased",
+            "Both Emitter-Base and Collector-Base are Forward Biased"
         ],
         answer: 3
     },
     {
-        question: "What is the definition of a passive network?",
+        question: "In an NPN transistor operating in the active region, approximately what percentage of electrons from the emitter recombine with holes in the base?",
         options: [
-            "One which contains no source of e.m.f. in it",
-            "One which contains only voltage sources",
-            "One whose parameters change with time",
-            "One that operates in one direction only"
+            "50% - 60%",
+            "2% - 5%",
+            "100%",
+            "0%"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which of the following equations accurately represents the fundamental relationship between the currents in a BJT?",
+        options: [
+            "IC = IE + IB",
+            "IB = IE + IC",
+            "IE = IB + IC",
+            "IE = IC - IB"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the Common Base (CB) configuration, the DC current amplification factor (α) is defined as:",
+        options: [
+            "α = IC / IE",
+            "α = IC / IB",
+            "α = IE / IB",
+            "α = IC * IE"
         ],
         answer: 0
     },
     {
-        question: "What type of circuit has parameters that change with voltage or current?",
+        question: "What is the mathematical relationship used to find the Common Emitter current gain (β) if the Common Base current gain (α) is known?",
         options: [
-            "Linear circuit",
-            "Non-linear circuit",
-            "Bilateral circuit",
-            "Unilateral circuit"
+            "β = α + 1",
+            "β = 1 / (1 - α)",
+            "β = α / (1 - α)",
+            "β = α * (1 - α)"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which transistor configuration is primarily used for impedance matching due to its high input impedance and low output impedance?",
+        options: [
+            "Common Base (CB)",
+            "Common Emitter (CE)",
+            "Common Collector (CC)",
+            "Common Gate (CG)"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the Common Emitter (CE) configuration, what is the exact mathematical expression for the total collector current (IC) including the leakage current?",
+        options: [
+            "IC = αIE + ICBO",
+            "IC = βIB + (β + 1)ICBO",
+            "IC = βIB - ICBO",
+            "IC = IE - IB + ICBO"
         ],
         answer: 1
     },
     {
-        question: "A circuit whose properties are the same in either direction is called:",
+        question: "What is a unique characteristic of the Common Emitter (CE) amplifier regarding its output signal?",
         options: [
-            "Unilateral circuit",
-            "Bilateral circuit",
-            "Active network",
-            "Passive network"
+            "It perfectly matches the phase of the input signal",
+            "It produces a 90-degree phase shift",
+            "It produces a 180-degree phase reversal",
+            "It converts an AC input into a DC output"
+        ],
+        answer: 2
+    },
+    {
+        question: "To plot the output characteristics of a Common Emitter (CE) transistor configuration, which variables are placed on the axes?",
+        options: [
+            "IE versus VCB for different values of IE",
+            "IC versus VCE for different values of IB",
+            "IB versus VBE for different values of VCE",
+            "IE versus VCE for different values of IB"
         ],
         answer: 1
     },
     {
-        question: "Which of the following is an example of a unilateral circuit?",
+        question: "What is the mathematical relationship between the Common Collector current gain (γ) and the Common Emitter current gain (β)?",
         options: [
-            "Resistor",
-            "Inductor",
-            "Diode rectifier",
-            "Transmission line"
+            "γ = β - 1",
+            "γ = β / (1 - β)",
+            "γ = β + 1",
+            "γ = 1 / β"
         ],
         answer: 2
     },
     {
-        question: "According to Kirchhoff's Current Law (KCL), the algebraic sum of currents flowing towards a node is:",
+        question: "When drawing the DC load line on the output characteristics of a CE transistor, what formula determines the y-intercept (maximum saturation current)?",
         options: [
-            "Infinity",
-            "One",
-            "Zero",
-            "Maximum"
+            "VCC",
+            "IB * RB",
+            "VCC / (RC + RE)",
+            "VBB / RB"
         ],
         answer: 2
     },
     {
-        question: "In network graph theory, the lines in the graph representing circuit elements are called:",
+        question: "What is the primary advantage of using the Voltage Divider bias configuration over a simple base bias?",
         options: [
-            "Nodes",
-            "Links",
-            "Branches",
-            "Loops"
+            "It requires fewer physical resistors to construct",
+            "It significantly increases the current gain (β) of the transistor",
+            "It makes the operating point (Q-point) largely independent of changes in β",
+            "It allows the transistor to bypass the active region entirely"
         ],
         answer: 2
     },
     {
-        question: "The junction of two or more branches in a network graph is known as a:",
+        question: "In a Voltage Divider bias circuit, the Thevenin equivalent voltage (VTH) applied to the base is calculated using which formula?",
         options: [
-            "Node",
-            "Chord",
-            "Mesh",
-            "Loop"
+            "VTH = VCC * R2 / (R1 + R2)",
+            "VTH = VCC * R1 / (R1 + R2)",
+            "VTH = VCC - IC * RC",
+            "VTH = R1 * R2 / (R1 + R2)"
         ],
         answer: 0
     },
     {
-        question: "A graph or network that can be redrawn so that no lines cross each other is called a:",
+        question: "To ensure the collector current (IC) is nearly independent of the transistor's β in a Voltage Divider bias design, which mathematical condition must be met?",
         options: [
-            "Non-planar graph",
-            "Planar graph",
-            "Oriented graph",
-            "Tree"
-        ],
-        answer: 1
-    },
-    {
-        question: "Which of the following is NOT a property of a tree in a connected graph of 'n' nodes?",
-        options: [
-            "It connects all the nodes of the original graph",
-            "It contains 'n' branches",
-            "It has no closed paths",
-            "It contains 'n-1' branches"
-        ],
-        answer: 1
-    },
-    {
-        question: "The branches removed from a graph in forming a tree are called:",
-        options: [
-            "Nodes",
-            "Roots",
-            "Chords or links",
-            "Vertices"
+            "RTH >> (β + 1)RE",
+            "RTH = R1 + R2",
+            "RTH << (β + 1)RE",
+            "VTH = VBE"
         ],
         answer: 2
     },
     {
-        question: "If a network has 'b' branches and 'n' nodes, how many links will it have?",
+        question: "By applying Kirchhoff's Voltage Law to the output loop of a single-stage CE amplifier, what is the correct expression for the Collector-Emitter voltage (VCE)?",
         options: [
-            "b + n",
-            "b - n + 1",
-            "n - 1",
-            "b - n - 1"
-        ],
-        answer: 1
-    },
-    {
-        question: "In applying Kirchhoff's Voltage Law, a fall in potential across a resistor (going in the direction of current) is given what sign?",
-        options: [
-            "Positive sign",
-            "Negative sign",
-            "Zero",
-            "Infinity"
-        ],
-        answer: 1
-    },
-    {
-        question: "What symbol is usually used to designate an ideal dependent (controlled) source?",
-        options: [
-            "Circle-shaped symbol",
-            "Square-shaped symbol",
-            "Diamond-shaped symbol",
-            "Triangle-shaped symbol"
+            "VCE = VCC - IC RC",
+            "VCE = VCC + IC(RC + RE)",
+            "VCE = VCC - IC(RC + RE)",
+            "VCE = IC RC - VBE"
         ],
         answer: 2
     },
     {
-        question: "Which of the following is NOT one of the four types of dependent sources?",
+        question: "Which of the following physical factors is most likely to cause the quiescent operating point (Q-point) of a transistor to shift unintentionally?",
         options: [
-            "Voltage-Controlled Voltage Source (VCVS)",
-            "Current-Controlled Voltage Source (CCVS)",
-            "Power-Controlled Resistance Source (PCRS)",
-            "Current-Controlled Current Source (CCCS)"
+            "An increase in the value of the coupling capacitors",
+            "Changes in ambient temperature altering the leakage current",
+            "Changing the frequency of the weak AC input signal",
+            "Applying a load resistor to the output"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the standard formula used to approximate the internal AC emitter resistance (r'e) of a BJT at room temperature?",
+        options: [
+            "r'e = 25 mV / IE",
+            "r'e = VBE / IB",
+            "r'e = 25 mV * IE",
+            "r'e = IC / 26 mV"
+        ],
+        answer: 0
+    },
+    {
+        question: "For a Common Emitter amplifier with an unbypassed emitter resistor (RE), what is the approximate voltage gain (Av) if RE >> r'e?",
+        options: [
+            "Av ≈ RC / r'e",
+            "Av ≈ RC / RE",
+            "Av ≈ RC * RE",
+            "Av ≈ β"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a P-type semiconductor, what are the immobile negative ions left behind in the lattice structure called?",
+        options: [
+            "Donor ions",
+            "Acceptor ions",
+            "Free electrons",
+            "Holes"
+        ],
+        answer: 1
+    },
+    {
+        question: "What happens to the intrinsic carrier density of a semiconductor if the temperature is increased?",
+        options: [
+            "It decreases significantly",
+            "It remains completely unchanged",
+            "It increases",
+            "It drops to zero"
         ],
         answer: 2
     },
     {
-        question: "Loop analysis is primarily based on which circuit law?",
+        question: "According to the notes, the intrinsic carrier density for Silicon at room temperature is commonly approximated as:",
         options: [
-            "Kirchhoff's Current Law (KCL)",
-            "Ohm's law",
-            "Faraday's law",
-            "Kirchhoff's Voltage Law (KVL)"
+            "1.5 x 10^10 /cm³",
+            "1.0 x 10^16 /cm³",
+            "1.6 x 10^-19 /cm³",
+            "1.124 x 10^-12 /cm³"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which of the following equations is used to determine the physical width of the depletion region in a PN junction?",
+        options: [
+            "Wd = (kT/e) ln(NA ND / ni^2)",
+            "Wd = sqrt( (2ε/q) * (1/NA + 1/ND) * Vb )",
+            "Wd = β IB + ICBO",
+            "Wd = εA / d"
+        ],
+        answer: 1
+    },
+    {
+        question: "The word 'Transistor' is a combination of which two terms that describe its function?",
+        options: [
+            "Transformer and Resistor",
+            "Transfer and Resistor",
+            "Transient and Varistor",
+            "Transmit and Capacitor"
+        ],
+        answer: 1
+    },
+    {
+        question: "What does the term 'Bipolar' signify in the name 'Bipolar Junction Transistor'?",
+        options: [
+            "It operates on both AC and DC signals",
+            "It has two separate power supply terminals",
+            "Its operation depends on the flow of two types of charge carriers: electrons and holes",
+            "It contains two distinct depletion regions"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the Inverted mode of a BJT, what are the biasing states of the junctions?",
+        options: [
+            "EB is Forward Biased, CB is Reverse Biased",
+            "EB is Reverse Biased, CB is Reverse Biased",
+            "EB is Forward Biased, CB is Forward Biased",
+            "EB is Reverse Biased, CB is Forward Biased"
         ],
         answer: 3
     },
     {
-        question: "Nodal analysis is primarily based on which circuit law?",
+        question: "Why is the Collector region physically larger than both the Emitter and Base regions?",
         options: [
-            "Kirchhoff's Current Law (KCL)",
-            "Kirchhoff's Voltage Law (KVL)",
-            "Norton's law",
-            "Thevenin's law"
-        ],
-        answer: 0
-    },
-    {
-        question: "In loop analysis, which mathematical rule is frequently used to solve the resulting simultaneous equations using matrices?",
-        options: [
-            "L'Hopital's rule",
-            "Cramer's rule",
-            "Simpson's rule",
-            "Euler's rule"
-        ],
-        answer: 1
-    },
-    {
-        question: "In nodal analysis, if a network has 'n' nodes, how many nodes are selected as the reference node?",
-        options: [
-            "n-1",
-            "0",
-            "1",
-            "2"
+            "To increase the input impedance of the transistor",
+            "To accommodate a higher doping concentration",
+            "To allow for better heat dissipation",
+            "To increase the reverse saturation current"
         ],
         answer: 2
     },
     {
-        question: "When converting a Delta (Δ) network to a Wye (Y) network, the numerator for each Y resistor formula is:",
+        question: "Which of the following configurations is known as an 'Emitter Follower'?",
         options: [
-            "The sum of all delta resistors",
-            "The product of the resistors in the two adjacent Δ branches",
-            "The difference of adjacent resistors",
-            "The product of all three delta resistors"
-        ],
-        answer: 1
-    },
-    {
-        question: "For a balanced Delta network with resistors R_Δ, what is the value of the equivalent Wye network resistors R_Y?",
-        options: [
-            "R_Δ / 2",
-            "R_Δ / 3",
-            "3 * R_Δ",
-            "R_Δ"
-        ],
-        answer: 1
-    },
-    {
-        question: "When applying the Superposition theorem, how are independent voltage sources turned off?",
-        options: [
-            "Replaced by an open circuit",
-            "Replaced by a short circuit (0V)",
-            "Replaced by a resistor",
-            "Doubled in value"
-        ],
-        answer: 1
-    },
-    {
-        question: "When applying the Superposition theorem, how are independent current sources turned off?",
-        options: [
-            "Replaced by an open circuit (0A)",
-            "Replaced by a short circuit",
-            "Replaced by a resistor",
-            "Halved in value"
-        ],
-        answer: 0
-    },
-    {
-        question: "In the Superposition theorem, how are dependent sources treated?",
-        options: [
-            "They are short-circuited",
-            "They are open-circuited",
-            "They are left intact",
-            "They are removed entirely"
+            "Common Emitter (CE)",
+            "Common Base (CB)",
+            "Common Collector (CC)",
+            "Voltage Divider Bias"
         ],
         answer: 2
     },
     {
-        question: "Thevenin's theorem reduces a complex linear network to:",
+        question: "If a transistor has a Common Base current gain (α) of 0.98, what is its Common Emitter current gain (β)?",
         options: [
-            "A single current source in parallel with a resistor",
-            "A single voltage source in series with a resistance",
-            "Multiple voltage sources",
-            "An ideal current source"
+            "49",
+            "98",
+            "0.49",
+            "100"
+        ],
+        answer: 0
+    },
+    {
+        question: "For a PNP transistor, what are the primary majority charge carriers in the Emitter region?",
+        options: [
+            "Electrons",
+            "Holes",
+            "Acceptor ions",
+            "Intrinsic atoms"
         ],
         answer: 1
     },
     {
-        question: "To find the Thevenin equivalent resistance (Rth), what must be done to independent sources?",
+        question: "When designing a stable Voltage Divider bias circuit, which rule of thumb ensures the Thevenin resistance (RTH) is sufficiently small?",
         options: [
+            "RTH <= (β * RE) / 10",
+            "RTH = β * RE",
+            "RE <= RTH / 10",
+            "RTH = R1 + R2"
+        ],
+        answer: 0
+    },
+    {
+        question: "In the analysis of the output characteristics of a CE transistor, what does ICEO represent?",
+        options: [
+            "The maximum saturation collector current",
+            "The collector-to-emitter leakage current when the base is open",
+            "The total emitter current under active bias",
+            "The operational cut-off voltage"
+        ],
+        answer: 1
+    },
+    {
+        question: "To find the AC collector resistance (rc) of a CE amplifier when a load resistor (RL) is connected, how are RC and RL combined?",
+        options: [
+            "rc = RC + RL",
+            "rc = RC - RL",
+            "rc = (RC * RL) / (RC + RL)",
+            "rc = RC * RL"
+        ],
+        answer: 2
+    },
+    {
+        question: "If a single-stage CE amplifier has a voltage gain (Av) of 40 and a current gain (Ai) of 15, what is its power gain (Ap)?",
+        options: [
+            "25",
+            "55",
+            "600",
+            "2.66"
+        ],
+        answer: 2
+    },
+    {
+        question: "Why is the NPN transistor generally preferred over the PNP transistor in modern electronic designs?",
+        options: [
+            "It is cheaper to manufacture",
+            "It can handle much higher voltage levels",
+            "The mobility of electrons is significantly higher than the mobility of holes",
+            "It does not require a base current to turn on"
+        ],
+        answer: 2
+    },
+    {
+        question: "When biasing a transistor amplifier, what is a highly recommended design rule regarding the placement of the Q-point?",
+        options: [
+            "Place it as close to the Saturation region as possible",
+            "Place it right at the Cut-off point",
+            "Bias it exactly in the middle of the DC load line",
+            "Place it at zero base current"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Common Base (CB) configuration, the input signal is applied to the Emitter and the output is taken from the Collector. What terminal is the Base connected to?",
+        options: [
+            "Directly to the positive terminal of VCC",
+            "It is common to both the input and output sections",
+            "It is left floating",
+            "To the load resistor"
+        ],
+        answer: 1
+    },
+    {
+        question: "If a transistor circuit is measured and found to have IB = 0.2 mA and IE = 20.2 mA, what is its beta (β) current gain?",
+        options: [
+            "100",
+            "101",
+            "0.99",
+            "50"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a BJT, the Collector region generates the most heat. Why?",
+        options: [
+            "It is the most heavily doped region",
+            "It handles the reverse-biased junction with a large voltage drop and current",
+            "It is where the input signal is always applied",
+            "It is the narrowest region"
+        ],
+        answer: 1
+    },
+    {
+        question: "What happens to the barrier potential of a PN junction when it is forward biased?",
+        options: [
+            "It increases to block current",
+            "It remains exactly the same",
+            "It is reduced, making it easier for majority carriers to cross",
+            "It drops to absolute zero instantly"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Common Emitter amplifier, what is the approximate input resistance characteristic?",
+        options: [
+            "Extremely high (in Mega-ohms)",
+            "Moderately low (around 1k to 2k ohms)",
+            "Exactly zero ohms",
+            "Infinite"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the primary function of the bypass capacitor connected across the emitter resistor (RE) in an AC amplifier?",
+        options: [
+            "To block DC supply from reaching the load",
+            "To act as an open circuit for AC signals",
+            "To prevent the transistor from entering saturation",
+            "To provide a low-resistance path for AC signals, thereby increasing voltage gain"
+        ],
+        answer: 3
+    },
+    {
+        question: "In the equation for the base current of a Voltage Divider bias circuit: IB = (VTH - VBE) / (RTH + (β+1)RE), what does RTH represent?",
+        options: [
+            "The parallel combination of R1 and R2",
+            "The series combination of RC and RE",
+            "The internal emitter resistance",
+            "The total circuit load"
+        ],
+        answer: 0
+    },
+    {
+        question: "If the base current (IB) of a transistor in a CE configuration is exactly 0 mA, what will the collector current (IC) equal?",
+        options: [
+            "0 mA",
+            "Maximum saturation current",
+            "The leakage current ICEO",
+            "The emitter current IE"
+        ],
+        answer: 2
+    },
+    {
+        question: "What type of characteristic curve is plotted using input current (IE) versus input voltage (VBE) for a Common Base configuration?",
+        options: [
+            "Output characteristics",
+            "Input characteristics",
+            "Transfer characteristics",
+            "Power characteristics"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which leakage current makes a more significant contribution to the total collector current in a CE configuration compared to a CB configuration?",
+        options: [
+            "ICBO",
+            "ICEO",
+            "Both contribute equally",
+            "Neither contributes to total collector current"
+        ],
+        answer: 1
+    },
+    {
+        question: "When applying Kirchhoff's Voltage Law to the input loop of a CE configuration using base bias, which formula correctly solves for IB?",
+        options: [
+            "IB = VBB / RB",
+            "IB = (VBB - VBE) / RB",
+            "IB = (VCC - VCE) / RC",
+            "IB = IC / β"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an N-type semiconductor, what type of impurity is introduced to the lattice to create the majority charge carriers?",
+        options: [
+            "Trivalent impurities",
+            "Pentavalent impurities",
+            "Intrinsic impurities",
+            "Isotopic impurities"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the relationship between the alpha (α) and beta (β) current gain factors?",
+        options: [
+            "Alpha is always greater than 1, Beta is less than 1",
+            "Alpha is always less than 1, Beta is significantly greater than 1",
+            "Both Alpha and Beta are always less than 1",
+            "Both Alpha and Beta are always greater than 100"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the process of applying internal DC voltage to the transistor to establish its operating point called?",
+        options: [
+            "Amplification",
+            "Biasing",
+            "Rectification",
+            "Saturation"
+        ],
+        answer: 1
+    },
+    {
+        question: "To use a transistor as a switch in the 'ON' state, in which region must it be biased?",
+        options: [
+            "Active region",
+            "Cut-off region",
+            "Saturation region",
+            "Inverted region"
+        ],
+        answer: 2
+    },
+    {
+        question: "To use a transistor as a switch in the 'OFF' state, in which region must it be biased?",
+        options: [
+            "Active region",
+            "Cut-off region",
+            "Saturation region",
+            "Inverted region"
+        ],
+        answer: 1
+    },
+    {
+        question: "How is the Q-point (operating point) determined graphically on the output characteristics of a transistor?",
+        options: [
+            "It is the point where the base current equals zero",
+            "It is the intersection of the DC load line and the transistor's characteristic curve",
+            "It is the maximum saturation point on the y-axis",
+            "It is the maximum cutoff voltage on the x-axis"
+        ],
+        answer: 1
+    },
+    {
+        question: "According to the notes, what are the two main factors that can cause the collector current to change and unintentionally shift the Q-point?",
+        options: [
+            "Change in Beta (β) and change in temperature",
+            "Change in Alpha (α) and change in input voltage",
+            "Change in load resistance and change in capacitance",
+            "Change in power supply voltage and change in frequency"
+        ],
+        answer: 0
+    },
+    {
+        question: "Why does a change in temperature cause the collector current and the operating point to shift?",
+        options: [
+            "Because temperature physically alters the resistor values",
+            "Because the leakage current depends on minority charge carriers, which are highly temperature-dependent",
+            "Because heat causes the transistor's physical regions to expand",
+            "Because the DC power supply voltage fluctuates with heat"
+        ],
+        answer: 1
+    },
+    {
+        question: "What defines a 'single-stage' transistor amplifier?",
+        options: [
+            "It uses only one resistor in the biasing network",
+            "It amplifies only one specific frequency",
+            "It uses only one transistor in the circuit to amplify a weak signal",
+            "It utilizes only one DC power supply"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which biasing configuration is described as the most commonly used for Common Emitter transistor amplifiers?",
+        options: [
+            "Fixed Base bias",
+            "Collector-to-Base bias",
+            "Voltage Divider bias",
+            "Emitter bias"
+        ],
+        answer: 2
+    },
+    {
+        question: "Why is the Voltage Divider bias configuration named as such?",
+        options: [
+            "It divides the output voltage evenly across the load",
+            "It uses a voltage divider network (two resistors) to bias the base of the transistor",
+            "It splits the input AC signal into two separate phases",
+            "It divides the collector current by the transistor's Beta"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the Thevenin equivalent circuit for a voltage divider bias network, what does the Thevenin resistance (RTH) equal?",
+        options: [
+            "R1 in series with R2",
+            "R1 in parallel with R2",
+            "RC in parallel with RE",
+            "The internal emitter resistance (r'e)"
+        ],
+        answer: 1
+    },
+    {
+        question: "To calculate the Thevenin resistance (RTH) in the bias circuit, what must be done to the DC voltage sources?",
+        options: [
+            "They are replaced by open circuits",
             "They are doubled in value",
-            "They are left intact",
-            "They are removed and replaced by their internal resistances",
-            "They are multiplied by the load resistance"
+            "They are replaced by short circuits to ground",
+            "They are replaced by current sources"
         ],
         answer: 2
     },
     {
-        question: "According to the Maximum Power Transfer theorem, maximum power is transferred to the load when:",
+        question: "What does the Thevenin voltage (VTH) represent in the equivalent Voltage Divider bias circuit?",
         options: [
-            "The load resistance is zero",
-            "The load resistance is infinite",
-            "The load resistance equals the Thevenin resistance",
-            "The load resistance is half the Thevenin resistance"
-        ],
-        answer: 2
-    },
-    {
-        question: "What is the formula for the maximum power transferred to a load?",
-        options: [
-            "VTH^2 / RTH",
-            "VTH^2 / (2 * RTH)",
-            "VTH^2 / (4 * RTH)",
-            "VTH / RTH"
-        ],
-        answer: 2
-    },
-    {
-        question: "An electrical network with two separate ports for input and output is called a:",
-        options: [
-            "One-port network",
-            "Two-port network",
-            "Multi-node network",
-            "Active branch"
+            "The closed-circuit voltage at the collector terminal",
+            "The open-circuit voltage at the base terminal",
+            "The voltage drop across the emitter resistor",
+            "The total voltage supplied by the DC battery"
         ],
         answer: 1
     },
     {
-        question: "Which of the following is NOT an example of a two-port network?",
+        question: "What mathematical condition is required to make the collector current (IC) independent of Beta (β) in a voltage divider bias circuit?",
         options: [
-            "Transistors",
-            "Operational amplifiers",
-            "Transformers",
-            "A single two-terminal resistor"
+            "RTH >> (β + 1)RE",
+            "RTH = R1 + R2",
+            "RTH << (β + 1)RE",
+            "VTH = VBE"
         ],
-        answer: 3
+        answer: 2
     },
     {
-        question: "How many possible sets of parameters are used to describe a two-port network?",
+        question: "What is listed as a primary advantage of the Voltage Divider bias configuration?",
         options: [
-            "2",
+            "It consumes absolutely zero power",
+            "It provides flexibility in design due to the use of four distinct resistances",
+            "It requires no external DC power supply",
+            "It guarantees an infinite voltage gain"
+        ],
+        answer: 1
+    },
+    {
+        question: "If VCC = 10.6V, RC = 2.7kΩ, and IC = 2mA, what is the calculated value of the voltage drop across the collector resistor (IC * RC)?",
+        options: [
+            "2.7V",
+            "5.4V",
+            "10.6V",
+            "16V"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the typical input resistance characteristic of a Common Emitter amplifier?",
+        options: [
+            "Extremely high (50kΩ)",
+            "Moderately low (1kΩ - 2kΩ)",
+            "Exactly zero ohms",
+            "Infinite"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the typical output resistance characteristic of a Common Emitter amplifier?",
+        options: [
+            "Moderately high (around 50kΩ)",
+            "Extremely low (less than 10 ohms)",
+            "Exactly zero ohms",
+            "Moderately low (1kΩ - 2kΩ)"
+        ],
+        answer: 0
+    },
+    {
+        question: "What unique effect does a Common Emitter amplifier have on the phase of the input waveform?",
+        options: [
+            "It produces a 90-degree phase shift",
+            "It maintains the exact same phase",
+            "It produces a 180-degree phase reversal",
+            "It converts the AC phase into a DC signal"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which formula is used to approximate the internal AC emitter resistance (r'e) at room temperature?",
+        options: [
+            "r'e = VBE / IB",
+            "r'e = 25mV / IE",
+            "r'e = 25mV * IE",
+            "r'e = IC / 26mV"
+        ],
+        answer: 1
+    },
+    {
+        question: "How is the total AC collector resistance (rc) calculated when an external load resistor (RL) is present?",
+        options: [
+            "RC in series with RL",
+            "RC divided by RL",
+            "RC in parallel with RL",
+            "RC minus RL"
+        ],
+        answer: 2
+    },
+    {
+        question: "If an amplifier has an input voltage of 10mV and an output voltage of 400mV, what is its voltage gain (Av)?",
+        options: [
             "4",
-            "6",
-            "8"
+            "4000",
+            "40",
+            "0.025"
         ],
         answer: 2
     },
     {
-        question: "The Z parameters are also known as:",
+        question: "If an amplifier has an input current of 1mA and an output current of 15mA, what is its current gain (Ai)?",
         options: [
-            "Short-circuit admittance parameters",
-            "Open-circuit impedance parameters",
-            "Hybrid parameters",
-            "Transmission parameters"
+            "15",
+            "1.5",
+            "150",
+            "16"
         ],
-        answer: 1
+        answer: 0
     },
     {
-        question: "What is the unit of Z parameters?",
+        question: "How is the total power gain (Ap) of an amplifier calculated using its voltage and current gains?",
         options: [
-            "Siemens",
-            "Ohms",
-            "Volts",
-            "Amperes"
-        ],
-        answer: 1
-    },
-    {
-        question: "In evaluating Z11 and Z21, which terminal condition is applied?",
-        options: [
-            "The input port is short-circuited",
-            "The output port is short-circuited",
-            "The input port is open-circuited",
-            "The output port is open-circuited (I2 = 0)"
+            "Ap = Av + Ai",
+            "Ap = Av / Ai",
+            "Ap = Av - Ai",
+            "Ap = Av * Ai"
         ],
         answer: 3
     },
     {
-        question: "For a two-port network, what does Z12 represent?",
+        question: "How does the power gain of the Common Emitter amplifier compare to the CB and CC configurations?",
         options: [
-            "Short-circuit transfer impedance",
-            "Open-circuit input impedance",
-            "Open-circuit transfer impedance from port 2 to port 1",
-            "Output driving-point impedance"
+            "It has the lowest power gain",
+            "It has a very high power gain compared to CC and CB",
+            "Its power gain is always exactly 1",
+            "It cannot produce power gain"
+        ],
+        answer: 1
+    },
+    {
+        question: "What does the parameter 'Avoc' represent in amplifier design?",
+        options: [
+            "Average output current",
+            "Alternating voltage on collector",
+            "Open circuit voltage gain (gain when no load is connected)",
+            "Active voltage operating center"
         ],
         answer: 2
     },
     {
-        question: "When a two-port network is linear and has no dependent sources, it is said to be reciprocal if:",
+        question: "According to the useful design hints provided in the notes, where should the transistor be biased on the load line for optimal performance?",
         options: [
-            "Z11 = Z22",
-            "Z12 = -Z21",
-            "Z12 = Z21",
-            "Z11 * Z22 = 1"
+            "In the middle of the load line",
+            "At the maximum saturation point",
+            "At the extreme cutoff point",
+            "At the point of highest temperature"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the design hints, what mathematical relationship should be maintained between RB and RE to ensure stability?",
+        options: [
+            "RB >= (β * RE) * 10",
+            "RB <= (β * RE) / 10",
+            "RB = RE",
+            "RB = β / RE"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the provided calculation example where IE = 3.417mA, what is the approximate internal AC emitter resistance (r'e)?",
+        options: [
+            "1.412 Ω",
+            "82.95 Ω",
+            "7.32 Ω",
+            "25 Ω"
         ],
         answer: 2
     },
     {
-        question: "A reciprocal two-port network can be replaced by which equivalent circuit?",
+        question: "In a common emitter amplifier, if the external emitter resistor (RE) is completely bypassed by a capacitor, what is the approximate voltage gain formula?",
         options: [
-            "Pi-equivalent circuit",
-            "T-equivalent circuit",
-            "Delta-equivalent circuit",
-            "Bridge-equivalent circuit"
+            "Av ≈ RC / r'e",
+            "Av ≈ RC / RE",
+            "Av ≈ r'e / RC",
+            "Av ≈ RC * r'e"
+        ],
+        answer: 0
+    },
+    {
+        question: "If a transistor has a Beta (β) of 100 and a base current (IB) of 20µA, what is the collector current (IC)?",
+        options: [
+            "0.2mA",
+            "2mA",
+            "20mA",
+            "200mA"
         ],
         answer: 1
     },
     {
-        question: "A two-port network is said to be symmetrical if:",
+        question: "What does the term 'bias' refer to in the context of a PN junction diode?",
         options: [
-            "Z12 = Z21",
-            "Z11 = Z22",
-            "Z11 = 0",
-            "Z22 = infinity"
+            "Application of external voltage across the two terminals",
+            "Internal temperature change",
+            "The physical doping process",
+            "Intrinsic carrier density generation"
         ],
-        answer: 1
+        answer: 0
     },
     {
-        question: "The Y parameters are also known as:",
+        question: "Which of the following elements is an example of a trivalent impurity used in doping?",
         options: [
-            "Open-circuit impedance parameters",
-            "Short-circuit admittance parameters",
-            "Hybrid parameters",
-            "Chain parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "To evaluate Y11 and Y21, what condition must be met?",
-        options: [
-            "The output port is open-circuited",
-            "The output port is short-circuited (V2 = 0)",
-            "The input port is open-circuited",
-            "The input port is short-circuited"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the unit of measurement for Y parameters?",
-        options: [
-            "Ohms",
-            "Farads",
-            "Henrys",
-            "Siemens"
+            "Phosphorus",
+            "Arsenic",
+            "Antimony",
+            "Indium"
         ],
         answer: 3
     },
     {
-        question: "The hybrid (h) parameters are extensively used in modeling which electronic component?",
+        question: "Which of the following elements is an example of a pentavalent impurity used in doping?",
         options: [
-            "Inductors",
-            "Transistors",
-            "Resistors",
+            "Boron",
+            "Aluminum",
+            "Phosphorus",
+            "Gallium"
+        ],
+        answer: 2
+    },
+    {
+        question: "The quantity of minority charge carriers in both N-type and P-type materials depends strictly on:",
+        options: [
+            "External bias voltage",
+            "Temperature",
+            "Doping concentration",
+            "Junction physical width"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why do minority charge carriers depend heavily on temperature?",
+        options: [
+            "Thermal energy causes electrons to break covalent bonds",
+            "Heat increases the applied external voltage",
+            "Heat widens the physical depletion region",
+            "Heat neutralizes the immobile acceptor ions"
+        ],
+        answer: 0
+    },
+    {
+        question: "Diffusion current in a PN junction is strictly caused by the movement of:",
+        options: [
+            "Minority charge carriers",
+            "Majority charge carriers",
+            "Immobile lattice ions",
+            "Neutrons"
+        ],
+        answer: 1
+    },
+    {
+        question: "Drift current in a PN junction is strictly caused by the movement of:",
+        options: [
+            "Majority charge carriers",
+            "Minority charge carriers",
+            "Acceptor ions",
+            "Donor ions"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the direction of the drift current relative to the diffusion current in a PN junction?",
+        options: [
+            "They flow in the exact same direction",
+            "They flow perpendicular to each other",
+            "They flow in the opposite direction",
+            "They flow randomly depending on the bias"
+        ],
+        answer: 2
+    },
+    {
+        question: "Under steady-state open-circuit conditions, what is the net current across the PN junction?",
+        options: [
+            "Maximum continuous current",
+            "Zero",
+            "Equal to the drift current only",
+            "Equal to the diffusion current only"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the standard value of Boltzmann's constant (k) used in the semiconductor barrier potential formula?",
+        options: [
+            "1.6 x 10^-19 J/K",
+            "1.38066 x 10^-23 J/K",
+            "1.04 x 10^-12 J/K",
+            "1.1600 x 10^4 J/K"
+        ],
+        answer: 1
+    },
+    {
+        question: "How is absolute temperature (T) in Kelvin calculated from Celsius for semiconductor equations?",
+        options: [
+            "T = °C - 273",
+            "T = °C + 273",
+            "T = °C / 273",
+            "T = °C * 273"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the typical barrier voltage (Vb) for a Germanium (Ge) diode?",
+        options: [
+            "0.7 V",
+            "0.3 V",
+            "1.1 V",
+            "0.026 V"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the specific electrical permittivity (ε) value for Silicon?",
+        options: [
+            "1.04 x 10^-12 F/cm",
+            "1.124 x 10^-12 F/cm",
+            "1.6 x 10^-19 F/cm",
+            "1.38 x 10^-23 F/cm"
+        ],
+        answer: 0
+    },
+    {
+        question: "What is the specific electrical permittivity (ε) value for Germanium?",
+        options: [
+            "1.04 x 10^-12 F/cm",
+            "1.124 x 10^-12 F/cm",
+            "1.6 x 10^-19 F/cm",
+            "1.38 x 10^-23 F/cm"
+        ],
+        answer: 1
+    },
+    {
+        question: "According to its fundamental definition, a transistor transfers a weak signal from a:",
+        options: [
+            "High resistance input to a low resistance output",
+            "Low resistance input to a high resistance output",
+            "Low voltage input to a low voltage output",
+            "High capacitance input to a low capacitance output"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why is the NPN transistor the most popularly used configuration compared to PNP?",
+        options: [
+            "It is significantly cheaper to produce",
+            "The mobility of electrons is higher than the mobility of holes",
+            "It possesses a lower barrier potential",
+            "It requires far less doping in the emitter"
+        ],
+        answer: 1
+    },
+    {
+        question: "What are the physical characteristics of the base region in a standard BJT?",
+        options: [
+            "Very small and lightly doped",
+            "Very large and heavily doped",
+            "Very small and heavily doped",
+            "Very large and lightly doped"
+        ],
+        answer: 0
+    },
+    {
+        question: "Why is the base of a BJT designed to be very small and lightly doped?",
+        options: [
+            "To maximize electron-hole recombination",
+            "To minimize recombination so most carriers pass directly to the collector",
+            "To increase the overall heat dissipation of the device",
+            "To drastically decrease the input impedance"
+        ],
+        answer: 1
+    },
+    {
+        question: "In an active NPN transistor, approximately what percentage of electrons from the emitter successfully reach the collector?",
+        options: [
+            "2% to 5%",
+            "50% to 60%",
+            "95% to 98%",
+            "100%"
+        ],
+        answer: 2
+    },
+    {
+        question: "In BJT nomenclature, what does a subscript with two different letters, such as VCE, specifically indicate?",
+        options: [
+            "The voltage of C plus the voltage of E",
+            "The voltage from a higher potential (C) to a lower potential (E)",
+            "The total current flowing from C to E",
+            "The capacitance measured between C and E"
+        ],
+        answer: 1
+    },
+    {
+        question: "What does the parameter ICBO represent in a BJT?",
+        options: [
+            "Active collector current",
+            "Emitter-base forward current",
+            "Reverse saturation leakage current with the emitter open",
+            "Total amplified base current"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the Common Base (CB) configuration, what is the typical range for the current amplification factor (α)?",
+        options: [
+            "0.50 to 0.70",
+            "0.95 to 0.98",
+            "50 to 400",
+            "1 to 5"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the Common Emitter (CE) configuration, what is the typical range for the current amplification factor (β)?",
+        options: [
+            "0.95 to 0.98",
+            "1 to 2",
+            "50 to 400",
+            "1000 to 5000"
+        ],
+        answer: 2
+    },
+    {
+        question: "In transistor biasing, what specific junction states define the 'Cut-off' region?",
+        options: [
+            "Both junctions are Forward Biased",
+            "Both junctions are Reverse Biased",
+            "Emitter-Base is Forward Biased and Collector-Base is Reverse Biased",
+            "Emitter-Base is Reverse Biased and Collector-Base is Forward Biased"
+        ],
+        answer: 1
+    },
+    {
+        question: "In transistor biasing, what specific junction states define the 'Active' region used for amplification?",
+        options: [
+            "Both junctions are Forward Biased",
+            "Both junctions are Reverse Biased",
+            "Emitter-Base is Forward Biased and Collector-Base is Reverse Biased",
+            "Emitter-Base is Reverse Biased and Collector-Base is Forward Biased"
+        ],
+        answer: 2
+    },
+    {
+        question: "In transistor biasing, what specific junction states define the 'Saturation' region?",
+        options: [
+            "Both junctions are Forward Biased",
+            "Both junctions are Reverse Biased",
+            "Emitter-Base is Forward Biased and Collector-Base is Reverse Biased",
+            "Emitter-Base is Reverse Biased and Collector-Base is Forward Biased"
+        ],
+        answer: 0
+    },
+    {
+        question: "In the DC load line analysis of a CE configuration, what does the x-axis intercept specifically represent?",
+        options: [
+            "The cut-off voltage where VCE equals VCC",
+            "The maximum saturation collector current",
+            "The quiescent base current (IBQ)",
+            "The internal emitter voltage (VE)"
+        ],
+        answer: 0
+    },
+    {
+        question: "In the DC load line analysis, the slope of the DC load line is mathematically equal to:",
+        options: [
+            "-1 / RC",
+            "VCC / RC",
+            "β",
+            "1 / RTH"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which of the following best describes the resistance characteristics of a Common Emitter (CE) amplifier?",
+        options: [
+            "High input resistance and low output resistance",
+            "Moderately low input resistance and moderately high output resistance",
+            "Zero input resistance and infinite output resistance",
+            "Extremely high input and extremely high output resistance"
+        ],
+        answer: 1
+    },
+    {
+        question: "What specific phase relationship exists between the input and output waveforms of a Common Emitter (CE) amplifier?",
+        options: [
+            "0 degrees (perfectly in-phase)",
+            "90 degrees",
+            "180 degrees (a complete phase reversal)",
+            "360 degrees"
+        ],
+        answer: 2
+    },
+    {
+        question: "The Thermal Voltage equation VT = 0.026V is strictly valid at what condition?",
+        options: [
+            "Absolute zero (0 K)",
+            "Room temperature (27°C)",
+            "Standard boiling point (100°C)",
+            "Only in a vacuum"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the width of depletion region formula, the electrical permittivity ε is mathematically equal to:",
+        options: [
+            "εr / ε0",
+            "ε0 / εr",
+            "εr + ε0",
+            "εr * ε0"
+        ],
+        answer: 3
+    },
+    {
+        question: "In an open-circuited PN junction under steady state conditions, what is the value of the net current?",
+        options: [
+            "Maximum drift current",
+            "Zero",
+            "Equal to the diffusion current",
+            "Infinite"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which combination of semiconductor materials makes up the BJT physical structure?",
+        options: [
+            "N-type and P-type only",
+            "NPN and PNP only",
+            "Intrinsic and Extrinsic",
+            "Silicon and Germanium only"
+        ],
+        answer: 1
+    },
+    {
+        question: "Generally, amplifiers work as voltage amplifiers. However, the Common Emitter (CE) configuration also works well as a:",
+        options: [
+            "Capacitance amplifier",
+            "Power supply",
+            "Current amplifier",
+            "Voltage divider"
+        ],
+        answer: 2
+    },
+    {
+        question: "In a Common Emitter (CE) configuration, why does the (β + 1)ICBO term have a significant contribution to IC?",
+        options: [
+            "Because (β + 1) is a large quantity",
+            "Because leakage current decreases to zero",
+            "Because the base region is heavily doped",
+            "Because the load resistor amplifies it"
+        ],
+        answer: 0
+    },
+    {
+        question: "Which mathematical equation correctly relates the emitter current (IE) and base current (IB) using the Common Collector current gain (γ)?",
+        options: [
+            "IE = γ IC + γ ICBO",
+            "IE = γ IB + γ ICBO",
+            "IE = IB / γ + ICBO",
+            "IE = γ + IB + ICBO"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the output characteristics of a CE amplifier, the DC load line intersects the y-axis at a point where VCE equals:",
+        options: [
+            "VCE equals VCC",
+            "VCE equals 0",
+            "VCE equals VBE",
+            "VCE equals IB * RB"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the output characteristics of a CE amplifier, the DC load line intersects the x-axis at a point where the collector current (IC) equals:",
+        options: [
+            "IC equals VCC",
+            "IC equals IE",
+            "IC equals 0",
+            "IC equals IB"
+        ],
+        answer: 2
+    },
+    {
+        question: "Once the Q-point is formed on the load line, it should not shift. Which of the following is NOT a factor that shifts the Q-point?",
+        options: [
+            "Change in signal frequency",
+            "Change in transistor Beta (β)",
+            "Change in ambient temperature",
+            "Change in minority charge carriers"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a single stage transistor amplifier, how many transistors are used for amplifying the weak signal?",
+        options: [
+            "Only one",
+            "Two",
+            "Three",
+            "Four"
+        ],
+        answer: 0
+    },
+    {
+        question: "The Voltage Divider Bias configuration is considered the most commonly used biasing configuration because it:",
+        options: [
+            "Consumes zero power",
+            "Provides flexibility in design due to the use of 4 resistances",
+            "Requires no DC voltage source",
+            "Has no load line"
+        ],
+        answer: 1
+    },
+    {
+        question: "To obtain the Thevenin equivalent resistance (RTH) in a voltage divider bias circuit, all voltage sources must be replaced by:",
+        options: [
+            "Short circuits",
+            "Open circuits",
+            "Current sources",
             "Capacitors"
         ],
-        answer: 1
+        answer: 0
     },
     {
-        question: "In hybrid (h) parameters, what does h11 represent?",
+        question: "In the Thevenin equivalent of a Voltage Divider Bias circuit, what does VTH mathematically equal?",
         options: [
-            "Open-circuit input impedance",
-            "Short-circuit input impedance",
-            "Reverse voltage gain",
-            "Forward current gain"
+            "VCC * R1 / (R1 + R2)",
+            "VCC * R2 / (R1 + R2)",
+            "VCC * (R1 + R2)",
+            "VCC / R2"
         ],
         answer: 1
     },
     {
-        question: "What does h12 represent in the hybrid parameters?",
+        question: "In the Thevenin equivalent of a Voltage Divider Bias circuit, what does RTH mathematically equal?",
         options: [
-            "Short-circuit input impedance",
-            "Open-circuit output admittance",
-            "Open-circuit reverse voltage gain",
-            "Short-circuit forward current gain"
+            "R1 + R2",
+            "R1 - R2",
+            "(R1 * R2) / (R1 + R2)",
+            "R1 / R2"
         ],
         answer: 2
     },
     {
-        question: "The parameter h21 is defined as:",
+        question: "When applying Kirchhoff's Voltage Law to the input loop of a Voltage Divider Bias circuit, the equation for base current (IB) is:",
         options: [
-            "Short-circuit forward current gain",
-            "Open-circuit reverse voltage gain",
-            "Open-circuit input admittance",
-            "Short-circuit output impedance"
+            "(VTH - VBE) / (RTH + (β+1)RE)",
+            "(VTH + VBE) / RTH",
+            "VCC / (RTH + RE)",
+            "VTH / (R1 + R2)"
         ],
         answer: 0
     },
     {
-        question: "Which two-port parameters are defined by expressing the input variables (V1, I1) in terms of the output variables (V2, -I2)?",
+        question: "To make the collector current (IC) independent of the transistor's β in a Voltage Divider Bias circuit, the design must satisfy:",
         options: [
-            "Z parameters",
-            "Y parameters",
-            "Transmission (ABCD) parameters",
-            "g parameters"
-        ],
-        answer: 2
-    },
-    {
-        question: "Transmission parameters are also known as:",
-        options: [
-            "Hybrid parameters",
-            "Inverse hybrid parameters",
-            "General circuit parameters or chain parameters",
-            "Admittance parameters"
-        ],
-        answer: 2
-    },
-    {
-        question: "In Transmission (ABCD) parameters, what does 'A' represent?",
-        options: [
-            "Negative short-circuit transfer impedance",
-            "Open-circuit transfer admittance",
-            "Negative short-circuit current ratio",
-            "Open-circuit voltage ratio"
-        ],
-        answer: 3
-    },
-    {
-        question: "For a reciprocal network expressed in ABCD parameters, what condition holds true?",
-        options: [
-            "AD - BC = 0",
-            "AD - BC = 1",
-            "A = D",
-            "B = C"
+            "RTH >> (β+1)RE",
+            "RTH << (β+1)RE",
+            "RTH = VBE",
+            "RTH = VCC"
         ],
         answer: 1
     },
     {
-        question: "The Laplace transform converts a function from the time domain into the:",
+        question: "By applying Kirchhoff's Voltage Law to the output loop of a Voltage Divider Bias circuit, the Collector-Emitter voltage (VCE) is:",
         options: [
-            "Spatial domain",
-            "Phasor domain",
-            "Complex frequency domain",
-            "Magnetic domain"
-        ],
-        answer: 2
-    },
-    {
-        question: "In the complex frequency variable s = σ + jω, what does 's' represent?",
-        options: [
-            "Real number",
-            "Imaginary number",
-            "Complex number",
-            "Negative number"
-        ],
-        answer: 2
-    },
-    {
-        question: "The integration limits for the standard unilateral Laplace transform used in the notes are:",
-        options: [
-            "t = -∞ to +∞",
-            "t = 0- to infinity",
-            "t = 0+ to infinity",
-            "t = -1 to 1"
+            "VCE = VCC + IC(RC + RE)",
+            "VCE = VCC - IC(RC + RE)",
+            "VCE = VCC - IC * RC",
+            "VCE = VBE - IC * RE"
         ],
         answer: 1
     },
     {
-        question: "Why is t = 0- used as the lower limit of integration in the Laplace transform?",
+        question: "In the calculation examples for the CE amplifier, why is the emitter current (IE) generally considered approximately equal to the collector current (IC)?",
         options: [
-            "To ignore impulse functions",
-            "To ensure that impulse functions at t=0 are included",
-            "Because time is always negative",
-            "To simplify the integral"
-        ],
-        answer: 1
-    },
-    {
-        question: "For a function f(t) to have a Laplace transform, the integral must:",
-        options: [
-            "Diverge to infinity",
-            "Be exactly zero",
-            "Converge to a finite value",
-            "Be imaginary"
-        ],
-        answer: 2
-    },
-    {
-        question: "In nodal analysis, what is formed when a voltage source is connected between two non-reference nodes?",
-        options: [
-            "A supernode",
-            "A supermesh",
-            "A short circuit",
-            "An open circuit"
+            "Because the base current (IB) is very small",
+            "Because the collector current is zero",
+            "Because the power supply is low",
+            "Because the emitter is lightly doped"
         ],
         answer: 0
     },
     {
-        question: "What is the mathematical relationship between the Y parameter matrix and the Z parameter matrix?",
-        options: [
-            "[Y] = [Z]",
-            "[Y] = [Z]^2",
-            "[Y] = [Z]^-1",
-            "[Y] = -[Z]"
-        ],
-        answer: 2
-    },
-    {
-        question: "Which matrix parameter is defined as the inverse of the hybrid parameters?",
-        options: [
-            "Y parameters",
-            "g parameters",
-            "ABCD parameters",
-            "Z parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "In the g parameters, what does g11 represent?",
-        options: [
-            "Open-circuit input admittance",
-            "Short-circuit reverse current gain",
-            "Open-circuit forward voltage gain",
-            "Short-circuit output impedance"
-        ],
-        answer: 0
-    },
-    {
-        question: "The inverse transmission parameters are also known as:",
-        options: [
-            "g parameters",
-            "abcd parameters or b parameters",
-            "y parameters",
-            "h parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "Which of the following functions does NOT have an independent source symbol?",
-        options: [
-            "Battery",
-            "D.C. generator",
-            "Alternator",
-            "Dependent source (diamond symbol)"
-        ],
-        answer: 3
-    },
-    {
-        question: "What is the definition of a mesh in circuit analysis?",
-        options: [
-            "An open path in a circuit",
-            "A path with no elements",
-            "It is a loop that contains no other loop within it",
-            "The junction of three branches"
-        ],
-        answer: 2
-    },
-    {
-        question: "The direct method of network analysis includes all EXCEPT:",
-        options: [
-            "Loop analysis",
-            "Nodal analysis",
-            "Network reduction (Delta to Star conversion)",
-            "Superposition theorem"
-        ],
-        answer: 2
-    },
-    {
-        question: "Which of the following is classified as a Network Reduction Method?",
-        options: [
-            "Kirchhoff's laws",
-            "Nodal analysis",
-            "Loop analysis",
-            "Thevenin's theorem"
-        ],
-        answer: 3
-    },
-    {
-        question: "If we go through a battery from the positive terminal to the negative terminal (opposing the EMF), the voltage change is considered a:",
-        options: [
-            "Fall in voltage (-)",
-            "Rise in voltage (+)",
-            "Zero voltage",
-            "Infinite voltage"
-        ],
-        answer: 0
-    },
-    {
-        question: "A rise in voltage across a component should be given what algebraic sign in KVL?",
-        options: [
-            "Positive (+)",
-            "Negative (-)",
-            "Neutral",
-            "Complex"
-        ],
-        answer: 0
-    },
-    {
-        question: "When defining the parameter Z22, the input port must be:",
-        options: [
-            "Short-circuited",
-            "Open-circuited (I1 = 0)",
-            "Grounded",
-            "Powered"
-        ],
-        answer: 1
-    },
-    {
-        question: "What are Z11 and Z22 sometimes referred to as?",
-        options: [
-            "Transfer impedances",
-            "Driving-point impedances",
-            "Admittances",
-            "Hybrid parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "A network is reciprocal if h12 equals:",
-        options: [
-            "h21",
-            "h11",
-            "-h21",
-            "1 / h22"
-        ],
-        answer: 2
-    },
-    {
-        question: "In a two-port network, the current entering the input port is denoted as:",
-        options: [
-            "I2",
-            "-I2",
-            "I1",
-            "-I1"
-        ],
-        answer: 2
-    },
-    {
-        question: "In the Transmission parameters matrix, why is -I2 used instead of I2?",
-        options: [
-            "Because the current enters the network",
-            "Because the current is considered to be leaving the network at the receiving end",
-            "To make the math complex",
-            "It is a convention for resistors"
-        ],
-        answer: 1
-    },
-    {
-        question: "The open-circuit transfer admittance in transmission parameters is represented by which letter?",
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: 2
-    },
-    {
-        question: "Which transmission parameter is described as the negative short-circuit transfer impedance?",
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: 1
-    },
-    {
-        question: "What are the units for the transmission parameter A?",
-        options: [
-            "Ohms",
-            "Siemens",
-            "Volts",
-            "Dimensionless"
-        ],
-        answer: 3
-    },
-    {
-        question: "What are the units for the transmission parameter B?",
-        options: [
-            "Dimensionless",
-            "Siemens",
-            "Ohms",
-            "Amperes"
-        ],
-        answer: 2
-    },
-    {
-        question: "The transformation from Wye (Y) to Delta (Δ) networks requires knowing the sum of all possible products of Y resistors taken two at a time. This sum is divided by:",
-        options: [
-            "The sum of all Y resistors",
-            "The adjacent Y resistor",
-            "The opposite Y resistor",
-            "The product of all Y resistors"
-        ],
-        answer: 2
-    },
-    {
-        question: "Loop analysis is advantageous because it applies to non-planar networks, whereas mesh analysis only applies to:",
-        options: [
-            "Planar networks only",
-            "3D networks only",
-            "Passive networks only",
-            "Active networks only"
-        ],
-        answer: 0
-    },
-    {
-        question: "In a graph with 6 branches and 4 nodes, how many links (chords) will it have?",
-        options: [
-            "2",
-            "3",
-            "4",
-            "5"
-        ],
-        answer: 1
-    },
-    {
-        question: "Which theorem calculates the maximum power a linear circuit can deliver to a load?",
-        options: [
-            "Thevenin's theorem",
-            "Norton's theorem",
-            "Maximum Power Transfer theorem",
-            "Superposition theorem"
-        ],
-        answer: 2
-    },
-    {
-        question: "To calculate the Thevenin voltage (VTH), the load RL is:",
-        options: [
-            "Short-circuited",
-            "Removed from the circuit (open-circuited)",
-            "Doubled in value",
-            "Halved in value"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the formula for Y11 expressed in terms of Z parameters?",
-        options: [
-            "Z11 / Δz",
-            "Z12 / Δz",
-            "Z22 / Δz",
-            "Z21 / Δz"
-        ],
-        answer: 2
-    },
-    {
-        question: "According to the conversion formulas, h11 can be calculated from Z parameters as:",
-        options: [
-            "Δz / Z22",
-            "Z11 / Z22",
-            "Z12 / Z22",
-            "1 / Z22"
-        ],
-        answer: 0
-    },
-    {
-        question: "Which scientist first applied topology to the study of electric networks in 1847?",
-        options: [
-            "Euler",
-            "Kirchhoff",
-            "Thevenin",
-            "Norton"
-        ],
-        answer: 1
-    },
-    {
-        question: "Topology deals with properties of networks which are:",
-        options: [
-            "Unaffected when the network is powered off",
-            "Unaffected when the network is short-circuited",
-            "Unaffected when we stretch, twist, or distort the size and shape of the network",
-            "Unaffected when the voltage is reversed"
-        ],
-        answer: 2
-    },
-    {
-        question: "In a graph, what is a closed path in which no element or node is encountered more than once?",
-        options: [
-            "Branch",
-            "Node",
-            "Loop",
-            "Tree"
-        ],
-        answer: 2
-    },
-    {
-        question: "What is the term for an active element in which the source quantity is controlled by another voltage or current?",
-        options: [
-            "Independent source",
-            "Dependent (or controlled) source",
-            "Passive source",
-            "Battery"
-        ],
-        answer: 1
-    },
-    {
-        question: "The dependent source VCVS stands for:",
-        options: [
-            "Voltage-Controlled Voltage Source",
-            "Variable-Current Voltage Source",
-            "Voltage-Current Variable Source",
-            "Voltage-Controlled Variable Source"
-        ],
-        answer: 0
-    },
-    {
-        question: "Which of the following software packages is NOT explicitly mentioned as an alternative to Cramer's rule for solving matrix equations?",
-        options: [
-            "MATLAB",
-            "Mathcad",
-            "Quattro Pro",
-            "Photoshop"
-        ],
-        answer: 3
-    },
-    {
-        question: "In nodal analysis, branch currents are typically expressed in terms of node voltages using:",
-        options: [
-            "Faraday's Law",
-            "Coulomb's Law",
-            "Ohm's Law",
-            "Ampere's Law"
-        ],
-        answer: 2
-    },
-    {
-        question: "In evaluating Y22, the input port is short-circuited. What is the formula for Y22?",
-        options: [
-            "V2 / I2",
-            "I2 / V2 (with V1 = 0)",
-            "I1 / V2",
-            "V1 / I1"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the primary use of two-port networks in electronics according to the text?",
-        options: [
-            "To model transistors and facilitate cascaded design",
-            "To generate high voltage",
-            "To measure temperature",
-            "To store mechanical energy"
-        ],
-        answer: 0
-    },
-    {
-        question: "What are the variables used to characterize a two-port network?",
-        options: [
-            "V1, V2, I1, and I2",
-            "V, R, I, P",
-            "L, C, R, G",
-            "A, B, C, D"
-        ],
-        answer: 0
-    },
-    {
-        question: "The Y-parameter equivalent circuit for a non-reciprocal network is modeled using:",
-        options: [
-            "Resistors only",
-            "Capacitors only",
-            "Dependent current sources",
-            "Batteries"
-        ],
-        answer: 2
-    },
-    {
-        question: "The condition ad - bc = 1 applies to which set of parameters for a reciprocal network?",
-        options: [
-            "Z parameters",
-            "Inverse transmission (abcd) parameters",
-            "h parameters",
-            "Y parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "The characteristic equation roots and initial conditions are parts of which classical method step that Laplace transforms simplify?",
-        options: [
-            "Guessing the answer",
-            "Building the hardware",
-            "Solving the homogeneous differential equation and evaluating initial conditions",
-            "Drawing schematics"
-        ],
-        answer: 2
-    },
-    {
-        question: "The Laplace transform changes a time-domain function f(t) to a:",
-        options: [
-            "t-domain function F(t)",
-            "Frequency-domain function F(s)",
-            "Phase-domain function F(p)",
-            "Spatial-domain function F(x)"
-        ],
-        answer: 1
-    },
-    {
-        question: "Which of the following parameters has Siemens as its unit of measurement?",
-        options: [
-            "Ohms",
-            "Volts",
-            "Admittance (Y) parameters",
-            "Watts"
-        ],
-        answer: 2
-    },
-    {
-        question: "To obtain the g parameters, we apply a voltage source to the output port and a current source to the:",
-        options: [
-            "Output port",
-            "Input port",
-            "Ground",
-            "Reference node"
-        ],
-        answer: 1
-    },
-    {
-        question: "What does the parameter g21 represent?",
-        options: [
-            "Short-circuit reverse current gain",
-            "Open-circuit forward voltage gain",
-            "Short-circuit output impedance",
-            "Open-circuit input admittance"
-        ],
-        answer: 1
-    },
-    {
-        question: "In evaluating the Thevenin equivalent, what is the internal resistance of an ideal voltage source (i.e. replacing it)?",
-        options: [
-            "Zero ohms (Short circuit)",
-            "Infinite ohms",
-            "100 ohms",
-            "1 ohm"
-        ],
-        answer: 0
-    },
-    {
-        question: "When applying the Superposition theorem, an ideal current source is replaced by an open circuit. What is its inferred internal resistance?",
-        options: [
-            "Zero ohms",
-            "Infinite ohms (Open circuit)",
-            "100 ohms",
-            "50 ohms"
-        ],
-        answer: 1
-    },
-        {
-        question: "What is the Laplace transform of the unit impulse function δ(t)?",
-        options: [
-            "1/s",
-            "1",
-            "s",
-            "0"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the Laplace transform of the unit step function u(t)?",
-        options: [
-            "1/s",
-            "1",
-            "s",
-            "1/s^2"
-        ],
-        answer: 0
-    },
-    {
-        question: "What is the Laplace transform of the exponential function e^{-at}?",
-        options: [
-            "1/(s-a)",
-            "1/(s+a)",
-            "s/(s+a)",
-            "a/s"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the Laplace transform of the sinusoidal function sin(ωt)?",
-        options: [
-            "s/(s^2+ω^2)",
-            "ω/(s^2-ω^2)",
-            "ω/(s^2+ω^2)",
-            "s/(s^2-ω^2)"
-        ],
-        answer: 2
-    },
-    {
-        question: "What is the Laplace transform of the cosinusoidal function cos(ωt)?",
-        options: [
-            "ω/(s^2+ω^2)",
-            "s/(s^2+ω^2)",
-            "s/(s^2-ω^2)",
-            "ω/(s^2-ω^2)"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the Laplace transform of the ramp function t?",
-        options: [
-            "1/s",
-            "1/s^2",
-            "1/s^3",
-            "s"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the Laplace transform of t^n?",
-        options: [
-            "n/s^n",
-            "n!/s^(n+1)",
-            "n!/s^n",
-            "1/s^(n+1)"
-        ],
-        answer: 1
-    },
-    {
-        question: "The time shift property states that the Laplace transform of f(t-a)u(t-a) is:",
-        options: [
-            "e^(-as)F(s)",
-            "e^(as)F(s)",
-            "F(s-a)",
-            "F(s+a)"
-        ],
-        answer: 0
-    },
-    {
-        question: "The frequency shift property states that the Laplace transform of e^{-at}f(t) is:",
-        options: [
-            "e^(-as)F(s)",
-            "F(s-a)",
-            "F(s+a)",
-            "sF(s)"
-        ],
-        answer: 2
-    },
-    {
-        question: "The theorem L[af1(t) + bf2(t)] = aF1(s) + bF2(s) is known as the:",
-        options: [
-            "Duality property",
-            "Scaling property",
-            "Linearity property",
-            "Superposition property"
-        ],
-        answer: 2
-    },
-    {
-        question: "According to the time differentiation property, what is L[df/dt]?",
-        options: [
-            "sF(s) - f(0^-)",
-            "F(s)/s",
-            "s^2F(s)",
-            "-dF(s)/ds"
-        ],
-        answer: 0
-    },
-    {
-        question: "According to the time integration property, what is the Laplace transform of the integral of f(t)?",
-        options: [
-            "sF(s)",
-            "F(s)/s",
-            "-dF(s)/ds",
-            "∫F(s)ds"
-        ],
-        answer: 1
-    },
-    {
-        question: "According to the frequency differentiation property, what is L[t f(t)]?",
-        options: [
-            "sF(s)",
-            "-dF(s)/ds",
-            "F(s)/s",
-            "d^2F(s)/ds^2"
-        ],
-        answer: 1
-    },
-    {
-        question: "According to the frequency integration property, what is L[f(t)/t]?",
-        options: [
-            "F(s)/s",
-            "∫_0^s F(s)ds",
-            "∫_s^∞ F(s)ds",
-            "sF(s)"
-        ],
-        answer: 2
-    },
-    {
-        question: "The Laplace transform of a periodic function with period T is F1(s) divided by:",
-        options: [
-            "1+e^(-sT)",
-            "1-e^(-sT)",
-            "sT",
-            "1-sT"
-        ],
-        answer: 1
-    },
-    {
-        question: "The roots of the numerator polynomial N(s) = 0 in a transfer function are called:",
-        options: [
-            "Poles",
-            "Zeros",
-            "Residues",
-            "Harmonics"
-        ],
-        answer: 1
-    },
-    {
-        question: "The roots of the denominator polynomial D(s) = 0 in a transfer function are called:",
-        options: [
-            "Poles",
-            "Zeros",
-            "Residues",
-            "Constants"
-        ],
-        answer: 0
-    },
-    {
-        question: "The values of s at which the transfer function F(s) becomes infinitely large are:",
-        options: [
-            "Zeros",
-            "Poles",
-            "Roots",
-            "Integrals"
-        ],
-        answer: 1
-    },
-    {
-        question: "The values of s at which the transfer function F(s) becomes exactly zero are:",
-        options: [
-            "Poles",
-            "Zeros",
-            "Residues",
-            "Asymptotes"
-        ],
-        answer: 1
-    },
-    {
-        question: "In control engineering, a system is said to be stable if the roots of the denominator polynomial are:",
-        options: [
-            "Positive real numbers",
-            "Negative real numbers",
-            "Imaginary only",
+        question: "The typical input resistance of a Common Emitter (CE) amplifier is characterized as:",
+        options: [
+            "Infinite",
+            "Moderately low (1kΩ - 2kΩ)",
+            "Extremely high (50kΩ)",
             "Zero"
         ],
         answer: 1
     },
     {
-        question: "A mathematical technique used to decompose a complex rational function F(s) into simpler terms for inverse Laplace transformation is called:",
+        question: "The typical output resistance of a Common Emitter (CE) amplifier is characterized as:",
         options: [
-            "Cramer's rule",
-            "Partial fraction expansion",
-            "Matrix inversion",
-            "Convolution"
-        ],
-        answer: 1
-    },
-    {
-        question: "In partial fraction expansion, the real constants (K1, K2, ..., Kn) associated with simple poles are called:",
-        options: [
-            "Poles",
-            "Zeros",
-            "Residues",
-            "Determinants"
-        ],
-        answer: 2
-    },
-    {
-        question: "Which method is mentioned in the text for determining the residues in partial fraction expansion?",
-        options: [
-            "Heaviside's expansion theorem (Residue method)",
-            "Newton-Raphson method",
-            "Runge-Kutta method",
-            "Euler's method"
-        ],
-        answer: 0
-    },
-    {
-        question: "If a transfer function has a pair of complex conjugate roots, the corresponding constants A and B in partial fractions will be:",
-        options: [
-            "Real and equal",
-            "Complex conjugates of each other",
+            "Infinite",
             "Zero",
-            "Infinite"
-        ],
-        answer: 1
-    },
-    {
-        question: "What is the Laplace transform of e^{-at}cos(ωt)?",
-        options: [
-            "ω/((s+a)^2+ω^2)",
-            "s/((s+a)^2+ω^2)",
-            "(s+a)/((s+a)^2+ω^2)",
-            "(s-a)/((s-a)^2+ω^2)"
+            "Moderately high (50kΩ)",
+            "Moderately low (1kΩ - 2kΩ)"
         ],
         answer: 2
     },
     {
-        question: "What is the Laplace transform of e^{-at}sin(ωt)?",
+        question: "The typical voltage gain of a Common Emitter (CE) amplifier is characterized as:",
         options: [
-            "ω/((s+a)^2+ω^2)",
-            "(s+a)/((s+a)^2+ω^2)",
-            "ω/((s-a)^2+ω^2)",
-            "s/((s+a)^2+ω^2)"
-        ],
-        answer: 0
-    },
-    {
-        question: "To use partial fraction expansion directly, the degree of the numerator polynomial N(s) must be:",
-        options: [
-            "Greater than the denominator D(s)",
-            "Equal to the denominator D(s)",
-            "Less than the denominator D(s)",
-            "Exactly zero"
-        ],
-        answer: 2
-    },
-    {
-        question: "The inverse Laplace transform converts a frequency-domain function F(s) to a:",
-        options: [
-            "Time-domain function f(t)",
-            "Phasor",
-            "Spatial-domain function",
-            "Matrix"
-        ],
-        answer: 0
-    },
-    {
-        question: "The Laplace transform of a constant K is:",
-        options: [
-            "K",
-            "K/s",
-            "Ks",
-            "K/s^2"
-        ],
-        answer: 1
-    },
-    {
-        question: "The unit impulse function δ(t) is zero everywhere except at:",
-        options: [
-            "t=infinity",
-            "t=-1",
-            "t=0",
-            "t=1"
-        ],
-        answer: 2
-    },
-    {
-        question: "For a two-port network, the Z parameter Z11 is defined as V1/I1 when:",
-        options: [
-            "V2 = 0",
-            "I2 = 0",
-            "V1 = 0",
-            "I1 = 0"
-        ],
-        answer: 1
-    },
-    {
-        question: "For a two-port network, the Y parameter Y21 is defined as I2/V1 when:",
-        options: [
-            "I1 = 0",
-            "V1 = 0",
-            "I2 = 0",
-            "V2 = 0"
-        ],
-        answer: 3
-    },
-    {
-        question: "In the hybrid (h) parameters, h12 represents the:",
-        options: [
-            "Open-circuit reverse voltage gain",
-            "Short-circuit forward current gain",
-            "Short-circuit input impedance",
-            "Open-circuit output admittance"
-        ],
-        answer: 0
-    },
-    {
-        question: "In the hybrid (h) parameters, h21 represents the:",
-        options: [
-            "Open-circuit reverse voltage gain",
-            "Short-circuit forward current gain",
-            "Short-circuit input impedance",
-            "Open-circuit output admittance"
-        ],
-        answer: 1
-    },
-    {
-        question: "In the transmission (ABCD) parameters, A represents the:",
-        options: [
-            "Negative short-circuit transfer impedance",
-            "Open-circuit voltage ratio",
-            "Negative short-circuit current ratio",
-            "Open-circuit transfer admittance"
-        ],
-        answer: 1
-    },
-    {
-        question: "In the transmission (ABCD) parameters, D represents the:",
-        options: [
-            "Negative short-circuit transfer impedance",
-            "Open-circuit voltage ratio",
-            "Negative short-circuit current ratio",
-            "Open-circuit transfer admittance"
-        ],
-        answer: 2
-    },
-    {
-        question: "In the transmission (ABCD) parameters, which parameter has the unit of Ohms?",
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: 1
-    },
-    {
-        question: "In the transmission (ABCD) parameters, which parameter has the unit of Siemens?",
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: 2
-    },
-    {
-        question: "In the inverse hybrid (g) parameters, g11 represents the:",
-        options: [
-            "Open-circuit input admittance",
-            "Short-circuit reverse current gain",
-            "Open-circuit forward voltage gain",
-            "Short-circuit output impedance"
-        ],
-        answer: 0
-    },
-    {
-        question: "In the inverse hybrid (g) parameters, g22 represents the:",
-        options: [
-            "Open-circuit input admittance",
-            "Short-circuit reverse current gain",
-            "Open-circuit forward voltage gain",
-            "Short-circuit output impedance"
-        ],
-        answer: 3
-    },
-    {
-        question: "A two-port network is symmetrical if the Z parameters satisfy the condition:",
-        options: [
-            "Z12 = Z21",
-            "Z11 = Z22",
-            "Z11 * Z22 = 1",
-            "Z12 = -Z21"
-        ],
-        answer: 1
-    },
-    {
-        question: "A two-port network is reciprocal if the Y parameters satisfy the condition:",
-        options: [
-            "Y11 = Y22",
-            "Y12 = -Y21",
-            "Y12 = Y21",
-            "Y11 * Y22 = 1"
-        ],
-        answer: 2
-    },
-    {
-        question: "A two-port network is reciprocal if the hybrid (h) parameters satisfy the condition:",
-        options: [
-            "h11 = h22",
-            "h12 = h21",
-            "h12 = -h21",
-            "h11 * h22 - h12 * h21 = 1"
-        ],
-        answer: 2
-    },
-    {
-        question: "The adjoint of the [Z] matrix divided by its determinant gives which parameter matrix?",
-        options: [
-            "[h]",
-            "[g]",
-            "[ABCD]",
-            "[Y]"
-        ],
-        answer: 3
-    },
-    {
-        question: "The inverse of the [h] parameter matrix yields which parameter matrix?",
-        options: [
-            "[Z]",
-            "[Y]",
-            "[g]",
-            "[ABCD]"
-        ],
-        answer: 2
-    },
-    {
-        question: "For a reciprocal network in ABCD parameters, the determinant AD - BC is equal to:",
-        options: [
-            "0",
-            "1",
-            "-1",
-            "Infinity"
-        ],
-        answer: 1
-    },
-    {
-        question: "To find the Y11 parameter from the Z parameters, you use the formula:",
-        options: [
-            "Z11 / ΔZ",
-            "Z12 / ΔZ",
-            "Z22 / ΔZ",
-            "-Z21 / ΔZ"
-        ],
-        answer: 2
-    },
-    {
-        question: "To find the Y12 parameter from the Z parameters, you use the formula:",
-        options: [
-            "-Z12 / ΔZ",
-            "Z12 / ΔZ",
-            "Z11 / ΔZ",
-            "-Z22 / ΔZ"
-        ],
-        answer: 0
-    },
-    {
-        question: "The parameter h11 expressed in terms of Z parameters is:",
-        options: [
-            "ΔZ / Z22",
-            "Z11 / Z22",
-            "Z12 / Z22",
-            "1 / Z22"
-        ],
-        answer: 0
-    },
-    {
-        question: "The parameter h22 expressed in terms of Z parameters is:",
-        options: [
-            "ΔZ / Z22",
-            "Z11 / Z22",
-            "Z12 / Z22",
-            "1 / Z22"
-        ],
-        answer: 3
-    },
-    {
-        question: "When converting from transmission (ABCD) to Z parameters, Z11 is equal to:",
-        options: [
-            "A/C",
-            "B/C",
-            "ΔT/C",
-            "D/C"
-        ],
-        answer: 0
-    },
-    {
-        question: "When converting from transmission (ABCD) to Z parameters, Z22 is equal to:",
-        options: [
-            "A/C",
-            "B/C",
-            "ΔT/C",
-            "D/C"
-        ],
-        answer: 3
-    },
-    {
-        question: "The general equivalent circuit of a non-reciprocal network using Y parameters uses what type of dependent sources?",
-        options: [
-            "Voltage-controlled voltage sources",
-            "Current-controlled current sources",
-            "Voltage-controlled current sources",
-            "Current-controlled voltage sources"
-        ],
-        answer: 2
-    },
-    {
-        question: "The equivalent circuit of a non-reciprocal network using Z parameters uses what type of dependent sources?",
-        options: [
-            "Current-controlled voltage sources",
-            "Voltage-controlled current sources",
-            "Voltage-controlled voltage sources",
-            "Current-controlled current sources"
-        ],
-        answer: 0
-    },
-    {
-        question: "In the general hybrid (h) parameter equivalent circuit, the input port has a:",
-        options: [
-            "Current-controlled voltage source",
-            "Voltage-controlled voltage source",
-            "Voltage-controlled current source",
-            "Current-controlled current source"
-        ],
-        answer: 1
-    },
-    {
-        question: "In the general hybrid (h) parameter equivalent circuit, the output port has a:",
-        options: [
-            "Current-controlled voltage source",
-            "Voltage-controlled voltage source",
-            "Voltage-controlled current source",
-            "Current-controlled current source"
-        ],
-        answer: 3
-    },
-    {
-        question: "The term 'T-network' is most naturally analyzed and associated directly with which parameters?",
-        options: [
-            "Z parameters",
-            "Y parameters",
-            "g parameters",
-            "h parameters"
-        ],
-        answer: 0
-    },
-    {
-        question: "The term 'Pi (π) network' is most naturally analyzed and associated directly with which parameters?",
-        options: [
-            "Z parameters",
-            "Y parameters",
-            "g parameters",
-            "h parameters"
-        ],
-        answer: 1
-    },
-    {
-        question: "Which two-port parameters are specifically useful when cascading multiple two-port networks together?",
-        options: [
-            "Z parameters",
-            "Y parameters",
-            "h parameters",
-            "Transmission (ABCD) parameters"
-        ],
-        answer: 3
-    },
-    {
-        question: "In a two-port network, what convention is adopted for the output port current I2 in the standard Z, Y, h, and g parameters?",
-        options: [
-            "It is assumed to be entering the upper positive terminal",
-            "It is assumed to be leaving the upper positive terminal",
-            "It is zero",
-            "It flows to ground"
-        ],
-        answer: 0
-    },
-    {
-        question: "Why is -I2 used instead of I2 in the transmission (ABCD) parameter equations?",
-        options: [
-            "Because the current is considered to be entering the network",
-            "Because the current is considered to be leaving the network at the receiving end",
-            "To make the determinant zero",
-            "It is a convention for inductors"
-        ],
-        answer: 1
-    },
-    {
-        question: "A linear circuit is defined as a circuit whose parameters:",
-        options: [
-            "Change with time",
-            "Change with voltage or current",
-            "Are constant and do not change with voltage or current",
-            "Only allow current in one direction"
-        ],
-        answer: 2
-    },
-    {
-        question: "The property of a circuit being 'bilateral' means that it:",
-        options: [
-            "Performs its function equally well in either direction",
-            "Only operates in one direction",
-            "Contains no passive elements",
-            "Contains two voltage sources"
-        ],
-        answer: 0
-    },
-    {
-        question: "A diode rectifier is given as an example of what kind of circuit?",
-        options: [
-            "Bilateral circuit",
-            "Linear circuit",
-            "Unilateral circuit",
-            "Passive circuit"
-        ],
-        answer: 2
-    },
-    {
-        question: "By Kirchhoff's Current Law (KCL), the algebraic sum of currents flowing towards a node is:",
-        options: [
-            "Maximum",
-            "One",
-            "Zero",
+            "Less than 1",
+            "Exactly 1",
+            "High (around 150)",
             "Infinite"
         ],
         answer: 2
     },
     {
-        question: "According to the sign convention for KVL in the text, if we traverse a resistor in the same direction as the current, the voltage change is given a:",
+        question: "What effect does the Common Emitter (CE) amplifier have on the phase of the input waveform at the output?",
         options: [
-            "Positive (+) sign",
-            "Negative (-) sign",
-            "Neutral sign",
-            "Zero value"
-        ],
-        answer: 1
-    },
-    {
-        question: "According to the sign convention for KVL, traversing a battery from its positive to its negative terminal is considered a:",
-        options: [
-            "Fall in voltage (-)",
-            "Rise in voltage (+)",
-            "Zero voltage change",
-            "Power dissipation"
-        ],
-        answer: 0
-    },
-    {
-        question: "In Nodal analysis, if a network has n nodes, the number of nodes assigned a non-reference voltage is:",
-        options: [
-            "n",
-            "n+1",
-            "n-1",
-            "n/2"
+            "Produces a 90-degree phase shift",
+            "Maintains the exact same phase",
+            "Produces a 180-degree phase reversal",
+            "Converts AC to DC"
         ],
         answer: 2
     },
     {
-        question: "What is the reference node typically assigned as its voltage value?",
+        question: "What is the formula for the AC emitter resistance (r'e) at room temperature?",
         options: [
-            "1V",
-            "Infinite voltage",
-            "The battery voltage",
-            "0V"
+            "25mV * IE",
+            "VBE / IB",
+            "25mV / IE",
+            "IC / 25mV"
+        ],
+        answer: 2
+    },
+    {
+        question: "When calculating the AC collector resistance (rc) of an amplifier connected to a load resistor (RL), the effective resistance is:",
+        options: [
+            "RC in series with RL",
+            "RC in parallel with RL",
+            "RC minus RL",
+            "RC divided by RL"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the formula for the voltage gain (Av) of a CE amplifier with an unbypassed emitter resistor RE?",
+        options: [
+            "rc / (r'e + RE)",
+            "rc / RE",
+            "rc * (r'e + RE)",
+            "(r'e + RE) / rc"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the useful design hints, where is the most optimal place to bias a transistor on the load line?",
+        options: [
+            "At the cutoff point",
+            "At the saturation point",
+            "Middle of the load line",
+            "Where base current is zero"
+        ],
+        answer: 2
+    },
+    {
+        question: "According to the useful design hints, the base resistance (RB) should be restricted to:",
+        options: [
+            "RB <= β * RE / 10",
+            "RB >= β * RE",
+            "RB = RE",
+            "RB = 0"
+        ],
+        answer: 0
+    },
+    {
+        question: "The parameter Avoc in transistor amplifier design specifically stands for:",
+        options: [
+            "Active voltage operation center",
+            "Open circuit voltage gain",
+            "Alternating voltage on collector",
+            "Average voltage output capacitance"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the relationship between power gain (Ap), voltage gain (Av), and current gain (Ai)?",
+        options: [
+            "Ap = Av / Ai",
+            "Ap = Av + Ai",
+            "Ap = Av - Ai",
+            "Ap = Av * Ai"
         ],
         answer: 3
     },
     {
-        question: "When a voltage source is connected between two non-reference nodes in nodal analysis, it forms a:",
+        question: "In a voltage divider bias network, which two components are used to determine the Thevenin equivalent voltage ($V_{TH}$)?",
         options: [
-            "Supermesh",
-            "Supernode",
-            "Short circuit",
-            "Reference node"
+            "R1 and RC",
+            "R1 and R2",
+            "RC and RE",
+            "R2 and RE"
         ],
         answer: 1
     },
     {
-        question: "A mesh is defined as a loop that:",
+        question: "When calculating the Collector-Emitter voltage ($V_{CE}$), the emitter current ($I_E$) is frequently approximated to be equal to which current?",
         options: [
-            "Contains all nodes in the circuit",
-            "Contains no other loop within it",
-            "Contains exactly one voltage source",
-            "Is formed only by capacitors"
+            "Base current ($I_B$)",
+            "Collector current ($I_C$)",
+            "Reverse saturation current ($I_{CBO}$)",
+            "Thevenin current ($I_{TH}$)"
         ],
         answer: 1
     },
     {
-        question: "What is the primary advantage of Loop analysis over Mesh analysis?",
+        question: "In the standard Voltage Divider Bias circuit diagram, the resistor $R_1$ is connected between the base terminal and which other point?",
         options: [
-            "Loop analysis uses nodal voltages",
-            "Loop analysis can be used for non-planar networks",
-            "Loop analysis requires fewer equations",
-            "Loop analysis eliminates dependent sources"
-        ],
-        answer: 1
-    },
-    {
-        question: "The Superposition theorem requires that when evaluating one independent source, all other independent voltage sources are:",
-        options: [
-            "Replaced by an open circuit",
-            "Replaced by a short circuit (0V)",
-            "Left intact",
-            "Doubled"
-        ],
-        answer: 1
-    },
-    {
-        question: "The Superposition theorem requires that when evaluating one independent source, all other independent current sources are:",
-        options: [
-            "Replaced by an open circuit (0A)",
-            "Replaced by a short circuit (0V)",
-            "Left intact",
-            "Halved"
-        ],
-        answer: 0
-    },
-    {
-        question: "When applying the Superposition theorem, dependent (controlled) sources are:",
-        options: [
-            "Replaced by short circuits",
-            "Replaced by open circuits",
-            "Left intact",
-            "Removed entirely"
+            "The ground terminal",
+            "The emitter terminal",
+            "The $V_{CC}$ supply terminal",
+            "The collector terminal"
         ],
         answer: 2
     },
     {
-        question: "Thevenin's theorem states that an active network can be replaced by:",
+        question: "In the standard Voltage Divider Bias circuit diagram, the resistor $R_2$ is connected between the base terminal and which other point?",
         options: [
-            "A single current source in parallel with a resistor",
-            "A single voltage source in series with a resistance",
-            "A wye (Y) network",
-            "A pi (π) network"
+            "The $V_{CC}$ supply terminal",
+            "The ground terminal",
+            "The emitter terminal",
+            "The load resistor"
         ],
         answer: 1
     },
     {
-        question: "To calculate the Thevenin equivalent resistance (RTH), you must look into the broken terminals while:",
+        question: "What specific biasing condition must be applied to the Emitter-Base (EB) and Collector-Base (CB) junctions for a BJT to operate in the Active region?",
         options: [
-            "All independent sources are doubled",
-            "All independent sources are removed and replaced by their internal resistances",
-            "The load is short-circuited",
-            "All dependent sources are turned off"
-        ],
-        answer: 1
-    },
-    {
-        question: "The Maximum Power Transfer theorem states that maximum power is transferred when:",
-        options: [
-            "Load resistance is zero",
-            "Load resistance is infinite",
-            "Load resistance equals the Thevenin resistance",
-            "Load resistance is half the Thevenin resistance"
-        ],
-        answer: 2
-    },
-    {
-        question: "Under the condition of maximum power transfer, the power delivered to the load is given by:",
-        options: [
-            "VTH^2 / RTH",
-            "VTH^2 / (2 RTH)",
-            "VTH^2 / (4 RTH)",
-            "VTH / (4 RTH)"
-        ],
-        answer: 2
-    },
-    {
-        question: "Wye-Delta (Y-Δ) transformations are classified under which type of analysis method?",
-        options: [
-            "Network Reduction Method",
-            "Direct Method",
-            "Node Voltage Method",
-            "Matrix Inversion Method"
-        ],
-        answer: 0
-    },
-    {
-        question: "To transform a balanced Delta (Δ) network with resistor RΔ to a Wye (Y) network, the equivalent resistor RY is:",
-        options: [
-            "RΔ / 2",
-            "RΔ / 3",
-            "3 RΔ",
-            "RΔ"
-        ],
-        answer: 1
-    },
-    {
-        question: "To transform a balanced Wye (Y) network with resistor RY to a Delta (Δ) network, the equivalent resistor RΔ is:",
-        options: [
-            "RY / 3",
-            "RY",
-            "2 RY",
-            "3 RY"
+            "EB is Forward Biased, CB is Forward Biased",
+            "EB is Reverse Biased, CB is Reverse Biased",
+            "EB is Reverse Biased, CB is Forward Biased",
+            "EB is Forward Biased, CB is Reverse Biased"
         ],
         answer: 3
     },
     {
-        question: "In network topology, a 'tree' of a connected graph with n nodes must contain exactly how many branches?",
+        question: "Which Greek letter is conventionally used to represent the current amplification factor in a Common Collector configuration?",
         options: [
-            "n",
-            "n-1",
-            "n+1",
-            "2n"
-        ],
-        answer: 1
-    },
-    {
-        question: "If a graph has b branches and n nodes, the number of links (chords) required to form closed paths is:",
-        options: [
-            "b - n",
-            "n - 1",
-            "b - n + 1",
-            "b + n"
+            "Alpha ($\\alpha$)",
+            "Beta ($\\beta$)",
+            "Gamma ($\\gamma$)",
+            "Delta ($\\delta$)"
         ],
         answer: 2
     },
     {
-        question: "A dependent source designated as VCVS stands for:",
+        question: "In the expanded collector current equation, what does the term $I_{CBO}$ represent?",
         options: [
-            "Voltage-Controlled Voltage Source",
-            "Variable-Current Voltage Source",
-            "Variable-Controlled Variable Source",
-            "Voltage-Current Voltage Source"
+            "Collector-Base open-circuit leakage current",
+            "Collector-Emitter open-circuit leakage current",
+            "Total active collector current",
+            "Maximum saturation current"
         ],
         answer: 0
     },
     {
-        question: "A dependent source designated as CCCS stands for:",
+        question: "Which transistor configuration produces a phase reversal of the input waveform at the output?",
         options: [
-            "Current-Controlled Current Source",
-            "Capacitance-Controlled Current Source",
-            "Constant-Current Constant Source",
-            "Current-Controlled Capacitance Source"
+            "Common Base",
+            "Common Collector",
+            "Common Emitter",
+            "Emitter Follower"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the exact angle of the phase reversal produced by a Common Emitter amplifier?",
+        options: [
+            "90 degrees",
+            "180 degrees",
+            "270 degrees",
+            "360 degrees"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why is the Common Collector configuration frequently used for impedance matching between circuits?",
+        options: [
+            "It has low input impedance and high output impedance",
+            "It has high input impedance and low output impedance",
+            "It has identical input and output impedances",
+            "It provides the highest possible voltage gain"
+        ],
+        answer: 1
+    },
+    {
+        question: "What symbol is used to denote the internal AC emitter resistance of a transistor in its equivalent circuit?",
+        options: [
+            "$R_E$",
+            "$r_c$",
+            "$r_e'$",
+            "$R_{TH}$"
+        ],
+        answer: 2
+    },
+    {
+        question: "The internal AC emitter resistance ($r_e'$) is inversely proportional to which DC operating parameter?",
+        options: [
+            "Base current ($I_B$)",
+            "Collector current ($I_C$)",
+            "Collector-Emitter voltage ($V_{CE}$)",
+            "Emitter current ($I_E$)"
+        ],
+        answer: 3
+    },
+    {
+        question: "To estimate the internal AC emitter resistance ($r_e'$) at room temperature, which constant voltage value is divided by the DC emitter current?",
+        options: [
+            "25 mV",
+            "0.7 V",
+            "1.2 V",
+            "26 V"
         ],
         answer: 0
     },
     {
-        question: "Dependent sources are typically designated in circuit diagrams by which geometric shape?",
+        question: "When calculating the AC collector resistance ($r_c$) of a circuit without an external load resistor ($R_L$), what does $r_c$ equal?",
         options: [
-            "Circle",
-            "Diamond",
-            "Square",
-            "Triangle"
+            "$R_C + R_L$",
+            "$R_C$ only",
+            "$R_C / 2$",
+            "Zero"
         ],
         answer: 1
     },
     {
-        question: "Which mathematical rule uses determinants to solve a set of simultaneous linear equations?",
+        question: "For a Common Emitter amplifier with an unbypassed emitter resistor ($R_E$), what is the approximate voltage gain formula if $R_E$ is much larger than $r_e'$?",
         options: [
-            "Faraday's rule",
-            "L'Hopital's rule",
-            "Cramer's rule",
-            "Simpson's rule"
-        ],
-        answer: 2
-    },
-    {
-        question: "The denominator determinant Δ in Cramer's rule must be:",
-        options: [
-            "Zero",
-            "Non-zero",
-            "Infinity",
-            "Negative"
+            "$A_v \\approx R_C / r_e'$",
+            "$A_v \\approx R_C / R_E$",
+            "$A_v \\approx R_E / R_C$",
+            "$A_v \\approx r_e' / R_C$"
         ],
         answer: 1
     },
     {
-        question: "Topology as a branch of geometry dates back to Euler, who used it in 1735 to solve which famous problem?",
+        question: "What is the exact formula for the voltage gain ($A_v$) of a Common Emitter amplifier that includes both the internal emitter resistance ($r_e'$) and an external emitter resistor ($R_E$)?",
         options: [
-            "The Apple drop problem",
-            "The Königsberg bridge problem",
-            "The traveling salesman problem",
-            "The four-color map problem"
-        ],
-        answer: 1
-    },
-    {
-        question: "An electrical network that can be redrawn so that no lines cross each other is called a:",
-        options: [
-            "Planar graph",
-            "Non-planar graph",
-            "Three-dimensional graph",
-            "Disconnected graph"
+            "$A_v = r_c / (r_e' + R_E)$",
+            "$A_v = (r_e' + R_E) / r_c$",
+            "$A_v = r_c / r_e'$",
+            "$A_v = r_c \\times (r_e' + R_E)$"
         ],
         answer: 0
     },
     {
-        question: "In an oriented graph, what is added to each branch to indicate reference?",
+        question: "If an amplifier has an open-circuit voltage gain ($A_{voc}$) of 40 and a current gain ($A_i$) of 15, what is its total power gain ($A_p$)?",
         options: [
-            "A node",
-            "A link",
-            "An arrow showing direction",
-            "A resistor"
+            "25",
+            "55",
+            "2.66",
+            "600"
         ],
-        answer: 2
+        answer: 3
     },
     {
-        question: "The property of a network that remains unaffected when we stretch, twist, or distort its size and shape is studied in:",
+        question: "In BJT amplifier circuit diagrams, what does the symbol $V_{CC}$ denote?",
         options: [
-            "Calculus",
-            "Thermodynamics",
-            "Network topology",
-            "Quantum mechanics"
-        ],
-        answer: 2
-    },
-    {
-        question: "The Laplace transform converts a linear differential equation into:",
-        options: [
-            "A non-linear differential equation",
-            "An integral equation",
-            "An algebraic equation",
-            "A partial differential equation"
-        ],
-        answer: 2
-    },
-    {
-        question: "In the complex frequency variable s = σ + jω, what does ω represent?",
-        options: [
-            "Real part (attenuation)",
-            "Imaginary part (angular frequency)",
-            "Phase angle",
-            "Amplitude"
+            "Base bias voltage",
+            "Collector supply voltage",
+            "Emitter supply voltage",
+            "Cut-off voltage"
         ],
         answer: 1
     },
     {
-        question: "The evaluation of initial conditions is naturally incorporated into which transform technique?",
+        question: "In BJT amplifier circuit diagrams, what does the symbol $V_{BB}$ denote?",
         options: [
-            "Fourier transform",
-            "Z transform",
-            "Laplace transform",
-            "Hilbert transform"
-        ],
-        answer: 2
-    },
-    {
-        question: "If F(s) = N(s)/D(s) and the degree of N(s) is greater than the degree of D(s), what must be done before partial fraction expansion?",
-        options: [
-            "Residue method",
-            "Algebraic method",
-            "Longhand division",
-            "Matrix inversion"
-        ],
-        answer: 2
-    },
-    {
-        question: "What does the notation L^{-1}[F(s)] represent?",
-        options: [
-            "Direct Laplace transform",
-            "Inverse Laplace transform",
-            "Laplace derivative",
-            "Frequency shift"
-        ],
-        answer: 1
-    },
-    {
-        question: "The parameter Z11 is physically interpreted as the input driving-point impedance with the output port:",
-        options: [
-            "Open-circuited",
-            "Short-circuited",
-            "Connected to a voltage source",
-            "Connected to a matched load"
+            "Base bias voltage",
+            "Collector supply voltage",
+            "Emitter supply voltage",
+            "Breakdown voltage"
         ],
         answer: 0
     },
     {
-        question: "The parameter Y11 is physically interpreted as the short-circuit input admittance with the output port:",
+        question: "Which fundamental electrical theorem is used to simplify the complex resistor network at the base of a Voltage Divider Bias circuit into a single voltage source and a single resistor?",
         options: [
-            "Open-circuited",
-            "Short-circuited",
-            "Connected to a current source",
-            "Grounded at both ends"
+            "Norton's Theorem",
+            "Superposition Theorem",
+            "Thevenin's Theorem",
+            "Kirchhoff's Theorem"
+        ],
+        answer: 2
+    },
+    {
+        question: "To calculate the base current ($I_B$) in a voltage divider biased transistor, Kirchhoff's Voltage Law is applied to which specific loop?",
+        options: [
+            "The output loop",
+            "The input loop",
+            "The feedback loop",
+            "The load loop"
         ],
         answer: 1
+    },
+    {
+        question: "To calculate the Collector-Emitter voltage ($V_{CE}$) in a voltage divider biased transistor, Kirchhoff's Voltage Law is applied to which specific loop?",
+        options: [
+            "The input loop",
+            "The feedback loop",
+            "The output loop",
+            "The ground loop"
+        ],
+        answer: 2
+    },
+    {
+        question: "Compared to a Common Emitter configuration, how is the input impedance of a Common Base configuration generally characterized?",
+        options: [
+            "It is significantly lower",
+            "It is significantly higher",
+            "It is exactly the same",
+            "It is infinite"
+        ],
+        answer: 0
+    },
+    {
+        question: "When drawing the AC equivalent circuit of a transistor amplifier, how are the DC voltage supply sources (like $V_{CC}$) treated?",
+        options: [
+            "They are left unchanged",
+            "They are doubled",
+            "They are treated as short circuits to ground",
+            "They are treated as open circuits"
+        ],
+        answer: 2
+    },
+    {
+        question: "When drawing the AC equivalent circuit of a transistor amplifier, how are the large coupling capacitors ($C_1$ and $C_2$) treated?",
+        options: [
+            "They are treated as open circuits",
+            "They are treated as short circuits",
+            "They are treated as inductors",
+            "They are removed entirely"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of amplifier design parameters, what does the acronym $A_{voc}$ specifically stand for?",
+        options: [
+            "Average Voltage Operational Center",
+            "Active Voltage Output Capacitance",
+            "Open circuit voltage gain",
+            "Alternating Voltage On Collector"
+        ],
+        answer: 2
+    },
+    {
+        question: "What happens to the internal depletion region of a PN junction when a forward bias voltage is applied?",
+        options: [
+            "It widens significantly",
+            "It remains completely unchanged",
+            "It is reduced",
+            "It instantly becomes an insulator"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the generally accepted barrier voltage drop for a forward-biased Germanium (Ge) diode?",
+        options: [
+            "0.7 V",
+            "0.3 V",
+            "1.1 V",
+            "0.026 V"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a simple BJT circuit, if $I_B$ is $1 \\text{ mA}$ and $\\beta$ is 100, what is the value of the collector current ($I_C$)?",
+        options: [
+            "10 mA",
+            "50 mA",
+            "100 mA",
+            "200 mA"
+        ],
+        answer: 2
+    },
+    {
+        question: "What unit of measurement is used for the thermal voltage equivalent ($V_T$)?",
+        options: [
+            "Amperes",
+            "Ohms",
+            "Joules",
+            "Volts"
+        ],
+        answer: 3
+    },
+    {
+        question: "What does the term 'bias' specifically refer to in the operation of a PN junction diode?",
+        options: [
+            "The internal temperature change of the diode",
+            "The application of external voltage across the two terminals",
+            "The physical introduction of trivalent impurities",
+            "The spontaneous generation of electron-hole pairs"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a PN junction, what physical process eventually causes the immobile ions to become uncovered at the junction interface?",
+        options: [
+            "The recombination of holes from the P-side and electrons from the N-side",
+            "The application of an intense external reverse bias",
+            "A drop in the ambient temperature below absolute zero",
+            "The injection of intrinsic semiconductor material"
+        ],
+        answer: 0
+    },
+    {
+        question: "What term is used to describe the column of positive and negative immobile ions at the P-N junction where no mobile charges are present?",
+        options: [
+            "The amplification zone",
+            "The saturation region",
+            "The depletion region",
+            "The Ohmic contact layer"
+        ],
+        answer: 2
+    },
+    {
+        question: "How does the built-in electric field at the depletion region affect the mobile charge carriers?",
+        options: [
+            "It accelerates all mobile carriers across the junction",
+            "It neutralizes the mobile carriers into intrinsic atoms",
+            "It repels the mobile carriers, preventing more from crossing the barrier",
+            "It converts majority carriers into minority carriers"
+        ],
+        answer: 2
+    },
+    {
+        question: "The drift current in a PN junction always flows in which direction relative to the diffusion current?",
+        options: [
+            "In the exact same direction",
+            "Perpendicular to the diffusion current",
+            "In the opposite direction",
+            "At a 45-degree angle to the diffusion current"
+        ],
+        answer: 2
+    },
+    {
+        question: "In the mathematical formula for the barrier potential (Vb), what does the constant 'K' represent?",
+        options: [
+            "Kirchhoff's constant",
+            "Kinetic energy coefficient",
+            "Kelvin temperature",
+            "Boltzmann's constant"
+        ],
+        answer: 3
+    },
+    {
+        question: "In the mathematical formula for the barrier potential (Vb), what does the variable 'T' represent?",
+        options: [
+            "Time in seconds",
+            "Absolute temperature in Kelvin",
+            "Thermal capacity",
+            "Transistor gain"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the simplified generalized form of the thermal voltage equation (VT), the value '11600' is derived from which ratio?",
+        options: [
+            "e / K",
+            "K / e",
+            "q / ε",
+            "NA / ND"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the example calculations in the notes, what is the value of the intrinsic carrier density (ni) for Silicon at room temperature?",
+        options: [
+            "1.0 x 10^16 /cm³",
+            "1.5 x 10^10 /cm³",
+            "1.04 x 10^-12 /cm³",
+            "1.6 x 10^-19 /cm³"
+        ],
+        answer: 1
+    },
+    {
+        question: "Based on its fundamental principles, a Bipolar Junction Transistor (BJT) transfers a signal from:",
+        options: [
+            "A high resistance to a low resistance",
+            "A low voltage to a low voltage",
+            "A low resistance to a high resistance",
+            "A high capacitance to a high inductance"
+        ],
+        answer: 2
+    },
+    {
+        question: "Comparing the physical widths of the three regions of a BJT, which mathematical relationship is accurate?",
+        options: [
+            "E > C > B",
+            "C > E > B",
+            "B > E > C",
+            "C > B > E"
+        ],
+        answer: 1
+    },
+    {
+        question: "Comparing the doping concentrations of the three regions of a BJT, which mathematical relationship is accurate?",
+        options: [
+            "E > C > B",
+            "C > E > B",
+            "B > C > E",
+            "E > B > C"
+        ],
+        answer: 0
+    },
+    {
+        question: "Why is the collector region designed to have the largest physical width in a BJT?",
+        options: [
+            "To maximize electron-hole recombination",
+            "To provide better heat dissipation because it generates heat",
+            "To lower the input impedance",
+            "To inject more majority carriers into the base"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the physical structure of a BJT as described in the notes, which junction is specifically designated as J1?",
+        options: [
+            "The Emitter-Base junction",
+            "The Collector-Base junction",
+            "The Emitter-Collector junction",
+            "The Ohmic contact junction"
+        ],
+        answer: 0
+    },
+    {
+        question: "In the physical structure of a BJT as described in the notes, which junction is specifically designated as J2?",
+        options: [
+            "The Emitter-Base junction",
+            "The Collector-Base junction",
+            "The Emitter-Collector junction",
+            "The Ohmic contact junction"
+        ],
+        answer: 1
+    },
+    {
+        question: "To simplify its operation, a BJT can be conceptually modeled as the equivalent of:",
+        options: [
+            "Two capacitors connected in series",
+            "Two inductors connected in parallel",
+            "Two diodes connected back to back",
+            "Two resistors connected to a ground"
+        ],
+        answer: 2
+    },
+    {
+        question: "During the Active mode of operation, what happens to the barrier potential of the forward-biased Emitter-Base junction?",
+        options: [
+            "It is completely eliminated",
+            "It is reduced",
+            "It is significantly increased",
+            "It remains exactly the same"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why do most electrons from the emitter successfully cross over to the collector instead of recombining in the base?",
+        options: [
+            "Because the base is very small, lightly doped, and the electrons possess high kinetic energy",
+            "Because the collector is heavily doped and attracts them with a negative charge",
+            "Because the emitter-base junction is reverse biased",
+            "Because the base region is completely devoid of holes"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a BJT, the reverse saturation current (ICBO) is primarily caused by the movement of:",
+        options: [
+            "Majority electrons in the emitter and holes in the base",
+            "Minority holes in the collector and minority electrons in the base",
+            "Majority holes in the collector and majority electrons in the emitter",
+            "Immobile acceptor ions in the depletion region"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the Common Base (CB) configuration, which terminal is strictly common to both the input and output sections of the transistor?",
+        options: [
+            "The Collector",
+            "The Base",
+            "The Emitter",
+            "The Supply Voltage"
+        ],
+        answer: 1
+    },
+    {
+        question: "To obtain the output characteristics of a Common Base (CB) configuration, which two parameters must be plotted against each other?",
+        options: [
+            "Output current (IC) versus Output voltage (VCB)",
+            "Input current (IE) versus Input voltage (VBE)",
+            "Output current (IC) versus Input current (IE)",
+            "Base current (IB) versus Output voltage (VCE)"
+        ],
+        answer: 0
+    },
+    {
+        question: "To obtain the input characteristics of a Common Base (CB) configuration, which two parameters must be plotted against each other?",
+        options: [
+            "Output current (IC) versus Output voltage (VCB)",
+            "Input current (IE) versus Input voltage (VBE)",
+            "Output current (IC) versus Input current (IE)",
+            "Base current (IB) versus Output voltage (VCE)"
+        ],
+        answer: 1
+    },
+    {
+        question: "Because of its high input impedance and low output impedance, the Common Collector (CC) configuration is most commonly used for:",
+        options: [
+            "Maximum voltage amplification",
+            "Impedance matching",
+            "Rectification of AC signals",
+            "Phase reversal"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the schematic diagram of a Common Emitter (CE) configuration, what does the source designated as 'VBB' provide?",
+        options: [
+            "The reverse biasing potential for the collector",
+            "The forward biasing potential for the base",
+            "The alternating current input signal",
+            "The ground reference"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the schematic diagram of a Common Emitter (CE) configuration, what does the source designated as 'VCC' provide?",
+        options: [
+            "The reverse biasing potential for the collector",
+            "The forward biasing potential for the base",
+            "The alternating current input signal",
+            "The ground reference"
+        ],
+        answer: 0
+    },
+    {
+        question: "To properly plot the input characteristics of a Common Emitter (CE) configuration, which parameters are used?",
+        options: [
+            "Plotting IC vs VCE for different values of IB",
+            "Plotting IB vs VBE for different values of VCE",
+            "Plotting IE vs VCB for different values of IC",
+            "Plotting IC vs VBE for different values of VCC"
+        ],
+        answer: 1
+    },
+    {
+        question: "The current amplification factor Beta (β) is described as being highly sensitive to minor variations in which other parameter?",
+        options: [
+            "Alpha (α)",
+            "Gamma (γ)",
+            "Thermal voltage (VT)",
+            "Base resistance (RB)"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the relationship established in the notes, what is the exact mathematical definition of the DC Alpha (α_dc)?",
+        options: [
+            "IE / IB",
+            "IC / IB",
+            "IC / IE",
+            "ΔIC / ΔIE"
+        ],
+        answer: 2
+    },
+    {
+        question: "According to the relationship established in the notes, what is the exact mathematical definition of the AC Alpha (α_ac)?",
+        options: [
+            "ΔIE / ΔIB",
+            "ΔIC / ΔIB",
+            "ΔIC / ΔIE",
+            "IC / IE"
+        ],
+        answer: 2
+    },
+    {
+        question: "According to the relationship established in the notes, what is the exact mathematical definition of the DC Gamma (γ_dc)?",
+        options: [
+            "IE / IB",
+            "IC / IB",
+            "IC / IE",
+            "ΔIC / ΔIE"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the relationship established in the notes, what is the exact mathematical definition of the AC Gamma (γ_ac)?",
+        options: [
+            "ΔIE / ΔIB at a constant VCE",
+            "ΔIC / ΔIB at a constant VBE",
+            "ΔIC / ΔIE at a constant VCB",
+            "ΔIB / ΔIE at a constant VCC"
+        ],
+        answer: 0
+    },
+    {
+        question: "When deriving the relationship between Gamma (γ) and Beta (β), which fundamental Kirchhoff's Current Law equation is used as the starting point?",
+        options: [
+            "IB = IE + IC",
+            "IC = IE + IB",
+            "IE = IC + IB",
+            "IE = IC - IB"
+        ],
+        answer: 2
+    },
+    {
+        question: "Based on the mathematical derivations provided, what is the final simplified relationship between Gamma (γ) and Beta (β)?",
+        options: [
+            "γ = β - 1",
+            "γ = 1 / β",
+            "γ = β + 1",
+            "γ = β / (1 - β)"
+        ],
+        answer: 2
+    },
+    {
+        question: "What is the primary purpose of the 'Biasing' process in a transistor circuit?",
+        options: [
+            "To convert AC signals into DC signals",
+            "To apply internal voltage to get the desired operating point",
+            "To completely eliminate leakage current",
+            "To increase the physical size of the depletion region"
+        ],
+        answer: 1
+    },
+    {
+        question: "If a design requires a transistor to operate as an amplifier, the circuit must be specifically biased to operate in which region?",
+        options: [
+            "Cut-off region",
+            "Saturation region",
+            "Inverted region",
+            "Active region"
+        ],
+        answer: 3
+    },
+    {
+        question: "If a design requires a transistor to act as a closed switch in the 'ON' state, the circuit must be specifically biased to operate in which region?",
+        options: [
+            "Saturation region",
+            "Active region",
+            "Cut-off region",
+            "Inverted region"
+        ],
+        answer: 0
+    },
+    {
+        question: "If a design requires a transistor to act as an open switch in the 'OFF' state, the circuit must be specifically biased to operate in which region?",
+        options: [
+            "Active region",
+            "Saturation region",
+            "Cut-off region",
+            "Inverted region"
+        ],
+        answer: 2
+    },
+    {
+        question: "When analyzing the input loop of a simple CE NPN transistor circuit, what is the correct Kirchhoff's Voltage Law equation?",
+        options: [
+            "VBB + IB*RB + VBE = 0",
+            "VBB - IB*RB - VBE = 0",
+            "VCC - IC*RC - VCE = 0",
+            "IB*RB - VBB - VBE = 0"
+        ],
+        answer: 1
+    },
+    {
+        question: "On the input characteristics graph for a CE transistor, what does the y-intercept of the DC load line represent?",
+        options: [
+            "The point where IB = 0",
+            "The maximum VBE",
+            "The point where VBE = 0, calculated as VBB / RB",
+            "The quiescent base current (IBQ)"
+        ],
+        answer: 2
+    },
+    {
+        question: "On the input characteristics graph for a CE transistor, what does the x-intercept of the DC load line represent?",
+        options: [
+            "The point where VBE = 0",
+            "The point where IB = 0, meaning VBE equals VBB",
+            "The point where VCE = VCC",
+            "The maximum saturation current"
+        ],
+        answer: 1
+    },
+    {
+        question: "When plotting the output characteristics of a CE transistor, the slope of the DC load line is determined by which expression?",
+        options: [
+            "1 / RB",
+            "-1 / RC",
+            "VCC / RC",
+            "RC / RE"
+        ],
+        answer: 1
+    },
+    {
+        question: "What does the y-intercept of the DC load line on the output characteristics graph represent?",
+        options: [
+            "The point where IC = 0",
+            "The quiescent collector current (ICQ)",
+            "The point where VCE = 0, representing maximum saturation current (VCC/RC)",
+            "The cut-off voltage"
+        ],
+        answer: 2
+    },
+    {
+        question: "What does the x-intercept of the DC load line on the output characteristics graph represent?",
+        options: [
+            "The point where VCE = 0",
+            "The point where IC = 0, representing maximum cut-off voltage (VCE = VCC)",
+            "The quiescent collector-emitter voltage (VCEQ)",
+            "The maximum saturation current"
+        ],
+        answer: 1
+    },
+    {
+        question: "According to the notes, which two primary factors can cause an unwanted change in the collector current and shift the Q-point?",
+        options: [
+            "Change in load resistance and input voltage",
+            "Change in Beta (β) and change in ambient temperature",
+            "Change in coupling capacitance and signal frequency",
+            "Change in Alpha (α) and emitter doping concentration"
+        ],
+        answer: 1
+    },
+    {
+        question: "Why does an increase in ambient temperature cause the collector current to rise and shift the operating point?",
+        options: [
+            "It increases the resistance of the load resistor",
+            "It causes the physical base region to expand",
+            "It increases the minority charge carriers, directly raising the leakage current",
+            "It forces the transistor into the inverted mode"
+        ],
+        answer: 2
+    },
+    {
+        question: "What defines a 'single stage transistor amplifier'?",
+        options: [
+            "An amplifier that only processes a single frequency band",
+            "A circuit where only one transistor is used to amplify the weak signal",
+            "An amplifier that utilizes only one biasing resistor",
+            "A circuit that operates strictly on a single DC power supply"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which transistor biasing configuration is identified as the most commonly used for CE amplifiers?",
+        options: [
+            "Fixed Base Bias",
+            "Collector Feedback Bias",
+            "Voltage Divider Bias",
+            "Emitter Bias"
+        ],
+        answer: 2
+    },
+    {
+        question: "To simplify the analysis of a Voltage Divider Bias circuit, which network theorem is applied to the base resistors?",
+        options: [
+            "Superposition Theorem",
+            "Norton's Theorem",
+            "Thevenin's Theorem",
+            "Maximum Power Transfer Theorem"
+        ],
+        answer: 2
+    },
+    {
+        question: "When calculating the Thevenin equivalent resistance (RTH) for a bias network, what must be done to the DC voltage supply (VCC)?",
+        options: [
+            "It must be replaced by an open circuit",
+            "It must be replaced by a short circuit",
+            "It must be doubled",
+            "It must be replaced by a current source"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the calculation of Thevenin resistance (RTH) for the voltage divider network, how do resistors R1 and R2 relate to each other?",
+        options: [
+            "They are calculated in series",
+            "They are calculated in parallel",
+            "R2 is subtracted from R1",
+            "R1 is divided by R2"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the formula to calculate the Thevenin equivalent voltage (VTH) at the base of the transistor?",
+        options: [
+            "VTH = VCC * R1 / (R1 + R2)",
+            "VTH = VCC * R2 / (R1 + R2)",
+            "VTH = VCC / (R1 + R2)",
+            "VTH = (R1 * R2) / VCC"
+        ],
+        answer: 1
+    },
+    {
+        question: "When applying KVL to the simplified input loop of a Thevenin equivalent circuit, which equation is correct?",
+        options: [
+            "VTH - IB*RTH - VBE - IE*RE = 0",
+            "VTH + IB*RTH + VBE + IE*RE = 0",
+            "VCC - IC*RC - VCE - IE*RE = 0",
+            "IB*RTH - VTH - VBE = 0"
+        ],
+        answer: 0
+    },
+    {
+        question: "To ensure that the collector current (IC) remains independent of the highly variable Beta (β), what design condition must be met?",
+        options: [
+            "RTH >> (β + 1)RE",
+            "RTH = R1 + R2",
+            "RTH << (β + 1)RE",
+            "VTH = VBE"
+        ],
+        answer: 2
+    },
+    {
+        question: "Applying Kirchhoff's Voltage Law to the output loop of the CE amplifier yields which equation for VCE?",
+        options: [
+            "VCE = VCC + IC*(RC + RE)",
+            "VCE = VCC - IC*(RC + RE)",
+            "VCE = IC*RC - VCC",
+            "VCE = VBE - IE*RE"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is listed as a primary advantage of the Voltage Divider bias configuration?",
+        options: [
+            "It uses fewer components than any other configuration",
+            "It completely eliminates all minority charge carriers",
+            "It provides flexibility in design due to the use of multiple resistances",
+            "It allows the transistor to bypass the active region"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Example 1 of the notes, if the calculated emitter current (IE) is 2.02 mA, why is it stated that IE is approximately equal to IC?",
+        options: [
+            "Because the collector resistance is zero",
+            "Because the base current (IB) is extremely small (0.02 mA)",
+            "Because Beta (β) is assumed to be 1",
+            "Because the power supply limits the current"
+        ],
+        answer: 1
+    },
+    {
+        question: "Based on the characteristics of a CE amplifier, how is its input resistance generally classified?",
+        options: [
+            "Extremely low (0 - 10 ohms)",
+            "Moderately low (1k - 2k ohms)",
+            "Moderately high (50k ohms)",
+            "Infinite"
+        ],
+        answer: 1
+    },
+    {
+        question: "Based on the characteristics of a CE amplifier, how is its output resistance generally classified?",
+        options: [
+            "Extremely low (0 - 10 ohms)",
+            "Moderately low (1k - 2k ohms)",
+            "Moderately high (50k ohms)",
+            "Infinite"
+        ],
+        answer: 2
+    },
+    {
+        question: "Based on the characteristics of a CE amplifier, what is its typical voltage gain capability?",
+        options: [
+            "Negative 1",
+            "Exactly 1",
+            "High (around 150)",
+            "Zero"
+        ],
+        answer: 2
+    },
+    {
+        question: "What specific effect does a Common Emitter amplifier have on the phase of the output signal compared to the input signal?",
+        options: [
+            "It shifts the phase by exactly 90 degrees",
+            "It produces a complete phase reversal of 180 degrees",
+            "It perfectly matches the input phase",
+            "It eliminates the phase entirely to produce DC"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the approximate formula for calculating the internal AC emitter resistance (r'e) of a transistor at room temperature?",
+        options: [
+            "25 mV * IE",
+            "25 mV / IE",
+            "VBE / IB",
+            "IC / 25 mV"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Example 2 of the notes, what is the calculated value of the internal AC emitter resistance (r'e) when the emitter current (IE) is 3.417 mA?",
+        options: [
+            "7.32 ohms",
+            "1.412 ohms",
+            "82.95 ohms",
+            "25 ohms"
+        ],
+        answer: 0
+    },
+    {
+        question: "In an AC equivalent circuit, how is the total AC collector resistance (rc) determined when an external load resistor (RL) is connected?",
+        options: [
+            "RC in series with RL",
+            "RC divided by RL",
+            "RC in parallel with RL",
+            "RC minus RL"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Example 2, if RC = 510 Ω and RL = 10 kΩ, what is the approximate effective AC collector resistance (rc)?",
+        options: [
+            "10.51 kΩ",
+            "5.1 MΩ",
+            "510 Ω",
+            "485.3 Ω"
+        ],
+        answer: 3
+    },
+    {
+        question: "What is the voltage gain (Av) formula for a Common Emitter amplifier if the external emitter resistor (RE) is completely bypassed by a capacitor for AC signals?",
+        options: [
+            "Av = RC / RE",
+            "Av = rc / r'e",
+            "Av = r'e / rc",
+            "Av = rc * r'e"
+        ],
+        answer: 1
+    },
+    {
+        question: "If an amplifier has an input voltage (Vin) of 1.5 mV and a voltage gain (Av) of 66.3, what is the expected output voltage (Vout)?",
+        options: [
+            "67.8 mV",
+            "44.2 mV",
+            "99.5 mV",
+            "0.022 mV"
+        ],
+        answer: 2
+    },
+    {
+        question: "According to the design hints for a simple CE amplifier, where is the optimal point to bias the transistor on the DC load line?",
+        options: [
+            "Middle of the load line",
+            "Maximum saturation point",
+            "Extreme cut-off point",
+            "At zero base current"
+        ],
+        answer: 0
+    },
+    {
+        question: "According to the design hints for a simple CE amplifier, what is the recommended rule of thumb for designing the base resistance (RB) for stability?",
+        options: [
+            "RB >= β * RE",
+            "RB <= (β * RE) / 10",
+            "RB = RE",
+            "RB = β / RE"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of transistor amplifier parameters, what does 'Avoc' specifically stand for?",
+        options: [
+            "Average voltage operating center",
+            "Active voltage output capacitance",
+            "Open circuit voltage gain",
+            "Alternating voltage on collector"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Example 3 of the notes, if the base voltage (VB) is 3.7 V and the base-emitter drop (VBE) is 0.7 V, what is the voltage at the emitter (VE)?",
+        options: [
+            "3.0 V",
+            "4.4 V",
+            "2.59 V",
+            "0.7 V"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a Common Emitter amplifier, the power gain (Ap) is mathematically calculated as the product of which two parameters?",
+        options: [
+            "Input resistance and output resistance",
+            "Base current and collector current",
+            "Voltage gain (Av) and Current gain (Ai)",
+            "Thevenin voltage and Thevenin resistance"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Example 4, if the voltage gain (Av) is 40 and the current gain (Ai) is 15, what is the total power gain (Ap) of the amplifier?",
+        options: [
+            "55",
+            "600",
+            "2.66",
+            "25"
+        ],
+        answer: 1
+    },
+    {
+        question: "Compared to the Common Base (CB) and Common Collector (CC) configurations, how is the power gain of the Common Emitter (CE) configuration described?",
+        options: [
+            "It has the lowest power gain",
+            "It has exactly a power gain of 1",
+            "It has a very high power gain",
+            "It cannot amplify power at all"
+        ],
+        answer: 2
+    },
+    {
+        question: "In Example 5, if the transistor β is 100 and the calculated base current (IB) is 0.0754 mA, what is the approximate emitter current (IE)?",
+        options: [
+            "0.754 mA",
+            "7.615 mA",
+            "10.1 mA",
+            "100.07 mA"
+        ],
+        answer: 1
+    },
+    {
+        question: "In Example 5, if r'e is 3.3 ohms and the external unbypassed RE is 100 ohms, what is the approximate voltage gain (Av) if the effective RC is 1000 ohms?",
+        options: [
+            "9.7",
+            "100",
+            "303",
+            "0.1"
+        ],
+        answer: 0
+    },
+    {
+        question: "When the external emitter resistor (RE) is much greater than the internal emitter resistance (r'e) in a CE amplifier, the voltage gain (Av) can be approximated by which simple ratio?",
+        options: [
+            "r'e / RE",
+            "RC / r'e",
+            "RE / RC",
+            "RC / RE"
+        ],
+        answer: 3
+    },
+    {
+        question: "In a single-stage transistor amplifier circuit, what is the primary purpose of coupling capacitors (like C1 and C2)?",
+        options: [
+            "To filter out high-frequency noise",
+            "To block DC voltages while passing AC signals",
+            "To bypass the emitter resistor for AC gain",
+            "To store DC power for the transistor"
+        ],
+        answer: 1
+    },
+    {
+        question: "What is the primary effect of adding a bypass capacitor (CE) across the emitter resistor in an AC amplifier?",
+        options: [
+            "It significantly increases the AC voltage gain by shorting RE for AC signals",
+            "It blocks the AC signal from reaching the output",
+            "It increases the DC operating temperature of the transistor",
+            "It forces the transistor into the cut-off region"
+        ],
+        answer: 0
+    },
+    {
+        question: "During the DC analysis of a transistor amplifier circuit to find the Q-point, how are all the capacitors treated?",
+        options: [
+            "As short circuits",
+            "As ideal voltage sources",
+            "As open circuits",
+            "As ideal current sources"
+        ],
+        answer: 2
+    },
+    {
+        question: "Which of the following equations correctly relates the DC currents in a Bipolar Junction Transistor according to Kirchhoff's Current Law?",
+        options: [
+            "IC = IE + IB",
+            "IE = IB + IC",
+            "IB = IC + IE",
+            "IE = IC - IB"
+        ],
+        answer: 1
+    },
+    {
+        question: "The ratio of the collector current (IC) to the emitter current (IE) is known as which specific transistor parameter?",
+        options: [
+            "Alpha (α)",
+            "Beta (β)",
+            "Gamma (γ)",
+            "Theta (θ)"
+        ],
+        answer: 0
+    },
+    {
+        question: "The ratio of the collector current (IC) to the base current (IB) is known as which specific transistor parameter?",
+        options: [
+            "Alpha (α)",
+            "Beta (β)",
+            "Gamma (γ)",
+            "Delta (δ)"
+        ],
+        answer: 1
+    },
+    {
+        question: "In the context of BJT leakage currents, what does the subscript 'CBO' specifically denote?",
+        options: [
+            "Collector to Base with Emitter Open",
+            "Collector to Emitter with Base Open",
+            "Common Base Output",
+            "Capacitance of Base Output"
+        ],
+        answer: 0
+    },
+    {
+        question: "In a Common Emitter configuration, the leakage current ICEO is mathematically equal to which expression?",
+        options: [
+            "α * ICBO",
+            "β * ICBO",
+            "(1 - α) * ICBO",
+            "(β + 1) * ICBO"
+        ],
+        answer: 3
+    },
+    {
+        question: "Why is the leakage current (ICEO) much more significant in a CE configuration than the leakage current (ICBO) in a CB configuration?",
+        options: [
+            "Because it is multiplied by the factor (β + 1)",
+            "Because the collector is physically larger",
+            "Because the base is grounded in CE",
+            "Because CE uses a lower DC voltage"
+        ],
+        answer: 0
+    },
+    {
+        question: "To fully establish the quiescent operating point (Q-point) of a transistor amplifier, which two DC values are primarily determined?",
+        options: [
+            "IBQ and VBB",
+            "ICQ and VCEQ",
+            "IE and VBE",
+            "VTH and RTH"
+        ],
+        answer: 1
+    },
+    {
+        question: "What happens to the transistor's mode of operation if the Q-point is biased exactly such that VCE = 0 V?",
+        options: [
+            "It operates in the Active region",
+            "It operates in the Cut-off region",
+            "It operates in the Saturation region",
+            "It operates in the Inverted region"
+        ],
+        answer: 2
+    },
+    {
+        question: "What happens to the transistor's mode of operation if the Q-point is biased exactly such that IC = 0 mA?",
+        options: [
+            "It operates in the Active region",
+            "It operates in the Saturation region",
+            "It operates in the Inverted region",
+            "It operates in the Cut-off region"
+        ],
+        answer: 3
+    },
+    {
+        question: "The reverse saturation leakage current (ICBO) is highly sensitive to changes in what specific environmental factor?",
+        options: [
+            "Light intensity",
+            "Ambient temperature",
+            "Atmospheric pressure",
+            "Magnetic fields"
+        ],
+        answer: 1
+    },
+    {
+        question: "In a Voltage Divider Bias circuit, what makes the operating point more stable compared to a simple base bias circuit?",
+        options: [
+            "It uses fewer resistors",
+            "It increases the overall power consumption",
+            "It makes the collector current (IC) essentially independent of the transistor's β",
+            "It forces the base current to equal zero"
+        ],
+        answer: 2
     }
-
-
-       
+            
         ];
         // ---------------------------------------------------------
 
@@ -2190,7 +2883,7 @@
 
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
-        let timeRemaining = 3600; // 1 Hour in seconds (Adjust if needed)
+        let timeRemaining = 2400; // 1 Hour in seconds (Adjust if needed)
         let timerInterval;
 
         const questionNumberEl = document.getElementById('question-number');
@@ -2209,8 +2902,8 @@
                     submitExam();
                 } else {
                     timeRemaining--;
-                    let hours = Math.floor(timeRemaining / 3600);
-                    let minutes = Math.floor((timeRemaining % 3600) / 60);
+                    let hours = Math.floor(timeRemaining / 2400);
+                    let minutes = Math.floor((timeRemaining % 2400) / 60);
                     let seconds = timeRemaining % 60;
                     
                     hours = hours < 10 ? "0" + hours : hours;
@@ -2306,8 +2999,9 @@
             
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('result-container').style.display = 'block';
-            document.getElementById('score-display').innerText = `Your Score: ${score} / ${questions.length}`;
-            reviewContainerEl.innerHTML = reviewHTML;
+            let finalScore = score * 2;
+            let totalPossible = questions.length * 2;                    document.getElementById('score-display').innerText = `Your Score: ${finalScore} / ${totalPossible}`;
+
         }
 
         // Initialize CBT
@@ -2317,3 +3011,4 @@
     </script>
 </body>
 </html>
+
